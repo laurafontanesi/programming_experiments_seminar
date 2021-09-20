@@ -115,6 +115,6 @@ You can send your assignment to my email address: laura.fontanesi@unibas.ch.
 
 The format might change from week to week, so I will specify this every time.
 
-For this assignment, please send me a text file (in either `.txt` or `.pdf` formats), where you list all questions and very briefly explain what you did, inserting the relevant parts of the code when possible. For each question, let me know if what you did worked. In general, you should test each of your answers yourself. By testing I mean run the experiment after each change and observe whether the change you wanted to make actually occured.
+For this assignment, please send me a text file, where you list all questions and very briefly explain what you did, inserting the relevant parts of the code when possible. For each question, let me know if what you did worked. In general, you should test each of your answers yourself. By testing I mean run the experiment after each change and observe whether the change you wanted to make actually occured.
 
 The file name should be: `wpa_1_FirstLast`, where First is your first name and Last is your last name.

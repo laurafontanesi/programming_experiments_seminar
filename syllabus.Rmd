@@ -2,7 +2,7 @@
 title: "Syllabus"
 ---
 
-Syllabus and materials for the UniBas Autumn 2021 semester on programming experiments in Inquisit.
+Syllabus and materials for the UniBas Autumn 2021 semester on programming experiments in **Inquisit**.
 
 - **Course meeting time**: Mondays, 16:15 to 17:45, Missionsstrasse 64a, Computerraum 00.010
 - **Instructor**: Dr. Laura Fontanesi, [laura.fontanesi@unibas.ch](mailto:laura.fontanesi@unibas.ch)
