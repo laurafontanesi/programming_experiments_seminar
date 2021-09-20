@@ -1,12 +1,5 @@
 ---
 title: "Syllabus"
-knit: (function(input_file, encoding) {
-  out_dir <- 'docs';
-  rmarkdown::render(input_file,
- encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
-date: "9/20/2021"
-output: html_document
 ---
 
 Syllabus and materials for the UniBas Autumn 2021 semester on programming experiments in Inquisit.

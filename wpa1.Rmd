@@ -1,0 +1,122 @@
+---
+title: "wpa1"
+---
+
+# Weekly Programming Assignment 1: Introduction to Inquisit
+
+Here is your first WPA! Today we are going to run a sample script from a risky choice experiment. To get the script and the stimuli list [download the experiment script and files](https://www.dropbox.com/sh/gu03ff98qtgm9az/AACtL5LivbYPF0SXD6zXRgGja?dl=0).
+
+## 1. Run the Experiment
+
+The first thing we'll do is try participating in the experiment yourself, so you can see how it works. Once you have downloaded the folder, open the `LotteryRTE2V1.iqx` file in Inquisit. To run it, just press the green arrow at the top. You'll be prompted to enter a participant number before the experiment begins.
+
+If you need to exit the experiment press `ctrl + e`.
+
+## 2. Changing the number of trials
+
+The number of trials is defined at the block level. Let's change the number of test trials from 10 to 5. Find the element `<block testlt>` and change it as follows:
+
+*Example Code*
+
+`<block testlt>`
+
+`/trials = [1-10=noreplace(testlt)]`
+
+`/bgstim = (leftresp, rightresp)`
+
+`/preinstructions = (lotterytest)`
+
+`</block>`
+
+We now have more stimuli than we do trials. What do you think will happen when we run the code again?
+
+## 3. Changing the Stimuli
+
+Currently there are separate practice stimuli and test stimuli. Let's make some of the stimuli the same. The practice stimuli are defined by the `<item rpraclt>` element. Let's change the images used for these items to match the first 4 stimuli in the test items.
+
+*Example Code*
+
+`<item rpraclt>`
+
+`/1 = "prlt1.png"`
+
+`/2 = "prlt2.png"`
+
+`/3 = "prlt4.png"`
+
+`/4 = "prlt5.png"`
+
+`/5 = "prlt7.png"`
+
+`/6 = "prlt8.png"`
+
+`</item>`
+
+## 4. Changing the Responses
+
+Currently participants use the `a` and `l` keys to respond to indicate their preferences. We can change these by changing the `/validresponse` attribute of the `<trial>` element.
+
+For example, we could change them to `s` and `k` for the test trials by altering `<trial testlt>` as follows:
+
+*Example Code*
+
+`<trial testlt>`
+
+ `/stimulustimes = [0=Ready; 600=testlt]`
+ 
+ `/iscorrectresponse = [trial.testlt.latency>300 &&trial.testlt.latency<20000 && (trial.testlt.response == 30 || trial.testlt.response == 38)]`
+ 
+ `/validresponse = ("s", "k")`
+ 
+ `/errormessage = true(speed, 2000)`
+ 
+ `/pretrialpause = values.tpause`
+ 
+ `/posttrialpause = values.ppause`
+ 
+ `</trial>`
+
+Unfortunately, this will only change the responses for the test trials. Do the same for the practise trials. Also see if you can work out how to make the instructions displayed at the bottom of the page during a trial match the new response keys.
+
+## 5. Changing the Instruction Pages
+
+There are a lot of Instructions on that first page. Let's try to change them. Instructions are defined in two ways in this script. The first Instruction page is called as a text element called `startpage`. If you find this page in your script then you can change the instructions in " " to whatever you want.
+
+
+*Example Code*
+`<text startpage>`
+
+`/items= ("That was a lot of instructions, this is better")`
+
+`/ hjustify=left`
+
+`/ valign=center`
+
+`/ size =(90%,90%)`
+
+`/ fontstyle=("Arial", 2.5%)`
+
+`</text>`
+
+
+The other Instruction pages are defined as specific page elements. They have the tag `<page XXXX.>` See if you can find them and alter these other instructions.
+
+## 6. Continue Exploring
+
+Try playing around with other elements of the code. Or try out another experiment from the [Millisecond test Library](http://www.millisecond.com/download/library/). 
+
+You can also have a look at the data files.
+
+## Send me your assignment!
+
+As explained in the syllabus, it is important that you send me your WPA for each class. As you are supposed to finish this in class, the deadline for sending the assignment is the **same day** of the class. You are not supposed to work on assignments all week long. 
+
+#### Assignment format
+
+You can send your assignment to my email address: laura.fontanesi@unibas.ch. 
+
+The format might change from week to week, so I will specify this every time.
+
+For this assignment, please send me a text file (in either `.txt` or `.pdf` formats), where you list all questions and very briefly explain what you did, inserting the relevant parts of the code when possible. For each question, let me know if what you did worked. In general, you should test each of your answers yourself. By testing I mean run the experiment after each change and observe whether the change you wanted to make actually occured.
+
+The file name should be: `wpa_1_FirstLast`, where First is your first name and Last is your last name.

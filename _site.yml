@@ -1,0 +1,12 @@
+name: "programming_experiments_seminar"
+output_dir: "docs"
+navbar:
+  title: "Inquisit seminar"
+  left:
+    - text: "Syllabus"
+      href: index.html
+    - text: "WPA1"
+      href: wpa1.html
+output:
+  html_document:
+    theme: flatly
