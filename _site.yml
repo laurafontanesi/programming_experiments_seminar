@@ -4,7 +4,7 @@ navbar:
   title: "Inquisit seminar"
   left:
     - text: "Syllabus"
-      href: index.html
+      href: syllabus.html
     - text: "WPA1"
       href: wpa1.html
 output:
