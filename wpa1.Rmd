@@ -1,18 +1,16 @@
 ---
-title: "wpa1"
+title: "Weekly Programming Assignment 1: Introduction to Inquisit"
 ---
-
-# Weekly Programming Assignment 1: Introduction to Inquisit
 
 Here is your first WPA! Today we are going to run a sample script from a risky choice experiment. To get the script and the stimuli list [download the experiment script and files](https://www.dropbox.com/sh/gu03ff98qtgm9az/AACtL5LivbYPF0SXD6zXRgGja?dl=0).
 
-## 1. Run the Experiment
+### 1. Run the Experiment
 
 The first thing we'll do is try participating in the experiment yourself, so you can see how it works. Once you have downloaded the folder, open the `LotteryRTE2V1.iqx` file in Inquisit. To run it, just press the green arrow at the top. You'll be prompted to enter a participant number before the experiment begins.
 
 If you need to exit the experiment press `ctrl + e`.
 
-## 2. Changing the number of trials
+### 2. Changing the number of trials
 
 The number of trials is defined at the block level. Let's change the number of test trials from 10 to 5. Find the element `<block testlt>` and change it as follows:
 
@@ -30,7 +28,7 @@ The number of trials is defined at the block level. Let's change the number of t
 
 We now have more stimuli than we do trials. What do you think will happen when we run the code again?
 
-## 3. Changing the Stimuli
+### 3. Changing the Stimuli
 
 Currently there are separate practice stimuli and test stimuli. Let's make some of the stimuli the same. The practice stimuli are defined by the `<item rpraclt>` element. Let's change the images used for these items to match the first 4 stimuli in the test items.
 
@@ -52,7 +50,7 @@ Currently there are separate practice stimuli and test stimuli. Let's make some 
 
 `</item>`
 
-## 4. Changing the Responses
+### 4. Changing the Responses
 
 Currently participants use the `a` and `l` keys to respond to indicate their preferences. We can change these by changing the `/validresponse` attribute of the `<trial>` element.
 
@@ -78,7 +76,7 @@ For example, we could change them to `s` and `k` for the test trials by altering
 
 Unfortunately, this will only change the responses for the test trials. Do the same for the practise trials. Also see if you can work out how to make the instructions displayed at the bottom of the page during a trial match the new response keys.
 
-## 5. Changing the Instruction Pages
+### 5. Changing the Instruction Pages
 
 There are a lot of Instructions on that first page. Let's try to change them. Instructions are defined in two ways in this script. The first Instruction page is called as a text element called `startpage`. If you find this page in your script then you can change the instructions in " " to whatever you want.
 
@@ -101,13 +99,13 @@ There are a lot of Instructions on that first page. Let's try to change them. In
 
 The other Instruction pages are defined as specific page elements. They have the tag `<page XXXX.>` See if you can find them and alter these other instructions.
 
-## 6. Continue Exploring
+### 6. Continue Exploring
 
 Try playing around with other elements of the code. Or try out another experiment from the [Millisecond test Library](http://www.millisecond.com/download/library/). 
 
 You can also have a look at the data files.
 
-## Send me your assignment!
+### Send me your assignment!
 
 As explained in the syllabus, it is important that you send me your WPA for each class. As you are supposed to finish this in class, the deadline for sending the assignment is the **same day** of the class. You are not supposed to work on assignments all week long. 
 

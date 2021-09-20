@@ -11,7 +11,7 @@
 
 
 
-<title>wpa1</title>
+<title>Weekly Programming Assignment 1: Introduction to Inquisit</title>
 
 <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -259,21 +259,19 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">wpa1</h1>
+<h1 class="title toc-ignore">Weekly Programming Assignment 1: Introduction to Inquisit</h1>
 
 </div>
 
 
-<div id="weekly-programming-assignment-1-introduction-to-inquisit" class="section level1">
-<h1>Weekly Programming Assignment 1: Introduction to Inquisit</h1>
 <p>Here is your first WPA! Today we are going to run a sample script from a risky choice experiment. To get the script and the stimuli list <a href="https://www.dropbox.com/sh/gu03ff98qtgm9az/AACtL5LivbYPF0SXD6zXRgGja?dl=0">download the experiment script and files</a>.</p>
-<div id="run-the-experiment" class="section level2">
-<h2>1. Run the Experiment</h2>
+<div id="run-the-experiment" class="section level3">
+<h3>1. Run the Experiment</h3>
 <p>The first thing we’ll do is try participating in the experiment yourself, so you can see how it works. Once you have downloaded the folder, open the <code>LotteryRTE2V1.iqx</code> file in Inquisit. To run it, just press the green arrow at the top. You’ll be prompted to enter a participant number before the experiment begins.</p>
 <p>If you need to exit the experiment press <code>ctrl + e</code>.</p>
 </div>
-<div id="changing-the-number-of-trials" class="section level2">
-<h2>2. Changing the number of trials</h2>
+<div id="changing-the-number-of-trials" class="section level3">
+<h3>2. Changing the number of trials</h3>
 <p>The number of trials is defined at the block level. Let’s change the number of test trials from 10 to 5. Find the element <code>&lt;block testlt&gt;</code> and change it as follows:</p>
 <p><em>Example Code</em></p>
 <p><code>&lt;block testlt&gt;</code></p>
@@ -283,8 +281,8 @@ $(document).ready(function () {
 <p><code>&lt;/block&gt;</code></p>
 <p>We now have more stimuli than we do trials. What do you think will happen when we run the code again?</p>
 </div>
-<div id="changing-the-stimuli" class="section level2">
-<h2>3. Changing the Stimuli</h2>
+<div id="changing-the-stimuli" class="section level3">
+<h3>3. Changing the Stimuli</h3>
 <p>Currently there are separate practice stimuli and test stimuli. Let’s make some of the stimuli the same. The practice stimuli are defined by the <code>&lt;item rpraclt&gt;</code> element. Let’s change the images used for these items to match the first 4 stimuli in the test items.</p>
 <p><em>Example Code</em></p>
 <p><code>&lt;item rpraclt&gt;</code></p>
@@ -296,8 +294,8 @@ $(document).ready(function () {
 <p><code>/6 = "prlt8.png"</code></p>
 <p><code>&lt;/item&gt;</code></p>
 </div>
-<div id="changing-the-responses" class="section level2">
-<h2>4. Changing the Responses</h2>
+<div id="changing-the-responses" class="section level3">
+<h3>4. Changing the Responses</h3>
 <p>Currently participants use the <code>a</code> and <code>l</code> keys to respond to indicate their preferences. We can change these by changing the <code>/validresponse</code> attribute of the <code>&lt;trial&gt;</code> element.</p>
 <p>For example, we could change them to <code>s</code> and <code>k</code> for the test trials by altering <code>&lt;trial testlt&gt;</code> as follows:</p>
 <p><em>Example Code</em></p>
@@ -311,8 +309,8 @@ $(document).ready(function () {
 <p><code>&lt;/trial&gt;</code></p>
 <p>Unfortunately, this will only change the responses for the test trials. Do the same for the practise trials. Also see if you can work out how to make the instructions displayed at the bottom of the page during a trial match the new response keys.</p>
 </div>
-<div id="changing-the-instruction-pages" class="section level2">
-<h2>5. Changing the Instruction Pages</h2>
+<div id="changing-the-instruction-pages" class="section level3">
+<h3>5. Changing the Instruction Pages</h3>
 <p>There are a lot of Instructions on that first page. Let’s try to change them. Instructions are defined in two ways in this script. The first Instruction page is called as a text element called <code>startpage</code>. If you find this page in your script then you can change the instructions in " " to whatever you want.</p>
 <p><em>Example Code</em> <code>&lt;text startpage&gt;</code></p>
 <p><code>/items= ("That was a lot of instructions, this is better")</code></p>
@@ -323,13 +321,13 @@ $(document).ready(function () {
 <p><code>&lt;/text&gt;</code></p>
 <p>The other Instruction pages are defined as specific page elements. They have the tag <code>&lt;page XXXX.&gt;</code> See if you can find them and alter these other instructions.</p>
 </div>
-<div id="continue-exploring" class="section level2">
-<h2>6. Continue Exploring</h2>
+<div id="continue-exploring" class="section level3">
+<h3>6. Continue Exploring</h3>
 <p>Try playing around with other elements of the code. Or try out another experiment from the <a href="http://www.millisecond.com/download/library/">Millisecond test Library</a>.</p>
 <p>You can also have a look at the data files.</p>
 </div>
-<div id="send-me-your-assignment" class="section level2">
-<h2>Send me your assignment!</h2>
+<div id="send-me-your-assignment" class="section level3">
+<h3>Send me your assignment!</h3>
 <p>As explained in the syllabus, it is important that you send me your WPA for each class. As you are supposed to finish this in class, the deadline for sending the assignment is the <strong>same day</strong> of the class. You are not supposed to work on assignments all week long.</p>
 <div id="assignment-format" class="section level4">
 <h4>Assignment format</h4>
@@ -337,7 +335,6 @@ $(document).ready(function () {
 <p>The format might change from week to week, so I will specify this every time.</p>
 <p>For this assignment, please send me a text file (in either <code>.txt</code> or <code>.pdf</code> formats), where you list all questions and very briefly explain what you did, inserting the relevant parts of the code when possible. For each question, let me know if what you did worked. In general, you should test each of your answers yourself. By testing I mean run the experiment after each change and observe whether the change you wanted to make actually occured.</p>
 <p>The file name should be: <code>wpa_1_FirstLast</code>, where First is your first name and Last is your last name.</p>
-</div>
 </div>
 </div>
 
