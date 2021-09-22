@@ -3,7 +3,7 @@
 To change the number of trials from 10 to 5, you should change the trials attribute:
 
 <block testlt>
-/trials = [1-15=noreplace(testlt)]
+/trials = [1-5=noreplace(testlt)]
 /bgstim = (leftresp, rightresp)
 /preinstructions = (lotterytest)
 </block>
