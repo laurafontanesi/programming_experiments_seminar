@@ -12,7 +12,7 @@ Your homework for each class period is to actively read the material for that we
 
 | Week | Date | Topic | Readings | Assignment (in class) |
 | ------ | ------ | ------------------------ | ----------------- | ---------------------- |
-| 1  | 20 September | Introduction to Inquisit | - | - |
+| 1  | 20 September | Introduction to Inquisit | - | [WPA 1](https://laurafontanesi.github.io/programming_experiments_seminar/wpa1.html) |
 
 ### Important Links
 Link | Description 

@@ -2,11 +2,17 @@ name: "programming_experiments_seminar"
 output_dir: "docs"
 navbar:
   title: "Inquisit seminar"
+  type: inverse
   left:
     - text: "Syllabus"
       href: index.html
-    - text: "WPA1"
-      href: wpa1.html
+    - text: "WPAs"
+      icon: fa-desktop
+      menu:
+      - text: "WPA 1"
+        href: wpa1.html
 output:
   html_document:
-    theme: flatly
+    theme: yeti
+    highlight: textmate
+    toc: true
