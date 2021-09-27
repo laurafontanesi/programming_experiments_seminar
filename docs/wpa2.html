@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Experimental Design</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Inquisit seminar</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-desktop"></span>
+     
+    WPAs
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="wpa1.html">WPA 1</a>
+    </li>
+    <li>
+      <a href="wpa2.html">WA 2</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Experimental Design</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#part-1-the-elements-of-an-experiment">Part 1: The elements of an experiment</a>
+<ul>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#types-of-iv">Types of IV</a></li>
+<li><a href="#randomization">Randomization</a></li>
+<li><a href="#exercise">Exercise</a></li>
+</ul></li>
+<li><a href="#part-2-evaluating-an-experiment">Part 2: Evaluating an experiment</a>
+<ul>
+<li><a href="#validity">Validity</a></li>
+<li><a href="#reliability">Reliability</a></li>
+<li><a href="#replicability">Replicability</a></li>
+<li><a href="#exercise-1">Exercise</a></li>
+</ul></li>
+<li><a href="#additional-resources">Additional resources</a></li>
+<li><a href="#send-me-your-assignments">Send me your assignments</a></li>
+</ul>
+</div>
+
+<div id="part-1-the-elements-of-an-experiment" class="section level2">
+<h2>Part 1: The elements of an experiment</h2>
+<p>Experimental design allows us to <strong>test hypotheses</strong>, stated as relationships between two or more variables.</p>
+<div id="variables" class="section level3">
+<h3>Variables</h3>
+<p>A proper experimental design allows us to measure the change in a set of variables that we are interested in (<strong>the dependent/effect/response/outcome variable(s), DV</strong>) as a function of changes in a different set of variables that we manipulate (<strong>the independent/causal/explanatory/predictor variable(s) IV</strong>).</p>
+<p>We may also identify a set of <strong>control variables</strong> to be held constant (typically, variables we are not interested in), in order to be sure that the observed changes in the DV are really due to our manipulations.</p>
+<p>A variable that cannot be/is not controlled for but is suspected to influence the IV is usually referred to as a <strong>confounding variable</strong>.</p>
+<p><strong>Latent variables</strong> are variables we are interested in but can not directly measure, and thus represent via a proxy (e.g., BOLD response vs. brain activity).</p>
+<p><em>Example</em> HP: Humans are more accurate and faster in discriminating near-to vertical lines, compared to near-to horizontal lines. Design: Testing participants’ ability in discriminating the orientation of two bars, one fixed bar A and one varying bar B (DV: accuracy and response times), manipulating the distance between the 2 bars within blocks and the orientation of the fixed bar between blocks (IV: orientation difference between stimulus A and B, orientation of stimulus A in degrees). The temperature in the room or other environmental distractions might also affect performance but we want to keep those as constant as possible within/across blocks or experimental sessions. If the experimenter would systematically tap on the floor as a function of the difficulty of a task, that would be a confound.</p>
+</div>
+<div id="types-of-iv" class="section level3">
+<h3>Types of IV</h3>
+<p>When we manipulate the IV, we alter the values or levels that it takes (e.g., varying difficulty by setting the orientation difference to either 10, 20, oe 30 degrees). Where our experiment has a single IV, the different values or levels of this variable are the <strong>conditions</strong> of our experiment.</p>
+<p>In the simplest case, we have 2 conditions, where we manipulate the presence and absence of a certain IV (e.g., administering cheese before sleeping) and test the difference between the DV across these 2 conditions (e.g., measuring the quantity of nighmeares). Such conditions can be referred to as <em>experimental</em> and <em>control</em> condition.</p>
+<p>One fundamental factor that we have to decide upon, even after we have determined the precise question we wish to examine, chosen our IV and DV, and set the levels on the IV, is <em>how we will distribute the participants</em> across the different conditions:</p>
+<ul>
+<li>we could have different groups of people performing in the different conditions. The scores on our DV would therefore be from different samples and be unrelated to each other. Our IV would thus be an <strong>unrelated samples IV</strong> (<strong>between subject design</strong>)</li>
+<li>we could have the same group of participants performing in the two conditions. The scores on our DV would therefore be from the same sample and would be related to each other. Our IV would thus be a <strong>related samples IV</strong> (<strong>within subject design</strong>).</li>
+</ul>
+<p>In order to consider how you might choose between these types of IV, you should evaluate which type will ensure that there will be no confounds. One source of confounding can be our particular sample of participants. In the cheese example, by assignign one group to the cheese condition and one to the control condition, you want to make sure that one group also does not have better/worse sleep or other <strong>individual differences</strong> that might influence the DV. If you were to assign both condition to each participants, you want to be sure to not have any <strong>order effect</strong> (improvement or deterioration due to practice, but also anchoring, carry-over effects, interference, etc.).</p>
+<p>Advantage of <strong>related samples IV</strong>: In eliminating individual differences from our experiment, related samples IVs reduce the amount of background or extraneous variation that we have to cope with variation other than that arising from our manipulation of the IV.</p>
+<p>Disadvantage of <strong>related samples IV</strong>: When we run an experiment using related samples, we will have to present our conditions one after the other. This produces problems that do not exist when we use unrelated samples.</p>
+</div>
+<div id="randomization" class="section level3">
+<h3>Randomization</h3>
+<p>We want to minimize the impact of the confounding variables that can naturally arise from the choice of the IV (e.g., order/individual differences effects) as much as possible.</p>
+<p>In between-subject designs, you should try to rule out any systematic bias stemming from such differences between participants. One possibility would be to try to <em>match</em> your participants in each group. In order to do this you would need to assess the performances of your participants prior to running the experiment (i.e., run a pretest). Often, however, we have neither the resources nor the time to collect and act upon this information. Under these circumstances, you can <em>randomly assign participants</em> to each group, trusting the random sequence to spread individuals who differ in basic ability at the experimental task more or less equally among the conditions. The more participants we use, the more effective this procedure is likely to be.</p>
+<p>In within-subject designs, you should <em>counterbalance</em> each participant who does one particular sequence of conditions, with other participants who perform the conditions in all the other possible combinations of orders. If the levels of your IV are many, then counterbalancing becomes almost impossible. Then, you should rather randomize the sequence of IV levels across participants.</p>
+</div>
+<div id="exercise" class="section level3">
+<h3>Exercise</h3>
+<p><em>Risky decision making</em>: White, C. M., Gummerum, M., &amp; Hanoch, Y. (2018). Framing of online risk: Young adults’ and adolescents’ representations of risky gambles. Decision, 5(2), 119–128. <a href="https://doi.org/10.1037/dec0000066" class="uri">https://doi.org/10.1037/dec0000066</a></p>
+<p>Read the paper above focusing on their experimental designs, and reply to the following questions:</p>
+<ol style="list-style-type: decimal">
+<li>What is/are the main hypothesis(es)?</li>
+<li>What are the IV, DV, and control variables?</li>
+<li>What kind of manipulations and randomization were done?</li>
+<li>Can you recognize any latent variable or confound in this study?</li>
+</ol>
+<p><em>NOTE</em>: The exercises today should be preferably done in pairs, but you should write down your own answers.</p>
+</div>
+</div>
+<div id="part-2-evaluating-an-experiment" class="section level2">
+<h2>Part 2: Evaluating an experiment</h2>
+<div id="validity" class="section level3">
+<h3>Validity</h3>
+<p>Validity is the main extent to which a concept, conclusion or measurement is well-founded and likely corresponds accurately to the real world.</p>
+<ul>
+<li><strong>External validity (generalizability)</strong></li>
+</ul>
+<p>Generalizability is the extent to which the findings generated by your experiment can be extrapolated. For example, are they relevant to everybody, regardless of socio-economic class, ethnic group, gender, age, etc.? Or are they circumscribed in some way – for example, relevant only to middle-class, white, youngsters of above average intelligence?</p>
+<p>One threat to external validity comes from the conditions that you imposed on the time, setting and task for the purposes of control. Another potential limit to external validity stems from your participants. Are they representative of the group from which you took them (e.g., students)? Are they representative of a wider range of people?</p>
+<p><em>NOTE</em>: the validity of this criticism depends on the variables in question. If the variables that differentiate such participants from the general public (e.g., age, intelligence, class) are thought to have some impact on the DV (e.g., reasoning, attitudes), then the criticism may be valid. However, other variables may not be so influenced (e.g., motor skills, visual perception).</p>
+<ul>
+<li><strong>Internal validity</strong></li>
+</ul>
+<p>Internal validity refers to the extent to which we can relate changes in the DV to the manipulation of the IV: A well-designed experiment with no confounding variables is an experiment very high in internal validity.</p>
+<p>To achieve high internal validity, we often need to hold many extraneous variables constant, thus compromising external validity. For example, in our cheese and nightmare experiment, the more we introduce controls for variables that might also produce nightmares, the more we run the risk that the generalizability of our findings will be limited by the values at which we hold those vari- ables constant. For example, if we require people to eat cheese 3 hours before they go to bed, the findings may not apply to cheese eaten 10 minutes before going to bed. Likewise, if we restrict ourselves to one type of cheese (say, Cheddar), the findings may be limited to that type of cheese, or only to hard cheeses, or only to cheeses made with milk from British cattle, and so on.</p>
+</div>
+<div id="reliability" class="section level3">
+<h3>Reliability</h3>
+<p>Reliability is the overall consistency of a measure. A measure is said to have a high reliability if it produces similar results under consistent conditions. Reliability does not imply validity. That is, a reliable measure that is measuring something consistently is not necessarily measuring what you want to be measured. For example, while there are many reliable tests of risk preference, not all of them would be valid for predicting, say, the number of driving tickets or substance abuse.</p>
+<ul>
+<li><strong>Inter-rater reliability</strong> assesses the degree of agreement between two or more raters in their appraisals. For example, a person gets a stomach ache and different doctors all give the same diagnosis.</li>
+<li><strong>Test-retest reliability</strong> assesses the degree to which test scores are consistent from one test administration to the next. Measurements are gathered from a single rater who uses the same methods or instruments and the same testing conditions. This includes <strong>intra-rater reliability</strong>.</li>
+<li><strong>Inter-method reliability</strong> assesses the degree to which test scores are consistent when there is a variation in the methods or instruments used. This allows inter-rater reliability to be ruled out. When dealing with forms, it may be termed parallel-forms reliability.</li>
+<li><strong>Internal consistency reliability</strong> assesses the consistency of results across items within a test.</li>
+</ul>
+</div>
+<div id="replicability" class="section level3">
+<h3>Replicability</h3>
+<p>Reproducibility is a major principle underpinning the scientific method. For the findings of a study to be reproducible means that results obtained by an experiment or an observational study or in a statistical analysis of a data set should be achieved again with a high degree of reliability when the study is replicated. There are different kinds of replication but typically replication studies involve different researchers using the same methodology. <a href="https://en.wikipedia.org/wiki/Reproducibility"><em>Only after one or several such successful replications should a result be recognized as scientific knowledge</em></a>.</p>
+</div>
+<div id="exercise-1" class="section level3">
+<h3>Exercise</h3>
+<p>Get back to the paper you chose in Part 1. Now, focus on the validity (both external and internal). What do you think are the major pitfalls in this experiment (if there are any) and what could help improving them?</p>
+</div>
+</div>
+<div id="additional-resources" class="section level2">
+<h2>Additional resources</h2>
+<ul>
+<li><a href="https://books.google.ch/books/about/Designing_and_Reporting_Experiments_in_P.html?id=n0vuAAAAMAAJ&amp;source=kp_book_description&amp;redir_esc=y">Peter Harris book</a></li>
+<li>Reproducibility <a href="https://www.science.org/lookup/doi/10.1126/science.aac4716">crisis</a></li>
+<li>Generalizability: <a href="https://doi.org/10.1017/S0140525X20001685">crisis</a> or <a href="https://psyarxiv.com/tm8jy">not</a></li>
+</ul>
+<p>Other important things to consider when planning an experiment are the expected effect size and power analyses, and Ethics conserns. You can have a look at the <a href="https://tales.nmc.unibas.ch/de/conducting-psychological-research-6/">Tutorial for the Project Seminar Students</a> to have more insights about these topics.</p>
+</div>
+<div id="send-me-your-assignments" class="section level2">
+<h2>Send me your assignments</h2>
+<p>You can send your assignment to my email address: <a href="mailto:laura.fontanesi@unibas.ch" class="email">laura.fontanesi@unibas.ch</a>.</p>
+<p>For this assignment, please send me a text file (preferably .txt or .pdf). The file name should be: <code>wpa_2_FirstLast</code>, where First is your first name and Last is your last name.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
