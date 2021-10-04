@@ -13,6 +13,8 @@ navbar:
         href: wpa1.html
       - text: "WA 2"
         href: wpa2.html
+      - text: "WPA 3"
+        href: wpa3.html
 output:
   html_document:
     theme: yeti
