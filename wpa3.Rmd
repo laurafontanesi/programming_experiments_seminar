@@ -48,14 +48,14 @@ Now that you have a script file, copy the following code into the top of your fi
 
 ```
 <defaults>
-/quitcommand = (Ctrl+'q')
+/quitcommand = (Ctrl+'e')
 /fontstyle=("Arial", 3%)
 </defaults>
 ```
 
 We will put this at the top of all scripts from now on. In it we have created an element of type `defaults` This is a bit different from the other elements we will define, as it doesn't get a name because you won't be creating multiple elements of this type. As its name suggests this element allows us to define some default behaviour in our script that will be employed unless an element directly contradicts it.
 
-The two attributes we have defined for `defaults` are `fontsyle` which sets the default font to be used as `Arial` unless a specific element says otherwise and `quitcommand`. The `quitcommand` attribute sets a key combination that can be used to exit the Experiment at any time. I strongly recommend you always include a `quitcommand` and always check if there is a `quitcommand` before using anyone elses code.
+The two attributes we have defined for `defaults` are `fontsyle` which sets the default font to be used as `Arial` unless a specific element says otherwise and `quitcommand`. The `quitcommand` attribute sets a key combination that can be used to exit the Experiment at any time. I strongly recommend you always include a `quitcommand` and always check if there is a `quitcommand` before using anyone elses code. The default is Ctrl+Q, so you will get an error message if you try to use that.
 
 Use the `Help` function to learn more about these.
 

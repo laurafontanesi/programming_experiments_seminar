@@ -264,6 +264,9 @@ $(document).ready(function () {
     <li>
       <a href="wpa3.html">WPA 3</a>
     </li>
+    <li>
+      <a href="wpa4.html">WPA 4</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -319,11 +322,11 @@ $(document).ready(function () {
 <p>After opening Inquisit the first step we will take is to create a new script file. You can do this either from the menu <code>file&gt;new</code> or by clicking on the blank page. Before we go further save the script in the following format <code>wpa_3_FirstLast.iqx</code>. This is the file you will email to me at the conclusion of class.</p>
 <p>Now that you have a script file, copy the following code into the top of your file:</p>
 <pre><code>&lt;defaults&gt;
-/quitcommand = (Ctrl+&#39;q&#39;)
+/quitcommand = (Ctrl+&#39;e&#39;)
 /fontstyle=(&quot;Arial&quot;, 3%)
 &lt;/defaults&gt;</code></pre>
 <p>We will put this at the top of all scripts from now on. In it we have created an element of type <code>defaults</code> This is a bit different from the other elements we will define, as it doesn’t get a name because you won’t be creating multiple elements of this type. As its name suggests this element allows us to define some default behaviour in our script that will be employed unless an element directly contradicts it.</p>
-<p>The two attributes we have defined for <code>defaults</code> are <code>fontsyle</code> which sets the default font to be used as <code>Arial</code> unless a specific element says otherwise and <code>quitcommand</code>. The <code>quitcommand</code> attribute sets a key combination that can be used to exit the Experiment at any time. I strongly recommend you always include a <code>quitcommand</code> and always check if there is a <code>quitcommand</code> before using anyone elses code.</p>
+<p>The two attributes we have defined for <code>defaults</code> are <code>fontsyle</code> which sets the default font to be used as <code>Arial</code> unless a specific element says otherwise and <code>quitcommand</code>. The <code>quitcommand</code> attribute sets a key combination that can be used to exit the Experiment at any time. I strongly recommend you always include a <code>quitcommand</code> and always check if there is a <code>quitcommand</code> before using anyone elses code. The default is Ctrl+Q, so you will get an error message if you try to use that.</p>
 <p>Use the <code>Help</code> function to learn more about these.</p>
 </div>
 </div>
