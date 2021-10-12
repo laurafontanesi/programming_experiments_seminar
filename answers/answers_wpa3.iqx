@@ -3,6 +3,10 @@
 /fontstyle=("Arial", 3%)
 </defaults>
 
+<parameters>
+/picture_size = 30%
+</parameters>
+
 # Creating our stimuli
 
 <item stimlist>
