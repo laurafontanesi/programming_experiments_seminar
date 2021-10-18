@@ -306,7 +306,7 @@ $(document).ready(function () {
 </ul>
 </div>
 
-<p>Another important/useful feature of the trial elements (which also generalizes to block, as we will see later on) is conditional branching. In essence, this allows us to determine what will happen after a trial, conditional on the quality (or perhaps also the speed) of participants’ responses.</p>
+<p>Another important/useful feature of the trial elements (which also generalizes to block, as we will see later on) is conditional updating and branching. In essence, this allows us to determine what will happen after a trial, conditional on the kind (or perhaps also the speed) of participants’ responses.</p>
 <div id="adaptive-designs" class="section level2">
 <h2>Adaptive designs</h2>
 <p>One prominent example is that of adaptive designs, in which the stimuli themselves change and evolve based on responses.</p>
@@ -348,11 +348,13 @@ $(document).ready(function () {
 <p><strong>Exercise 4c:</strong> Rather than having it increase regardless of the response, we’ll instead have the displayed value increase by 50 if they choose the risky option (i.e. make the safe option more tempting), or decrease the value 50 if they chose the safe option (i.e. make the safe option less tempting). Each of these <code>ontrialbegin</code> attributes can also accept a conditional statment, or if statement (help is under conditional statement), as an expression. An if statement has 2 parts a logical expression, that is first evaluated, then a secondary expression which is only performed if the logical expression is true. for instance: <code>[if (trial.risk.response == 30) values.current = values.current-50]</code>, would check whether the response given on the trial is 30, and if it is would then update the current value. Remember that the <em>A</em> key has a response value of 30 and the <em>L</em> key a value of 38.</p>
 <p>In the description of the algorithm in the paper, however, you start off with <strong>two boundary values</strong>, an upper boundary, and a lower boundary. On each trial you then give a value that is the mid-point of these two boundaries (i.e., 1500, with boundaries 0 and 3000), and at the end of the trial replace either the upper or lower boundary with the midpoint (i.e., 1500), depending upon the participants choice. So to do this we will need to update the two boundaries after each trial, and the midpoint as well.</p>
 <p><strong>Exercise 4d:</strong> Add other 2 variables, <code>upper</code>, <code>lower</code>, and implement this algorithm in your script. Note, while it’s better to update the boundaries at the end of the trial, the current value should be updated at the beginning.</p>
+<p>Currently the Experiment runs for 15 trials. In the paper the titration procedure terminates once the distance between the upper and lower bounds is less than 25. This feature is fairly easy to implement. If you look at the help page for the trial element, you will see that there is an attribute called <code>skip</code>. Unsurprisingly, this attribute lets you specify situations in which this trial should be skipped. The way to specify when the trial should be skipped is by providing a logical expression to <code>skip</code>. When this expression is true the trail will be skipped entirely. When it is false it will be run as normal.</p>
+<p><strong>Exercise 4e:</strong> Try setting the skip attribute so that the process terminates when the difference between the upper and lower bound is less than 25.</p>
 </div>
 <div id="conditional-message" class="section level3">
 <h3>5. Conditional message</h3>
 <p>Now we want to use the <code>branch</code> attrubute of the trial element to send a “Too slow” message or a “Too fast” message, depending on whether the participants’ response was either too slow (&gt; 8 seconds) or too fast (&lt; .25 seconds).</p>
-<p><strong>Exercise 5:</strong> Do that by creating two trial elements (calling them for example <code>too_slow</code> and <code>too_fast</code> trial) first, and using conditional branching.</p>
+<p><strong>Exercise 5:</strong> Do that by creating two trial elements (calling them for example <code>too_slow</code> and <code>too_fast</code> trial) first, and using a similar if statement to the one used above to update the values. This time though, we want to access the latency value that is attached to the trial element.</p>
 </div>
 </div>
 <div id="send-me-your-assignments" class="section level2">

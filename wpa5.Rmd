@@ -2,7 +2,7 @@
 title: "Events in a trial (conditional updating and branching)"
 ---
 
-Another important/useful feature of the trial elements (which also generalizes to block, as we will see later on) is conditional branching. In essence, this allows us to determine what will happen after a trial, conditional on the quality (or perhaps also the speed) of participants' responses.
+Another important/useful feature of the trial elements (which also generalizes to block, as we will see later on) is conditional updating and branching. In essence, this allows us to determine what will happen after a trial, conditional on the kind (or perhaps also the speed) of participants' responses.
 
 ## Adaptive designs
 
@@ -54,11 +54,15 @@ In the description of the algorithm in the paper, however, you start off with **
 
 **Exercise 4d:** Add other 2 variables, `upper`, `lower`, and implement this algorithm in your script. Note, while it's better to update the boundaries at the end of the trial, the current value should be updated at the beginning.
 
+Currently the Experiment runs for 15 trials. In the paper the titration procedure terminates once the distance between the upper and lower bounds is less than 25. This feature is fairly easy to implement. If you look at the help page for the trial element, you will see that there is an attribute called `skip`. Unsurprisingly, this attribute lets you specify situations in which this trial should be skipped. The way to specify when the trial should be skipped is by providing a logical expression to `skip`. When this expression is true the trail will be skipped entirely. When it is false it will be run as normal.
+
+**Exercise 4e:** Try setting the skip attribute so that the process terminates when the difference between the upper and lower bound is less than 25.
+
 ### 5. Conditional message
 
 Now we want to use the `branch` attrubute of the trial element to send a "Too slow" message or a "Too fast" message, depending on whether the participants' response was either too slow (> 8 seconds) or too fast (< .25 seconds).
 
-**Exercise 5:** Do that by creating two trial elements (calling them for example `too_slow` and `too_fast` trial) first, and using conditional branching.
+**Exercise 5:** Do that by creating two trial elements (calling them for example `too_slow` and `too_fast` trial) first, and using a similar if statement to the one used above to update the values. This time though, we want to access the latency value that is attached to the trial element.
 
 ## Send me your assignments
 
