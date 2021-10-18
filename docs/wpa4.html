@@ -267,6 +267,9 @@ $(document).ready(function () {
     <li>
       <a href="wpa4.html">WPA 4</a>
     </li>
+    <li>
+      <a href="wpa5.html">WPA 5</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -296,6 +299,7 @@ $(document).ready(function () {
 <li><a href="#testing-the-code">Testing the code</a></li>
 <li><a href="#final-message">4. Final message</a></li>
 </ul></li>
+<li><a href="#difference-between-variables-and-parameters-clarification">Difference between variables and Parameters (clarification)</a></li>
 <li><a href="#send-me-your-assignments">Send me your assignments</a></li>
 </ul>
 </div>
@@ -375,6 +379,30 @@ Congratulations!
 <p>Inquisit provides built-in support for reporting accuracy, latency and response window measures at the end of a block of trials using the <code>blockfeedback</code> attribute (find it in the Inquisit Help).</p>
 <p><strong>Exercise 4d</strong>: Use the <code>blockfeedback</code> attribute instead of our custom page to show the percentage of correct responses at the end of the block.</p>
 </div>
+</div>
+<div id="difference-between-variables-and-parameters-clarification" class="section level2">
+<h2>Difference between variables and Parameters (clarification)</h2>
+<p>Today, we mentioned two new element types in Inquisit, <strong>variables</strong> and <strong>parameters</strong>.</p>
+<p>We use <strong>parameters</strong> to fix some values at the beginning of the script that we would then use multiple times throughout the script. For example:</p>
+<pre><code>&lt;parameters&gt;
+/ pictures_size = 30%
+/ pictures_position = 50%
+&lt;/parameters&gt;
+
+&lt;picture A&gt;
+/ items = stimlistA
+/ select = noreplace
+/ position = (parameters.pictures_position, parameters.pictures_position)
+/ size = (parameters.pictures_size, parameters.pictures_size)
+&lt;/picture&gt;
+
+&lt;picture B&gt;
+/ items = stimlistB
+/ select = noreplace
+/ position = (parameters.pictures_position, parameters.pictures_position)
+/ size = (parameters.pictures_size, parameters.pictures_size)
+&lt;/picture&gt;</code></pre>
+<p>On the other hand, we use <strong>values</strong> to define variables whose values changed throughout the script (as accuracy in today’s task).</p>
 </div>
 <div id="send-me-your-assignments" class="section level2">
 <h2>Send me your assignments</h2>

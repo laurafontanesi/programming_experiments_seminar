@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Events in a trial (conditional updating and branching)</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Inquisit seminar</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-desktop"></span>
+     
+    WPAs
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="wpa1.html">WPA 1</a>
+    </li>
+    <li>
+      <a href="wpa2.html">WA 2</a>
+    </li>
+    <li>
+      <a href="wpa3.html">WPA 3</a>
+    </li>
+    <li>
+      <a href="wpa4.html">WPA 4</a>
+    </li>
+    <li>
+      <a href="wpa5.html">WPA 5</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Events in a trial (conditional updating and branching)</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#adaptive-designs">Adaptive designs</a>
+<ul>
+<li><a href="#a-new-script">A new script</a></li>
+</ul></li>
+<li><a href="#define-the-stimuli">1. Define the Stimuli</a>
+<ul>
+<li><a href="#define-the-trials">2. Define the Trials</a></li>
+<li><a href="#define-the-block-and-experiment">3. Define the Block and Experiment</a></li>
+<li><a href="#testing-the-code">Testing the code</a></li>
+<li><a href="#conditional-updating">4. Conditional updating</a></li>
+<li><a href="#conditional-message">5. Conditional message</a></li>
+</ul></li>
+<li><a href="#send-me-your-assignments">Send me your assignments</a></li>
+</ul>
+</div>
+
+<p>Another important/useful feature of the trial elements (which also generalizes to block, as we will see later on) is conditional branching. In essence, this allows us to determine what will happen after a trial, conditional on the quality (or perhaps also the speed) of participants’ responses.</p>
+<div id="adaptive-designs" class="section level2">
+<h2>Adaptive designs</h2>
+<p>One prominent example is that of adaptive designs, in which the stimuli themselves change and evolve based on responses.</p>
+<p>There are a variety of other methods you could use to generate stimuli adaptively and a variety of tasks where these processes are used. For instance, they are widely used in the psychophysics literature (e.g., <a href="https://doi.org/10.1016/0042-6989(95)00016-X">Treutwein, 1995</a> ).</p>
+<p>Today we will program an <strong>indifference point elicitation task</strong>, inspired by Experiment 2 <a href="https://doi.org/10.1016/j.obhdp.2005.01.001">Weber &amp; Chapman (2005)</a>. In this experiment, the authors use a bisection algorithm to <strong>generate stimuli adaptively</strong>, in order to find the participants’ indifference point:</p>
+<blockquote>
+<p>To do this we used a choice titration procedure where the subject made a repeated series of choices between two options: the risky or delayed outcome for which we wished to obtain an indifference point and a certain, immediate outcome. The amount of the certain, immediate outcome was adjusted towards the subject’s indifference point in response to the subject’s previous choices using a bisection algorithm until the indifference point was obtained to the desired degree of accuracy. For example, consider a question requiring the participant to give an indifference point to a 10% chance of winning $3000. The first choice presented to the subject would be between a 10% chance of winning $3000 and a 100% chance of $1500 (1500 being the midpoint of 0 and 3000). If the subject chose the 100% chance of $1500, it indicated that $1500 was too high to be the correct indifference point. The second choice presented to the subject would be between the gamble and $750 for certain (750 being the midpoint of 0 and 1500). If, however, the subject had chosen the gamble on the first choice, that would indicate that $1500 was too low to be the correct indifference point. The second choice presented to the subject would be between the gamble and $2250 for sure (2250 being the midpoint of 1500 and 3000). The second choice would then indicate whether the certain, immediate amount used (either $750 or $2250) was higher or lower than the subject’s indifference point, and the certain, immediate amount used in the third choice would be adjusted accordingly. For example, if the subject’s second choice was between $750 and the 10% chance of winning $3000, then the certain amount used in the subject’s third choice would be $375—the midpoint of (0, 750)—if the subject chose $750 for certain. It would be $1125—the midpoint of (750, 1500) if the subject preferred the gamble. […]</p>
+</blockquote>
+<blockquote>
+<p>The process continued until the interval was $25 or smaller […]</p>
+</blockquote>
+<div id="a-new-script" class="section level3">
+<h3>A new script</h3>
+<p>Create a new Inquisit script file and name it <code>wpa_5_FirstLast.iqx</code> (with your First and Last name). This is the file you will email to me at the end of the class.</p>
+<p>Now that you have a script file, define a defaults element at the beginning of the file (as you did in <a href="https://laurafontanesi.github.io/programming_experiments_seminar/wpa3.html">WPA 3</a>).</p>
+</div>
+</div>
+<div id="define-the-stimuli" class="section level2">
+<h2>1. Define the Stimuli</h2>
+<p>Before we cover the more complicated aspects of this Experiment setup, we’ll create the broad structure of the Experiment. Broadly speaking, all we need to do in this Experiment is present two pieces of text on the screen, one on the left and one on the right, and ask participants to choose between them. For now just create an Experiment that presents “100% chance of 1500 CHF” on the left of the screen, and “10% chance of 3000 CHF”, on the right of the screen. We’ll then have participants respond left or right using the <em>A</em> and <em>L</em> keys. Later one we’ll work out how to make the left stimuli change based on participants responses.</p>
+<p><strong>Exercise 1:</strong> First create your two text stimuli, one for each side of the screen. Call the left one <code>safe</code> (with text “10% Chance of 3000 CHF now”) and the right one <code>risky</code> (with text “100% Chance of 1500 CHF now”).</p>
+<div id="define-the-trials" class="section level3">
+<h3>2. Define the Trials</h3>
+<p><strong>Exercise 2:</strong> Now we want to create the trial where these stimuli will be displayed (both safe and risky), and a left/right response is collected using the <em>A</em>/<em>L</em> keys. Display the stimuli at the start of the trial, but place a pause of 500 ms between trials.</p>
+</div>
+<div id="define-the-block-and-experiment" class="section level3">
+<h3>3. Define the Block and Experiment</h3>
+<p><strong>Exercise 3:</strong> Finally, we don’t wantto just present this trial once, we want to present it multiple times (lets start with 15 times).</p>
+</div>
+<div id="testing-the-code" class="section level3">
+<h3>Testing the code</h3>
+<p>Congratulations, you should now have a working Experiment. Try it out before you attempt the rest of the Exercises.</p>
+</div>
+<div id="conditional-updating" class="section level3">
+<h3>4. Conditional updating</h3>
+<p>We spoke last week about how Inquisit records various variables/values associated with elements that are presented, which you can access directly in your script.</p>
+<p><strong>Exercise 4a:</strong> Create a custom variable/value called <code>current</code>. We’ll use this variable to determine what amount of money should be displayed each trial. Set its initial value to 1500. Replace the 1500 CHF in your text string with the value of the custom variable called <code>current</code>.</p>
+<p><strong>Exercise 4b:</strong> The next step is to change this value at the end of each trial. To start with, we’ll just increase this value by 50 after each trial (using <code>ontrialend</code>).</p>
+<p><strong>Exercise 4c:</strong> Rather than having it increase regardless of the response, we’ll instead have the displayed value increase by 50 if they choose the risky option (i.e. make the safe option more tempting), or decrease the value 50 if they chose the safe option (i.e. make the safe option less tempting). Each of these <code>ontrialbegin</code> attributes can also accept a conditional statment, or if statement (help is under conditional statement), as an expression. An if statement has 2 parts a logical expression, that is first evaluated, then a secondary expression which is only performed if the logical expression is true. for instance: <code>[if (trial.risk.response == 30) values.current = values.current-50]</code>, would check whether the response given on the trial is 30, and if it is would then update the current value. Remember that the <em>A</em> key has a response value of 30 and the <em>L</em> key a value of 38.</p>
+<p>In the description of the algorithm in the paper, however, you start off with <strong>two boundary values</strong>, an upper boundary, and a lower boundary. On each trial you then give a value that is the mid-point of these two boundaries (i.e., 1500, with boundaries 0 and 3000), and at the end of the trial replace either the upper or lower boundary with the midpoint (i.e., 1500), depending upon the participants choice. So to do this we will need to update the two boundaries after each trial, and the midpoint as well.</p>
+<p><strong>Exercise 4d:</strong> Add other 2 variables, <code>upper</code>, <code>lower</code>, and implement this algorithm in your script. Note, while it’s better to update the boundaries at the end of the trial, the current value should be updated at the beginning.</p>
+</div>
+<div id="conditional-message" class="section level3">
+<h3>5. Conditional message</h3>
+<p>Now we want to use the <code>branch</code> attrubute of the trial element to send a “Too slow” message or a “Too fast” message, depending on whether the participants’ response was either too slow (&gt; 8 seconds) or too fast (&lt; .25 seconds).</p>
+<p><strong>Exercise 5:</strong> Do that by creating two trial elements (calling them for example <code>too_slow</code> and <code>too_fast</code> trial) first, and using conditional branching.</p>
+</div>
+</div>
+<div id="send-me-your-assignments" class="section level2">
+<h2>Send me your assignments</h2>
+<p>You can send your assignment to my email address: <a href="mailto:laura.fontanesi@unibas.ch" class="email">laura.fontanesi@unibas.ch</a>.</p>
+<p>For this assignment, please send me the Inquisit script. If you want to add comments, you can do that by adding the hashtag <code>#</code> at the beginning of the line.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

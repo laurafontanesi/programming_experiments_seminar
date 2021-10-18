@@ -16,10 +16,10 @@ Your homework for each class period is to actively read the material for that we
 | 2  | 27 September | Experimental Designs | - | [WA 2](https://laurafontanesi.github.io/programming_experiments_seminar/wpa2.html) | - |
 | 3  | 4 October | Inquisit elements | - | [WPA 3](https://laurafontanesi.github.io/programming_experiments_seminar/wpa3.html) | [Answer](https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa3.iqx) |
 | 4  | 11 October | Events in a trial (feedback) | - | [WPA 4](https://laurafontanesi.github.io/programming_experiments_seminar/wpa4.html) | - |
-| 5  | 18 October | Events in a trial (conditional branching) | - | - | - |
+| 5  | 18 October | Events in a trial (conditional branching) | - | [WPA 5](https://laurafontanesi.github.io/programming_experiments_seminar/wpa5.html) | - |
 | 6  | 25 October | Within-subjects manipulation | - | - | - |
-| 7  | 1 November | No class | - | - | - |
-| 8  | 8 November | Across-subject manipulation | - | - | - |
+| 7  | 1 November | Across-subject manipulation | - | - | - |
+| 8  | 8 November | Advanced Inquisit topic | - | - | - |
 | 9  | 15 November | Advanced Inquisit topic | - | - | - |
 | 10  | 22 November | Work on final project | - | - | - |
 | 11  | 29 November | Work on final project | - | - | - |

@@ -122,6 +122,35 @@ Inquisit provides built-in support for reporting accuracy, latency and response 
 
 **Exercise 4d**: Use the `blockfeedback` attribute instead of our custom page to show the percentage of correct responses at the end of the block.
 
+## Difference between variables and Parameters (clarification)
+
+Today, we mentioned two new element types in Inquisit, **variables** and **parameters**.
+
+We use **parameters** to fix some values at the beginning of the script that we would then use multiple times throughout the script. For example:
+
+```
+<parameters>
+/ pictures_size = 30%
+/ pictures_position = 50%
+</parameters>
+
+<picture A>
+/ items = stimlistA
+/ select = noreplace
+/ position = (parameters.pictures_position, parameters.pictures_position)
+/ size = (parameters.pictures_size, parameters.pictures_size)
+</picture>
+
+<picture B>
+/ items = stimlistB
+/ select = noreplace
+/ position = (parameters.pictures_position, parameters.pictures_position)
+/ size = (parameters.pictures_size, parameters.pictures_size)
+</picture>
+```
+
+On the other hand, we use **values** to define variables whose values changed throughout the script (as accuracy in today's task).
+
 ## Send me your assignments
 
 You can send your assignment to my email address: laura.fontanesi@unibas.ch. 

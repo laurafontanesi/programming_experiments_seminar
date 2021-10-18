@@ -1,0 +1,67 @@
+---
+title: "Events in a trial (conditional updating and branching)"
+---
+
+Another important/useful feature of the trial elements (which also generalizes to block, as we will see later on) is conditional branching. In essence, this allows us to determine what will happen after a trial, conditional on the quality (or perhaps also the speed) of participants' responses.
+
+## Adaptive designs
+
+One prominent example is that of adaptive designs, in which the stimuli themselves change and evolve based on responses.
+
+There are a variety of other methods you could use to generate stimuli adaptively and a variety of tasks where these processes are used. For instance, they are widely used in the psychophysics literature (e.g., [Treutwein, 1995](https://doi.org/10.1016/0042-6989(95)00016-X) ).
+
+Today we will program an **indifference point elicitation task**, inspired by Experiment 2 [Weber & Chapman (2005)](https://doi.org/10.1016/j.obhdp.2005.01.001). In this experiment, the authors use a bisection algorithm to **generate stimuli adaptively**, in order to find the participants' indifference point:
+
+> To do this we used a choice titration procedure where the subject made a repeated series of choices between two options: the risky or delayed outcome for which we wished to obtain an indifference point and a certain, immediate outcome. The amount of the certain, immediate outcome was adjusted towards the subject’s indifference point in response to the subject’s previous choices using a bisection algorithm until the indifference point was obtained to the desired degree of accuracy. For example, consider a question requiring the participant to give an indifference point to a 10% chance of winning $3000. The first choice presented to the subject would be between a 10% chance of winning $3000 and a 100% chance of $1500 (1500 being the midpoint of 0 and 3000). If the subject chose the 100% chance of $1500, it indicated that $1500 was too high to be the correct indifference point. The second choice presented to the subject would be between the gamble and $750 for certain (750 being the midpoint of 0 and 1500). If, however, the subject had chosen the gamble on the first choice, that would indicate that $1500 was too low to be the correct indifference point. The second choice presented to the subject would be between the gamble and $2250 for sure (2250 being the midpoint of 1500 and 3000). The second choice would then indicate whether the certain, immediate amount used (either $750 or $2250) was higher or lower than the subject’s indifference point, and the certain, immediate amount used in the third choice would be adjusted accordingly. For example, if the subject’s second choice was between $750 and the 10% chance of winning $3000, then the certain amount used in the subject’s third choice would be $375—the midpoint of (0, 750)—if the subject chose $750 for certain. It would be $1125—the midpoint of (750, 1500) if the subject preferred the gamble. [...]
+
+> The process continued until the interval was $25 or smaller [...]
+
+### A new script
+
+Create a new Inquisit script file and name it `wpa_5_FirstLast.iqx` (with your First and Last name). This is the file you will email to me at the end of the class.
+
+Now that you have a script file, define a defaults element at the beginning of the file (as you did in [WPA 3](https://laurafontanesi.github.io/programming_experiments_seminar/wpa3.html)).
+
+## 1. Define the Stimuli
+
+Before we cover the more complicated aspects of this Experiment setup, we'll create the broad structure of the Experiment. Broadly speaking, all we need to do in this Experiment is present two pieces of text on the screen, one on the left and one on the right, and ask participants to choose between them. For now just create an Experiment that presents "100% chance of 1500 CHF" on the left of the screen, and "10% chance of 3000 CHF", on the right of the screen. We'll then have participants respond left or right using the *A* and *L* keys. Later one we'll work out how to make the left stimuli change based on participants responses.
+
+**Exercise 1:** First create your two text stimuli, one for each side of the screen. Call the left one `safe` (with text "10\% Chance of 3000 CHF now") and the right one `risky` (with text "100\% Chance of 1500 CHF now").
+
+### 2. Define the Trials
+
+**Exercise 2:** Now we want to create the trial where these stimuli will be displayed (both safe and risky), and a left/right response is collected using the *A*/*L* keys. Display the stimuli at the start of the trial, but place a pause of 500 ms between trials. 
+
+### 3. Define the Block and Experiment
+
+**Exercise 3:** Finally, we don't wantto just present this trial once, we want to present it multiple times (lets start with 15 times).
+
+### Testing the code
+
+Congratulations, you should now have a working Experiment. Try it out before you attempt the rest of the Exercises.
+
+### 4. Conditional updating
+
+We spoke last week about how Inquisit records various variables/values associated with elements that are presented, which you can access directly in your script. 
+
+**Exercise 4a:** Create a custom variable/value called `current`. We'll use this variable to determine what amount of money should be displayed each trial. Set its initial value to 1500. Replace the 1500 CHF in your text string with the value of the custom variable called `current`.
+
+**Exercise 4b:** The next step is to change this value at the end of each trial. To start with, we'll just increase this value by 50 after each trial (using `ontrialend`).
+
+**Exercise 4c:** Rather than having it increase regardless of the response, we'll instead have the displayed value increase by 50 if they choose the risky option (i.e. make the safe option more tempting), or decrease the value 50 if they chose the safe option (i.e. make the safe option less tempting). Each of these `ontrialbegin` attributes can also accept a conditional statment, or if statement (help is under conditional statement), as an expression. An if statement has 2 parts a logical expression, that is first evaluated, then a secondary expression which is only performed if the logical expression is true. for instance: `[if (trial.risk.response == 30) values.current = values.current-50]`, would check whether the response given on the trial is 30, and if it is would then update the current value. Remember that the *A* key has a response value of 30 and the *L* key a value of 38.
+
+In the description of the algorithm in the paper, however, you start off with **two boundary values**, an upper boundary, and a lower boundary. On each trial you then give a value that is the mid-point of these two boundaries (i.e., 1500, with boundaries 0 and 3000), and at the end of the trial replace either the upper or lower boundary with the midpoint (i.e., 1500), depending upon the participants choice. So to do this we will need to update the two boundaries after each trial, and the midpoint as well.
+
+**Exercise 4d:** Add other 2 variables, `upper`, `lower`, and implement this algorithm in your script. Note, while it's better to update the boundaries at the end of the trial, the current value should be updated at the beginning.
+
+### 5. Conditional message
+
+Now we want to use the `branch` attrubute of the trial element to send a "Too slow" message or a "Too fast" message, depending on whether the participants' response was either too slow (> 8 seconds) or too fast (< .25 seconds).
+
+**Exercise 5:** Do that by creating two trial elements (calling them for example `too_slow` and `too_fast` trial) first, and using conditional branching.
+
+## Send me your assignments
+
+You can send your assignment to my email address: laura.fontanesi@unibas.ch. 
+
+For this assignment, please send me the Inquisit script. If you want to add comments, you can do that by adding the hashtag `#` at the beginning of the line.
