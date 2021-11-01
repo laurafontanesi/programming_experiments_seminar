@@ -30,7 +30,7 @@ In WPA 4, we only had 2 stimuli lists, 1 for category A and 1 for category B. No
 
 **Exercise 1c:** Modify the `trial` elements accordigly.
 
-### 2. Define the Block
+## 2. Define the Blocks
 
 In WPA 4, we had a single block element:
 
@@ -54,7 +54,7 @@ Importantly, lower level setting (at the trial level) override higher level sett
 
 **Exercise 2c:** Move the correct and error messages to the block level.
 
-### 3. Define the Experiment
+## 3. Define the Experiment
 
 **Exercise 3a:** Modify the `blocks` argument of the `expt` element so that the training block is always shown before the tranfer block.
 

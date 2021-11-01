@@ -294,10 +294,10 @@ $(document).ready(function () {
 <div id="TOC">
 <ul>
 <li><a href="#a-new-script">A new script</a></li>
-<li><a href="#re-define-the-stimuli-and-trials">1. Re-define the stimuli and trials</a>
+<li><a href="#re-define-the-stimuli-and-trials">1. Re-define the stimuli and trials</a></li>
+<li><a href="#define-the-blocks">2. Define the Blocks</a></li>
+<li><a href="#define-the-experiment">3. Define the Experiment</a>
 <ul>
-<li><a href="#define-the-block">2. Define the Block</a></li>
-<li><a href="#define-the-experiment">3. Define the Experiment</a></li>
 <li><a href="#testing-the-code">Testing the code</a></li>
 </ul></li>
 <li><a href="#send-me-your-assignments">Send me your assignments</a></li>
@@ -320,8 +320,9 @@ $(document).ready(function () {
 <p><strong>Exercise 1a:</strong> Modify the <code>item</code> elements accordigly.</p>
 <p><strong>Exercise 1b:</strong> Modify the <code>picture</code> elements accordigly.</p>
 <p><strong>Exercise 1c:</strong> Modify the <code>trial</code> elements accordigly.</p>
-<div id="define-the-block" class="section level3">
-<h3>2. Define the Block</h3>
+</div>
+<div id="define-the-blocks" class="section level2">
+<h2>2. Define the Blocks</h2>
 <p>In WPA 4, we had a single block element:</p>
 <pre><code>&lt;block choice_block&gt;
  /trials = [1-30=noreplace(trialA, trialB)]
@@ -335,11 +336,10 @@ $(document).ready(function () {
 <p>Importantly, lower level setting (at the trial level) override higher level settings (at the block level). Therefore, even if we explicitly set the errormessage and correctmessage in the transfer block to false (i.e., don’t display anything), this will be overridden by the settings of the trials we are calling. So, instead, we need to remove the correct and error message attributes from the trial elements, and instead place them in the two training block elements.</p>
 <p><strong>Exercise 2c:</strong> Move the correct and error messages to the block level.</p>
 </div>
-<div id="define-the-experiment" class="section level3">
-<h3>3. Define the Experiment</h3>
+<div id="define-the-experiment" class="section level2">
+<h2>3. Define the Experiment</h2>
 <p><strong>Exercise 3a:</strong> Modify the <code>blocks</code> argument of the <code>expt</code> element so that the training block is always shown before the tranfer block.</p>
 <p><strong>Exercise 3b:</strong> Add 2 <code>page</code> elements, one to show before training and one before transfer phases, that explain what to expect (what phase it is, what the task is about, which keys to press, and whether to expect a feedback or not).</p>
-</div>
 <div id="testing-the-code" class="section level3">
 <h3>Testing the code</h3>
 <p>Congratulations, you should now have a working Experiment. Try it out before sending me your code.</p>
