@@ -34,7 +34,7 @@ Before we cover the more complicated aspects of this Experiment setup, we'll cre
 
 ### 3. Define the Block and Experiment
 
-**Exercise 3:** Finally, we don't wantto just present this trial once, we want to present it multiple times (lets start with 15 times).
+**Exercise 3:** Finally, we don't want to just present this trial once, we want to present it multiple times (lets start with 15 times).
 
 ### Testing the code
 

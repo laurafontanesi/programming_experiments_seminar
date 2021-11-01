@@ -19,6 +19,8 @@ navbar:
         href: wpa4.html
       - text: "WPA 5"
         href: wpa5.html
+      - text: "WPA 6"
+        href: wpa6.html
 output:
   html_document:
     theme: yeti
