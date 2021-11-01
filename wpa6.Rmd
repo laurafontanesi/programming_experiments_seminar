@@ -54,6 +54,10 @@ Importantly, lower level setting (at the trial level) override higher level sett
 
 **Exercise 2c:** Move the correct and error messages to the block level.
 
+Finally, last time we calculated accuracy at the end of each trial. You should change that as weell, to take into account that there are 6 types of trials and not 2 (therefore you should calculate the average of the 6). In order to not repeat the code so many times, we can similarly to what we did for the error messages, move that to the block level, and delete that from the trial level. Moreover, it makes sense to show participants their accuracy only for the transfer block, and not for the training block.
+
+**Exercise 2d:** Move the `ontrialend` argument also at the block level, but only in the transfer block.
+
 ## 3. Define the Experiment
 
 **Exercise 3a:** Modify the `blocks` argument of the `expt` element so that the training block is always shown before the tranfer block.
