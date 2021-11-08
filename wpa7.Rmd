@@ -2,3 +2,139 @@
 title: "Conditional branching"
 ---
 
+## Learning by feedback task
+In this assignment, you will have to implement a modification of a [learning by feedback task](https://doi.org/10.3758/s13423-018-1554-2). In this task, participants are repeatedly presented with 2 options, one on the left and one on the right side of the screen, and have to choose between one of them (by either pressing 'q' or 'p' on the keyboard). 
+
+After choosing, they receive a numerical feedback (lasting 2 seconds) corresponding to each option, but they only 'collect' the reward corresponding to the option that they chose. At the end of the experiment, they receive a monetary bonus corresponding to the accumulated rewards. In this way, they are incentivised in learning and choosing the options with higher rewards.
+
+In total, there are **4 different options in a block** (A, B, C, and D), identified with some abstract figure. You can find the figures that identify the options [in the dropbox folder](https://www.dropbox.com/sh/sfs68772g4dwyz7/AADvtjq-GS4pPAjkyqxn_9f0a?dl=0). 
+
+Here, we are going to reduce the number of trials and blocks, compared to the original experiment.
+
+In a block (made of 40 trials), each option is presented for a total of 20 times. These are the feedback values associated with the four options A, B, C, and D:
+
+A:
+```{r}
+round(rnorm(20, mean=36, sd=5))
+```
+
+B:
+```{r}
+round(rnorm(20, mean=40, sd=5))
+```
+
+C:
+```{r}
+round(rnorm(20, mean=50, sd=5))
+```
+
+D:
+```{r}
+round(rnorm(20, mean=54, sd=5))
+```
+
+The mean rewards of the options in each block were 36, 40, 50, and 54 for options A, B, C, and D, respectively. And the order of the feedback was randomised for each option.
+
+However, in a specific trial, **only 2 of them are presented at a time**: only four of the six possible pairs of options were presented: **AB, AC, BD, and CD** (but not AD and BC).
+
+Even though there were 3 blocks in the original experiment, we are only going to implement 1 test block (and at the end we are going to add a practice block).
+
+### A new script
+
+Create a new Inquisit script file and name it `wpa_7_FirstLast.iqx` (with your First and Last name). This is the file you will email to me at the end of the class.
+
+Before starting, change the following default settings: `/screencolor = (238, 238, 238)`, `/txbgcolor = (238, 238, 238)`. This will make sure the background will match the stimuli background.
+
+## 1. Define the Stimuli
+
+**Exercise 1a:** Create four `picture` elements, called `A`, `B`, `C`, `D`. They should correspond to the .png figures in the material folder, that you should download on your computer first (be sure to specify the file path correctly). For now, A and D should be presented on the left, and B and C on the right of the screen (set the left/right position at 35%/65%). Set the vertical position to 50% for all options. Set both height and width to 40% for all stimuli. Preferably you should use the parameters element to set these general stimuli settings.
+
+**Exercise 1b:** Create four `list` elements, called `rewardA`, `rewardB`, `rewardC`, and `rewardD`. They should contain the reward feedback listed above. Note that in this case we can use the list and not the item element because we can define a list of numbers that we can sample from. Have a look at the Examples in the list element Help page in Inquisit to see how to write the rewards in the `/items` attribute. Set the `/resetinterval` attribute to 1, which means that when we are sampling with no replacement, there will be a reset of the samples at the beginning of each block.
+
+**Exercise 1c:** Create four `text` elements, called `feedbackA`, `feedbackB`, `feedbackC`, and `feedbackD`. They should have as items the corresponding item elements. The selection method should be without replacement. The position should be the same of the corresponding pictures. Also, you should set the fontsize to 10%. Now, we have to explicitely extract a number from the reward lists, for example: `/items = ("<%list.rewardA.nextvalue%>")` for `feedbackA`.
+
+### 2. Define the Trials
+
+**Exercise 2a:** Define 4 `trial` elements, called `choice_AB`, `choice_AC`, `choice_BD`, and `choice_CD`. They should present, at the begininning of the trial, the two corresponding picture elements. Set the valid and correct response in each trial (remember that the correct option is the one with highest mean value and that the mean values are 36, 40, 50, and 54 for options A, B, C, and D, respectively). Finally, include a response deadline at 3 seconds and a pre-trial pause of 500 msec.
+
+**Exercise 2b:** Define 4 `trial` elements called `feedback_AB`, `feedback_AC`, `feedback_BD`, and `feedback_CD`. They should present the two corresponding feedback text elements. Feedback should be presented for 2 seconds, right after a response is made (the pretrial pause should be 0 for the feedback trials).
+
+**Exercise 2c:** In order to make the feedback appear right after a response is made, use the `responsetrial` argument in the `choice_AB`, `choice_AC`, `choice_BD`, and `choice_CD` elements. This argument takes 2 values: the first is the response and the second is the trial element. So you will have to set it twice (for both possible responses "q" and "p"). Note that this is similar to using the `/branch` attribute, but we can specify it already conditionally to a specific response (instead of conditions such as "the response latency was higher than X seconds").
+ 
+### 3. Define the Block and Experiment
+
+**Exercise 3a:**  Define a `block` element called `choice_block` made of 40 trials, where `choice_AB`, `choice_AC`, `choice_BD`, and `choice_CD` are presented without replacement.
+
+**Exercise 3b:**  Define an `expt` element made of 1 block (the `choice_block`).
+
+## Final steps
+
+Congratulations, you should now have a working Experiment. Try it out before you attempt the rest of the Exercises.
+
+### 4. Add a practice block
+
+Now, we want to add a `practice_block` at the beginning, and allow participants to continue with the `choice_block` only if they reached a minimum of 60\% accuracy. Also, we want to add instructions to warn the participants that they are going to start either a practice or a test block, and that the rewards will only be accumalted in the test block.
+
+You can decide what happens after participants fail to reach 60\% accuracy: they can either have the chance to repeat the practice block or the experiment could stop here.
+
+**Exercise 4a:** Implement a `choice_block` made of 20 trials, and let the participants repeat it until they reach 60\% accuracy.
+
+**Exercise 4b (bonus):** Set the limit of practice block repetitions to 2, and otherwise let the experiment stop, preferably with a final message that tells the participant that the experiment has ended because they did not reach the minimum accuracy required. 
+
+### 5. Randomize left and right stimuli position
+
+Now, the options are always shown at fixed positions on the screen. In a real experiment, however, we most likely would want to randomise this.
+
+```
+<list left_or_right>
+/items = (1, 2)
+/select = random
+/replace = true
+</list>
+```
+
+Here I created a list that can be either 1 or 2. 
+
+**Exercise 5:** Sample from it (using `list.left_or_right.nextvalue`) at the beginning of each trial (using `\ontrialbegin`) and change the picture's position (by setting, for eaxample `picture.A.hposition = parameters.x_left; picture.B.hposition = parameters.x_right` when the list value is 1 and otherwise `picture.B.hposition = parameters.x_left; picture.A.hposition = parameters.x_right`). Note that you will have to move the feedback as well (using the same method).
+
+### 6. Add expressions to calculate final reward
+
+We also want to show to the participants their final reward.
+
+```{r}
+# only inaccurate responses
+sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))
+
+# only accurate responses
+sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=50, sd=5))) + sum(round(rnorm(20, mean=54, sd=5)))
+```
+
+Here I simulated the reward amount of 2 subjects, one that would only choose the lowest paying option, and one that would only choose the highest paying one.
+
+At the end of the experiment, we want to give participants some bonus based on their responses, and therefore scale these accumulated rewards to something we could give them in CHF. For example, we could divide by 1000 and then round to 10th of rappen, so for example:
+
+```{r}
+final_reward = sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))
+
+final_reward
+round(final_reward/100)/10
+```
+
+In order to do that, we can use the expression element. This can go together witht the values and parameters elements at the beginning of the script, but can be used to specify an operation that we want to be made when we call it:
+
+```
+<expressions>
+/transform_reward = round(values.accumulated_reward/100)/10
+</expressions>
+```
+**Exercise 6a:** Create a `accumulated_reward` value that we update at the end of each trial, based on participants' response.
+
+**Exercise 6b:** Create a new variable called `values.accumulated_reward_CHF` which is reset at the end of each trial using the `transform_reward` expression.
+
+**Exercise 6c:** Add a message at the end of the experiment that tells participants how much money they have won.
+
+## Send me your assignments
+
+You can send your assignment to my email address: laura.fontanesi@unibas.ch. 
+
+For this assignment, please send me the Inquisit script. If you want to add comments, you can do that by adding the hashtag `#` at the beginning of the line.
