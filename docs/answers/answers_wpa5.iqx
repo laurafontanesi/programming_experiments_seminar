@@ -45,9 +45,10 @@
  /stimulustimes = [0=safe; 0=risky]
  /validresponse = ("a", "l")
  /pretrialpause = 500
+ /ontrialbegin = [values.current = round((values.upper + values.lower)/2)] 
  /ontrialend=[if (trial.risk.response == 30) values.upper = values.current]
  /ontrialend=[if (trial.risk.response == 38) values.lower = values.current]
- /skip = [values.upper-values.lower<25]
+ /skip = [values.upper - values.lower<25]
  /branch = [if(trial.choice.latency > 8000) trial.too_slow else if (trial.choice.latency < 250) trial.too_fast]
 </trial>
 
