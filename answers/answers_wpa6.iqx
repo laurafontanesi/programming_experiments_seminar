@@ -1,0 +1,209 @@
+﻿<defaults>  
+ /quitcommand = (Ctrl+'e') 
+ /fontstyle=("Arial", 3%)
+</defaults>
+
+<values>
+ /accuracy = 50
+</values>
+
+<parameters>
+ /pictures_size = 30%
+ /pictures_position = 50%
+</parameters>
+
+### Define the stimuli
+<item stimlistAeasy>
+ /1 = "wpa4_stimuli/patch1.png"
+ /2 = "wpa4_stimuli/patch2.png"
+ /3 = "wpa4_stimuli/patch3.png"
+ /4 = "wpa4_stimuli/patch4.png"
+ /5 = "wpa4_stimuli/patch5.png"
+</item>
+ 
+<item stimlistAmedium>
+ /6 = "wpa4_stimuli/patch6.png"
+ /7 = "wpa4_stimuli/patch7.png"
+ /8 = "wpa4_stimuli/patch8.png"
+ /9 = "wpa4_stimuli/patch9.png"
+ /10 = "wpa4_stimuli/patch10.png"
+</item>
+  
+<item stimlistAhard>
+ /11 = "wpa4_stimuli/patch11.png"
+ /12 = "wpa4_stimuli/patch12.png"
+ /13 = "wpa4_stimuli/patch13.png"
+ /14 = "wpa4_stimuli/patch14.png"
+ /15 = "wpa4_stimuli/patch15.png"
+</item>
+
+<item stimlistBeasy>
+ /16 = "wpa4_stimuli/patch16.png"
+ /17 = "wpa4_stimuli/patch17.png"
+ /18 = "wpa4_stimuli/patch18.png"
+ /19 = "wpa4_stimuli/patch19.png"
+ /20 = "wpa4_stimuli/patch20.png"
+</item>
+ 
+<item stimlistBmedium>
+ /21 = "wpa4_stimuli/patch21.png"
+ /22 = "wpa4_stimuli/patch22.png"
+ /23 = "wpa4_stimuli/patch23.png"
+ /24 = "wpa4_stimuli/patch24.png"
+ /25 = "wpa4_stimuli/patch25.png"
+</item>
+  
+<item stimlistBhard>
+ /26 = "wpa4_stimuli/patch26.png"
+ /27 = "wpa4_stimuli/patch27.png"
+ /28 = "wpa4_stimuli/patch28.png"
+ /29 = "wpa4_stimuli/patch29.png"
+ /30 = "wpa4_stimuli/patch30.png"
+</item>
+
+<picture Aeasy>
+ /items = stimlistAeasy
+ /select = noreplace
+ /position = (parameters.pictures_position, parameters.pictures_position)
+ /size = (parameters.pictures_size, parameters.pictures_size)
+</picture>
+
+<picture Amedium>
+ /items = stimlistAmedium
+ /select = noreplace
+ /position = (parameters.pictures_position, parameters.pictures_position)
+ /size = (parameters.pictures_size, parameters.pictures_size)
+</picture>
+
+<picture Ahard>
+ /items = stimlistAhard
+ /select = noreplace
+ /position = (parameters.pictures_position, parameters.pictures_position)
+ /size = (parameters.pictures_size, parameters.pictures_size)
+</picture>
+
+<picture Beasy>
+ /items = stimlistBeasy
+ /select = noreplace
+ /position = (parameters.pictures_position, parameters.pictures_position)
+ /size = (parameters.pictures_size, parameters.pictures_size)
+</picture>
+
+<picture Bmedium>
+ /items = stimlistBmedium
+ /select = noreplace
+ /position = (parameters.pictures_position, parameters.pictures_position)
+ /size = (parameters.pictures_size, parameters.pictures_size)
+</picture>
+
+<picture Bhard>
+ /items = stimlistBhard
+ /select = noreplace
+ /position = (parameters.pictures_position, parameters.pictures_position)
+ /size = (parameters.pictures_size, parameters.pictures_size)
+</picture>
+
+### Define the trial elements
+<trial trialAeasy>
+ /stimulustimes = [1=Aeasy]
+ /validresponse = ("a", "b")
+ /correctresponse = ("a")
+ /pretrialpause=1500
+</trial>
+
+<trial trialAmedium>
+ /stimulustimes = [1=Amedium]
+ /validresponse = ("a", "b")
+ /correctresponse = ("a")
+ /pretrialpause=1500
+</trial>
+
+<trial trialAhard>
+ /stimulustimes = [1=Ahard]
+ /validresponse = ("a", "b")
+ /correctresponse = ("a")
+ /pretrialpause=1500
+</trial>
+
+<trial trialBeasy>
+ /stimulustimes = [1=Beasy]
+ /validresponse = ("a", "b")
+ /correctresponse = ("b")
+ /pretrialpause=1500
+</trial>
+
+<trial trialBmedium>
+ /stimulustimes = [1=Bmedium]
+ /validresponse = ("a", "b")
+ /correctresponse = ("b")
+ /pretrialpause=1500
+</trial>
+
+<trial trialBhard>
+ /stimulustimes = [1=Bhard]
+ /validresponse = ("a", "b")
+ /correctresponse = ("b")
+ /pretrialpause=1500
+</trial>
+
+<text right>
+ /items=("CORRECT!")
+ /position = (50%, 50%)
+ /hjustify = center
+ /fontstyle=("Arial", 10%)
+ /txcolor=(0,0, 255)
+</text>
+
+<text wrong>
+ /items=("INCORRECT!")
+ /position = (50%, 50%)
+ /hjustify = center
+ /fontstyle=("Arial", 10%)
+ /txcolor=(255,0, 0)
+</text>
+
+### Define pages
+<page final_message>
+Congratulations!
+
+^^ You finished the experiment.
+
+^^ You maintaned a performance of <%values.accuracy%> percent.
+</page>
+
+<page training_page>
+Training Phase
+
+^^In this task you are going to be presented with a series of odd stimuli on the screen. Each of these stimuli can be classed as either an A type stimuli, or a B type stimuli. 
+
+^^In this section you will be shown the stimuli one at a time. For each stimuli you will have to say whether it belongs to category A (by pressing A) or category B (by pressing B).
+
+^^After each stimuli you will be told if you placed it in the correct category
+</page>
+
+
+<page transfer_page>
+Test Trials
+
+^^In this section we want to see how well you have learnt to classify the stimuli. Everything is the same in this section but you will not be told if you got the classication correct or not.
+</page>
+
+
+### Define the block and exp elements
+<block training_block>
+ /trials = [1-10=noreplace(trialAeasy, triaBeasy); 11-20=noreplace(trialAmedium, trialBmedium); 21-30=noreplace(trialAhard, trialBhard)]
+ /errormessage = true(wrong, 500)
+ /correctmessage = true(right, 500)
+ /preinstructions = (training_page)
+</block>
+
+<block transfer_block>
+ /trials = [1-30=noreplace(trialAeasy, triaBeasy, trialAmedium, trialBmedium, trialAhard, trialBhard)]
+ /ontrialend =[values.accuracy = (trial.trialAeasy.percentcorrect + trial.triaBeasy.percentcorrect + trial.trialAmedium.percentcorrect + trial.trialBmedium.percentcorrect + trial.trialAhard.percentcorrect + trial.trialBhard.percentcorrect)/6]
+ /preinstructions = (transfer_page)
+ </block>
+
+<expt>
+ /blocks = [1=training_block; 2=transfer_block]
+ /postinstructions = (page.final_message)
+</expt>
