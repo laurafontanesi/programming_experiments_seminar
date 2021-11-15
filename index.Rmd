@@ -20,12 +20,12 @@ Your homework for each class period is to actively read the material for that we
 | 6  | 25 October | No class | - | - | - |
 | 7  | 1 November | Within-subjects manipulation | - | [WPA 6](https://laurafontanesi.github.io/programming_experiments_seminar/wpa6.html) | [Answers](https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa6.iqx)  |
 | 8  | 8 November | Within-subjects conditional branching | - | [WPA 7](https://laurafontanesi.github.io/programming_experiments_seminar/wpa7.html) | - |
-| 9  | 15 November | Across-subject manipulation | - | - | - |
-| 10  | 22 November | Work on final project | - | - | - |
+| 9  | 15 November | Across-subject manipulation | - | [WPA 8](https://laurafontanesi.github.io/programming_experiments_seminar/wpa8.html) | - |
+| 10  | 22 November | Summary | - | - | - |
 | 11  | 29 November | Work on final project | - | - | - |
 | 12  | 6 December | Work on final project | - | - | - |
 | 13  | 13 December | Final project presentations | - | - | - |
-| 14  | 20 December | Final project presentations | - | - | - |
+| 14  | 20 December | No class | - | - | - |
 
 ### Important Links
 Link | Description 

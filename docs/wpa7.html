@@ -276,6 +276,9 @@ $(document).ready(function () {
     <li>
       <a href="wpa7.html">WPA 7</a>
     </li>
+    <li>
+      <a href="wpa8.html">WPA 8</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -310,6 +313,7 @@ $(document).ready(function () {
 <li><a href="#add-a-practice-block">4. Add a practice block</a></li>
 <li><a href="#randomize-left-and-right-stimuli-position">5. Randomize left and right stimuli position</a></li>
 <li><a href="#add-expressions-to-calculate-final-reward">6. Add expressions to calculate final reward</a></li>
+<li><a href="#modify-data-output-for-better-debugging">7. Modify data output for better debugging</a></li>
 </ul></li>
 <li><a href="#send-me-your-assignments">Send me your assignments</a></li>
 </ul>
@@ -324,16 +328,16 @@ $(document).ready(function () {
 <p>In a block (made of 40 trials), each option is presented for a total of 20 times. These are the feedback values associated with the four options A, B, C, and D:</p>
 <p>A:</p>
 <pre class="r"><code>round(rnorm(20, mean=36, sd=5))</code></pre>
-<pre><code>##  [1] 29 36 36 32 41 38 46 39 35 29 38 33 29 35 36 30 28 44 41 32</code></pre>
+<pre><code>##  [1] 28 40 38 35 32 31 43 36 35 43 33 45 35 37 31 30 42 32 43 39</code></pre>
 <p>B:</p>
 <pre class="r"><code>round(rnorm(20, mean=40, sd=5))</code></pre>
-<pre><code>##  [1] 35 34 49 39 48 44 38 38 39 35 45 36 42 38 42 34 43 34 33 41</code></pre>
+<pre><code>##  [1] 36 36 32 42 43 48 47 39 43 43 31 43 38 36 44 36 42 39 52 39</code></pre>
 <p>C:</p>
 <pre class="r"><code>round(rnorm(20, mean=50, sd=5))</code></pre>
-<pre><code>##  [1] 50 57 49 49 48 47 48 42 48 46 54 50 49 50 43 49 60 50 50 51</code></pre>
+<pre><code>##  [1] 55 38 51 53 52 57 48 47 43 52 48 41 49 49 52 48 42 52 55 47</code></pre>
 <p>D:</p>
 <pre class="r"><code>round(rnorm(20, mean=54, sd=5))</code></pre>
-<pre><code>##  [1] 58 49 61 50 56 53 56 53 48 52 50 61 53 59 49 51 56 52 51 55</code></pre>
+<pre><code>##  [1] 52 56 67 56 53 54 47 50 48 53 47 59 53 49 58 66 57 54 51 64</code></pre>
 <p>The mean rewards of the options in each block were 36, 40, 50, and 54 for options A, B, C, and D, respectively. And the order of the feedback was randomised for each option.</p>
 <p>However, in a specific trial, <strong>only 2 of them are presented at a time</strong>: only four of the six possible pairs of options were presented: <strong>AB, AC, BD, and CD</strong> (but not AD and BC).</p>
 <p>Even though there were 3 blocks in the original experiment, we are only going to implement 1 test block (and at the end we are going to add a practice block).</p>
@@ -367,8 +371,8 @@ $(document).ready(function () {
 <h3>4. Add a practice block</h3>
 <p>Now, we want to add a <code>practice_block</code> at the beginning, and allow participants to continue with the <code>choice_block</code> only if they reached a minimum of 60% accuracy. Also, we want to add instructions to warn the participants that they are going to start either a practice or a test block, and that the rewards will only be accumalted in the test block.</p>
 <p>You can decide what happens after participants fail to reach 60% accuracy: they can either have the chance to repeat the practice block or the experiment could stop here.</p>
-<p><strong>Exercise 4a:</strong> Implement a <code>choice_block</code> made of 20 trials, and let the participants repeat it until they reach 60% accuracy.</p>
-<p><strong>Exercise 4b (bonus):</strong> Set the limit of practice block repetitions to 2, and otherwise let the experiment stop, preferably with a final message that tells the participant that the experiment has ended because they did not reach the minimum accuracy required.</p>
+<p><strong>Exercise 4a:</strong> Implement a <code>practice_block</code> made of 20 trials, and let the participants repeat it until they reach 60% accuracy.</p>
+<p><strong>Exercise 4b (bonus):</strong> Set the limit of <code>practice_block</code> repetitions to 2, and otherwise let the experiment stop, preferably with a final message that tells the participant that the experiment has ended because they did not reach the minimum accuracy required.</p>
 </div>
 <div id="randomize-left-and-right-stimuli-position" class="section level3">
 <h3>5. Randomize left and right stimuli position</h3>
@@ -386,18 +390,18 @@ $(document).ready(function () {
 <p>We also want to show to the participants their final reward.</p>
 <pre class="r"><code># only inaccurate responses
 sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))</code></pre>
-<pre><code>## [1] 1656</code></pre>
+<pre><code>## [1] 1673</code></pre>
 <pre class="r"><code># only accurate responses
 sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=50, sd=5))) + sum(round(rnorm(20, mean=54, sd=5)))</code></pre>
-<pre><code>## [1] 1962</code></pre>
+<pre><code>## [1] 2008</code></pre>
 <p>Here I simulated the reward amount of 2 subjects, one that would only choose the lowest paying option, and one that would only choose the highest paying one.</p>
 <p>At the end of the experiment, we want to give participants some bonus based on their responses, and therefore scale these accumulated rewards to something we could give them in CHF. For example, we could divide by 1000 and then round to 10th of rappen, so for example:</p>
 <pre class="r"><code>final_reward = sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))
 
 final_reward</code></pre>
-<pre><code>## [1] 1682</code></pre>
+<pre><code>## [1] 1612</code></pre>
 <pre class="r"><code>round(final_reward/100)/10</code></pre>
-<pre><code>## [1] 1.7</code></pre>
+<pre><code>## [1] 1.6</code></pre>
 <p>In order to do that, we can use the expression element. This can go together witht the values and parameters elements at the beginning of the script, but can be used to specify an operation that we want to be made when we call it:</p>
 <pre><code>&lt;expressions&gt;
 /transform_reward = round(values.accumulated_reward/100)/10
@@ -405,6 +409,20 @@ final_reward</code></pre>
 <p><strong>Exercise 6a:</strong> Create a <code>accumulated_reward</code> value that we update at the end of each trial, based on participants’ response.</p>
 <p><strong>Exercise 6b:</strong> Create a new variable called <code>values.accumulated_reward_CHF</code> which is reset at the end of each trial using the <code>transform_reward</code> expression.</p>
 <p><strong>Exercise 6c:</strong> Add a message at the end of the experiment that tells participants how much money they have won.</p>
+</div>
+<div id="modify-data-output-for-better-debugging" class="section level3">
+<h3>7. Modify data output for better debugging</h3>
+<p>Until now, we didn’t really care too much about how the data would look like in the <code>.iqdat</code> output file.</p>
+<p>However, we might need to modify the columns to have a better control/understanding of the variables in the experiment.</p>
+<p>For example, here we might want to be sure that we are indeed calculating the accuracy in the practice block correctly.</p>
+<p>We can start from adding this at the end of your script:</p>
+<pre><code>&lt;data&gt;
+/columns=[
+build, computer.platform, date, time, subject, blocknum, blockcode, trialcode, latency, response, correct, stimulusitem, stimulusitem, list.left_or_right.currentvalue]
+/separatefiles = true
+/labels = true
+&lt;/data&gt;</code></pre>
+<p><strong>Exercise 7:</strong> Add columns to track the accumulated rewards (check that they indeed reset at the beginning of the choice block), and the variables you used to keep track of the accuracy in the practice block (check that indeed the choice block only starts when the accuracy is above .6). You might need to run the experimebt a few times in order to check this (<em>and it might be useful for you to learn which options are the correct one: my strategy is to avoid the pink stimulus when it’s presented and to choose the violet one when it’s presented. Note that they are never presented in the same trial so this is a sufficient strategy</em>).</p>
 </div>
 </div>
 <div id="send-me-your-assignments" class="section level2">

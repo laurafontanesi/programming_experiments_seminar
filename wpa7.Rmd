@@ -77,9 +77,9 @@ Now, we want to add a `practice_block` at the beginning, and allow participants 
 
 You can decide what happens after participants fail to reach 60\% accuracy: they can either have the chance to repeat the practice block or the experiment could stop here.
 
-**Exercise 4a:** Implement a `choice_block` made of 20 trials, and let the participants repeat it until they reach 60\% accuracy.
+**Exercise 4a:** Implement a `practice_block` made of 20 trials, and let the participants repeat it until they reach 60\% accuracy.
 
-**Exercise 4b (bonus):** Set the limit of practice block repetitions to 2, and otherwise let the experiment stop, preferably with a final message that tells the participant that the experiment has ended because they did not reach the minimum accuracy required. 
+**Exercise 4b (bonus):** Set the limit of `practice_block` repetitions to 2, and otherwise let the experiment stop, preferably with a final message that tells the participant that the experiment has ended because they did not reach the minimum accuracy required. 
 
 ### 5. Randomize left and right stimuli position
 
@@ -132,6 +132,26 @@ In order to do that, we can use the expression element. This can go together wit
 **Exercise 6b:** Create a new variable called `values.accumulated_reward_CHF` which is reset at the end of each trial using the `transform_reward` expression.
 
 **Exercise 6c:** Add a message at the end of the experiment that tells participants how much money they have won.
+
+### 7. Modify data output for better debugging
+
+Until now, we didn't really care too much about how the data would look like in the `.iqdat` output file.
+
+However, we might need to modify the columns to have a better control/understanding of the variables in the experiment.
+
+For example, here we might want to be sure that we are indeed calculating the accuracy in the practice block correctly.
+
+We can start from adding this at the end of your script:
+
+```
+<data>
+/columns=[
+build, computer.platform, date, time, subject, blocknum, blockcode, trialcode, latency, response, correct, stimulusitem, stimulusitem, list.left_or_right.currentvalue]
+/separatefiles = true
+/labels = true
+</data>
+```
+**Exercise 7:** Add columns to track the accumulated rewards (check that they indeed reset at the beginning of the choice block), and the variables you used to keep track of the accuracy in the practice block (check that indeed the choice block only starts when the accuracy is above .6). You might need to run the experimebt a few times in order to check this (*and it might be useful for you to learn which options are the correct one: my strategy is to avoid the pink stimulus when it's presented and to choose the violet one when it's presented. Note that they are never presented in the same trial so this is a sufficient strategy*).
 
 ## Send me your assignments
 
