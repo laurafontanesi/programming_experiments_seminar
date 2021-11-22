@@ -2,3 +2,156 @@
 title: "Across-subject manipulation"
 ---
 
+## Implicit Association Task
+
+Today we are going to program a simple Implicit Association Task based on Experiments 1 and 2 of [Greenwald & Farnham (2000)](https://psycnet.apa.org/buy/2000-16701-014). We will use the 5 *me* and 5 *not-me* items from Experiment 2, and 5 *positive affect* and *5 negative affect* items from Experiment 1. The core of an IAT is quite similar to the tasks we have programmed previously, the basic procedure is that an item is presented on the screen (in this case a word), and the participant has to use the keyboard to indicate which category it belongs to (e.g., self vs. other; positive vs. negative). At some point in the Experiment, this categorisation then switches for one of the grouping (i.e., for the *me/not-me* or *affect* categorisation).
+
+### A new script
+
+Create a new Inquisit script file and name it `wpa_8_FirstLast.iqx` (with your First and Last name). This is the file you will email to me at the end of the class.
+  
+## 1. Define the Stimuli
+
+The stimuli we will use are taken from the appendix of Greenwald & Farnham (2000), simply choose the 5 self and 5 other identifiers from Experiment 2, and the top 5 positive and negative affect words from Experiment 1.
+
+We want to define different correct and error responses for *self* and *other* words, and for *positive* and *negative* words. We also need to be able to create trials with only *affect* words or only *me/not-me* words. Usually, to do this we would create 4 separate item sets; self, other, positive affect and negative affect. However, this week we are going to learn a different way to specify correct responses. The advantage of this method is that it is much easier to then create the reversed association sections of the IAT.
+
+For this method, we will only need 2 item sets, one for the *me/not-me* items, and one for the *affect* items. first create these 2 lists.
+
+```
+<item me>
+/1="I"
+/2="me"
+/3="my"
+/4="mine"
+/5="self"
+/6="they"
+/7="them"
+/8="their"
+/9="theirs"
+/10="other"
+</item>
+
+<item affect>
+/1="caress"
+/2="cuddle"
+/3="diamond"
+/4="glory"
+/5="gold"
+/1="abuse"
+/2="agony"
+/3="assault"
+/4="brutal"
+/5="corpse"
+</item>
+```
+
+**Exercise 1:**  Create corresponding text elements (text `me` and text `affect`) to present these two types of items. Present them in the center of the screen. The selection should be random without replacement.
+    
+## 2. Define the trials, blocks and experiment
+
+**Exercise 2a:**  Create a normal trial type where a random *me/not-me* stimuli is presented on the screen, and participants can respond either with the *"A"* key or with the *"L"* key. For now, set the *"A"* key as the correct response for every trial. Include a break of 200ms between trials. Also, create a block element so that this trial is run 10 times. This will be useful for testing our code.
+
+If you run this trial now, by default it will end when you press either the "A" or the "L" key (like every other time we have used this set up). However, in the IAT we want to allow participants to press the incorrect key (here "L"), but not end the trial until they press the correct key ("A"). To do this we need to look at the `response` attribute of the `trial` element. The `response` attribute specifies how a response is obtained for this `trial`. This isn't referring to what responses are considered valid, but instead to what is considered a response that can end the trial. There are several ways you can specify this `response`, we are going to specify a `responsemode`. There are 4 different `responsemodes`.
+
+**Exercise 2b:** Based on what we want to achieve (i.e., the trial continues if the incorrect key is pressed, but stops if the correct key is pressed) which response mode should we specify? Try it.
+
+Currently, it doesn't matter whether a *me* or *not-me* word is displayed, in both cases the correct response is to press "A". What we can do, however, is instead set the correct response to be "A" if it is one of the first 5 items from our *me/not-me* set (i.e., self items), and "L" if it is one of the last 5 items (i.e., other items). If you look at the trial help-file again, you will see another means of specifying the correct response, called `iscorrectresponse`. This allows us to use a logical expression as correctresponse. If this expression is evaluated to be TRUE, then the response is cosidered correct. If it is FALSE, the response is incorrect. Therefore, we need to come up with a logical expression that is true if either (A is pressed and it is one of the first 5 items) OR (L is pressed and it is one of the second 5 items). To do this we need to be able to retrieve the current response for the trial (`trial.me.response`). We also need to know what item has been currently sampled by our call to text (`text.me.currentindex`).
+
+**Exercise 2c:**  Create a logical expression that evaluates to true if A is pressed and the current stimuli is one of the first 5 OR if L is pressed and it is one of the second 5 items. Replace this in the `iscorrectresponse` attribute in your trial element.
+
+**Exercise 2d:**  At the end of this block, display to participants their accuracy for the trial, as a percentage, and the mean time it took them to respond (you should first create custom variables called `accuracy` and `rt` to store these two values, and update them after participants' responses, as we did in the previous weeks). You can create a trial to display the text or create a page, as you prefer.
+
+Now, we need to **create the same set-up for the affect items**. If you look at Figure 1 in the paper, you'll see the basic set-up for an IAT. You can see that there is one section of the test (steps 1-3) where the positive words have a response that matches the self words, and a section (Steps 4-5) where this association is reversed, with instead negative words associated with self. 
+
+We will implement all 5 steps. So far we have step 1.
+
+First, we will create steps 2 and 3. 
+
+**Exercise 2e:** Setup new trial (`affect_trial`) and block elements (`affect_block`) where a random **affect** stimulus is shown, and responding "A" for positive stimuli is correct and "L" for negative stimuli is correct. Add this block to our `expt` element, so that steps 1 and 2 are displayed.
+
+For step 3, we want to create a block where alternating affect and me trials are shown.
+
+**Exercise 2f:** Create a new block (`mixed_block`), which alternates the 2 trial types (using the `sequence` function). Remember to add this to the experiment after step 2.
+
+Now we want to create steps 4 and 5, where the responses are reversed for the affect trials. We therefore need to create a new trial element, where the `iscorrectresponse` expression has the opposite association between response value and item number.
+
+**Exercise 2f:** Create such a trial, calling it `reversed_affect_trial`. Create also a reversed version of the affect block and of the mixed block. Add them to the experiment.
+    
+    
+## Final steps
+
+Congratulations, you should now have a working IAT. Try it out before you attempt the rest of the Exercises.
+
+### 3. Counterbalancing
+The experimenters wanted to counterbalance the order of steps 2-3 and 4-5 (i.e., whether the positive self or negative self associations were shown first). Do this accross participants.
+
+This is the first time that we have a proper across-subjects manipulation! We need to create two separate experiment elements. Each will have its own order of the blocks, and no element label, like so:
+
+```
+<expt>
+ /blocks=[1=XX; 2=XX; 3=XX; 4=XX; 5=XX]
+ /subjects = (1 of 2)
+</expt>
+
+<expt>
+ /blocks=[1=XX; 2=XX; 3=XX; 4=XX; 5=XX]
+ /subjects = (2 of 2)
+</expt>
+```
+
+**Exercise 3:** Fill in the 2 block orders in the above code, and try to run the experiment, using different subject numbers. Check that indeed different versions are shown for odd and even participants' numbers.
+  
+###  4. Ideographic Affect words (optional)
+One aspect of the task we haven't implemented is the fact that each participant could indicate a subset of the affect list to be used. This was a means of insuring that the words were actually negative or positive for the participants. we can also implement this kind of selection in Inquisit. We are going to implement a procedure where the participnt has to pick 5 words for a list to create the positive affect items, and 5 words form another list to create the negative affect items. 
+
+To learn how to do this, Inquisit has a useful [help page](https://www.millisecond.com/support/docs/v5/html/howto/howtosubjectprovideditems.htm). The basic procedure is to first create an empty item element, that we will populate during the experiment with items. Then to present the participant with a surveypage with two questions presented. The first will ask them to select 5 words form a provided list that have a positive associated. The second will ask them to select 5 words from different list that have a negative association.
+
+```
+<item ideoaffect>
+</item>
+```
+
+To present lists where participants select one or more items, you instead use a `checkbox` element. Make sure that participants can indicate only 5 items for each checkbox.
+
+```
+<checkboxes positive>
+ /caption = "Select five words that are positive:"
+ /options = ("caress", "cuddle", "diamond", "glory", "gold", "health")
+ /range = (5, 5)
+</checkboxes>
+
+<checkboxes negative>
+ /caption = "Select five words that are negative:"
+ /options = ("abuse", "agony", "assault", "brutal", "corpse", "death")
+ /range = (5, 5)
+</checkboxes>
+```
+
+Now these questions need to be presented on a surveypage. Then the answers need to be converted into items in the list (Hint it uses ontrialend in a similar way to how we have assigned variables before).
+
+```
+<surveypage page1>
+ /questions = [1=positive; 2=negative]
+ /ontrialend = [ if (checkboxes.positive.checked.1 == true) item.ideoaffect.item = checkboxes.positive.option.1 ] 
+ /ontrialend = [ if (checkboxes.positive.checked.2 == true) item.ideoaffect.item = checkboxes.positive.option.2 ] 
+ /ontrialend = [ if (checkboxes.positive.checked.3 == true) item.ideoaffect.item = checkboxes.positive.option.3 ] 
+ /ontrialend = [ if (checkboxes.positive.checked.4 == true) item.ideoaffect.item = checkboxes.positive.option.4 ] 
+ /ontrialend = [ if (checkboxes.positive.checked.5 == true) item.ideoaffect.item = checkboxes.positive.option.5 ] 
+ /ontrialend = [ if (checkboxes.positive.checked.6 == true) item.ideoaffect.item = checkboxes.positive.option.6 ] 
+ /ontrialend = [ if (checkboxes.negative.checked.1 == true) item.ideoaffect.item = checkboxes.negative.option.1 ] 
+ /ontrialend = [ if (checkboxes.negative.checked.2 == true) item.ideoaffect.item = checkboxes.negative.option.2 ] 
+ /ontrialend = [ if (checkboxes.negative.checked.3 == true) item.ideoaffect.item = checkboxes.negative.option.3 ] 
+ /ontrialend = [ if (checkboxes.negative.checked.4 == true) item.ideoaffect.item = checkboxes.negative.option.4 ] 
+ /ontrialend = [ if (checkboxes.negative.checked.5 == true) item.ideoaffect.item = checkboxes.negative.option.5 ] 
+ /ontrialend = [ if (checkboxes.negative.checked.6 == true) item.ideoaffect.item = checkboxes.negative.option.6 ] 
+</surveypage>
+```
+
+Finally the item list can be used like any other item list in text, trial block etc. elements.
+
+## Send me your assignments
+
+You can send your assignment to my email address: laura.fontanesi@unibas.ch. 
+
+For this assignment, please send me the Inquisit script. If you want to add comments, you can do that by adding the hashtag `#` at the beginning of the line.

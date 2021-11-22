@@ -20,8 +20,8 @@ Your homework for each class period is to actively read the material for that we
 | 6  | 25 October | No class | - | - | - |
 | 7  | 1 November | Within-subjects manipulation | - | [WPA 6](https://laurafontanesi.github.io/programming_experiments_seminar/wpa6.html) | [Answers](https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa6.iqx)  |
 | 8  | 8 November | Within-subjects conditional branching | - | [WPA 7](https://laurafontanesi.github.io/programming_experiments_seminar/wpa7.html) | - |
-| 9  | 15 November | Across-subject manipulation | - | [WPA 8](https://laurafontanesi.github.io/programming_experiments_seminar/wpa8.html) | - |
-| 10  | 22 November | Summary | - | - | - |
+| 9  | 15 November |  Within-subjects conditional branching | Continue to work on WPA 7 | - | - |
+| 10  | 22 November | Across-subject manipulation | [WPA 8](https://laurafontanesi.github.io/programming_experiments_seminar/wpa8.html) | - | - |
 | 11  | 29 November | Work on final project | - | - | - |
 | 12  | 6 December | Work on final project | - | - | - |
 | 13  | 13 December | Final project presentations | - | - | - |
@@ -29,7 +29,7 @@ Your homework for each class period is to actively read the material for that we
 
 ### Important Links
 Link | Description 
-------------- | -------------------- | ----------------------------------- 
+------------- | --------------------
 [Inquisit 5 documentation](https://www.millisecond.com/support/docs/v5/html/viewer.htm#main.htm) | Documentation of Inquisit 5.
 [Millisecond test Library](https://www.millisecond.com/download/library/) | Library of common Experiments programmed in Inquisit.
 [Inquisit Forums](https://www.millisecond.com/forums/Forum101.aspx) | Forums where people ask questions about programming in Inquisit.
