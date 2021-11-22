@@ -328,16 +328,16 @@ $(document).ready(function () {
 <p>In a block (made of 40 trials), each option is presented for a total of 20 times. These are the feedback values associated with the four options A, B, C, and D:</p>
 <p>A:</p>
 <pre class="r"><code>round(rnorm(20, mean=36, sd=5))</code></pre>
-<pre><code>##  [1] 37 33 30 38 32 31 40 36 31 37 44 37 45 35 41 40 42 36 31 30</code></pre>
+<pre><code>##  [1] 35 41 42 41 37 38 49 32 37 41 39 41 31 33 32 37 37 38 37 33</code></pre>
 <p>B:</p>
 <pre class="r"><code>round(rnorm(20, mean=40, sd=5))</code></pre>
-<pre><code>##  [1] 53 40 41 46 37 41 35 43 36 36 40 42 47 51 38 43 45 34 28 38</code></pre>
+<pre><code>##  [1] 45 37 31 47 38 39 36 45 41 53 33 40 43 38 40 39 31 37 43 31</code></pre>
 <p>C:</p>
 <pre class="r"><code>round(rnorm(20, mean=50, sd=5))</code></pre>
-<pre><code>##  [1] 42 47 48 52 46 50 34 45 48 46 55 46 53 59 50 46 48 42 57 53</code></pre>
+<pre><code>##  [1] 55 52 56 46 53 38 52 49 43 48 53 49 44 51 59 56 50 53 48 44</code></pre>
 <p>D:</p>
 <pre class="r"><code>round(rnorm(20, mean=54, sd=5))</code></pre>
-<pre><code>##  [1] 53 49 52 51 51 53 53 51 53 56 55 47 45 52 54 52 56 47 50 55</code></pre>
+<pre><code>##  [1] 51 56 52 50 53 56 47 53 57 57 54 50 45 55 53 60 49 56 62 60</code></pre>
 <p>The mean rewards of the options in each block were 36, 40, 50, and 54 for options A, B, C, and D, respectively. And the order of the feedback was randomised for each option.</p>
 <p>However, in a specific trial, <strong>only 2 of them are presented at a time</strong>: only four of the six possible pairs of options were presented: <strong>AB, AC, BD, and CD</strong> (but not AD and BC).</p>
 <p>Even though there were 3 blocks in the original experiment, we are only going to implement 1 test block (and at the end we are going to add a practice block).</p>
@@ -390,16 +390,16 @@ $(document).ready(function () {
 <p>We also want to show to the participants their final reward.</p>
 <pre class="r"><code># only inaccurate responses
 sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))</code></pre>
-<pre><code>## [1] 1649</code></pre>
+<pre><code>## [1] 1642</code></pre>
 <pre class="r"><code># only accurate responses
 sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=50, sd=5))) + sum(round(rnorm(20, mean=54, sd=5)))</code></pre>
-<pre><code>## [1] 1982</code></pre>
+<pre><code>## [1] 1951</code></pre>
 <p>Here I simulated the reward amount of 2 subjects, one that would only choose the lowest paying option, and one that would only choose the highest paying one.</p>
 <p>At the end of the experiment, we want to give participants some bonus based on their responses, and therefore scale these accumulated rewards to something we could give them in CHF. For example, we could divide by 1000 and then round to 10th of rappen, so for example:</p>
 <pre class="r"><code>final_reward = sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))
 
 final_reward</code></pre>
-<pre><code>## [1] 1703</code></pre>
+<pre><code>## [1] 1714</code></pre>
 <pre class="r"><code>round(final_reward/100)/10</code></pre>
 <pre><code>## [1] 1.7</code></pre>
 <p>In order to do that, we can use the expression element. This can go together witht the values and parameters elements at the beginning of the script, but can be used to specify an operation that we want to be made when we call it:</p>

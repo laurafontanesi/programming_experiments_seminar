@@ -11,7 +11,7 @@ Syllabus and materials for the UniBas Autumn 2021 semester on programming experi
 Your homework for each class period is to actively read the material for that week (if listed below). All of the work you turn in will be done **in class** as WPAs (Weekly Programming Assignments). New WPAs and readings will be uploaded weekly, so check back regularly.
 
 | Week | Date | Topic | Assignment | Answers |
-| ---- | ----- | -------------- | ------ | ------ |
+| ---- | ----- | -------------- | -------- | ------ |
 | 1  | 20 September | Introduction to Inquisit | [WPA 1](https://laurafontanesi.github.io/programming_experiments_seminar/wpa1.html) | [Answers](https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa1.txt) |
 | 2  | 27 September | Experimental Designs | [WA 2](https://laurafontanesi.github.io/programming_experiments_seminar/wpa2.html) | - |
 | 3  | 4 October | Inquisit elements | [WPA 3](https://laurafontanesi.github.io/programming_experiments_seminar/wpa3.html) | [Answers](https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa3.iqx) |
