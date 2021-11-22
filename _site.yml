@@ -25,6 +25,8 @@ navbar:
         href: wpa7.html
       - text: "WPA 8"
         href: wpa8.html
+      - text: "WPA 9 (final project)"
+        href: wpa9.html
 output:
   html_document:
     theme: yeti
