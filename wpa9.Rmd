@@ -1,0 +1,26 @@
+---
+title: "Final project"
+---
+
+The final project can be done either in small groups (of max 3 people) or alone.
+
+As a home assignment for next week, you should decide what task you would like to implement in Inquisit. It should be a psychological experiment (that you either take from the literature with some modification or you make up yourself) in which:
+
+* participants have to give responses in several trials (e.g., decide between options)
+* there should be some counterbalancing procedure across trials/within block (e.g., options are presented left vs. right)
+* there are at least 2 blocks of trials in which some within-subject variable is manipulated (e.g., easy vs. hard block)
+* there are at least 2 between-subjects conditions (e.g., one group of subjects sees one set of stimuli and the other group sees another one)
+
+Please remember to indicate also: the response modality, temporal structure of a trial, number of trials per blocks, number of blocks, differences across-subjects, and to provide a list of the items you want to present in Inquisit. Iideally, you already prepare a folder with the picture stimuli that you would load in Inquisit, or write them down on a text file if they are text stimuli.
+
+You should send me your plan by next Monday via e-mail.
+
+#### Example of papers to get inspiration from:
+
+* **Brightness discrimination task** ([Ratcliff and Rouder (1998)](https://www.jstor.org/stable/pdf/40063319.pdf)): In this experiment, participants made brightness discriminations (high vs. low) of different pixel arrays. The proportion of dark to white pixels (or the brightness level) was sampled in each trial from one of two different overlapping distributions, with different mean and equal SD (dark vs light) and was then discretized in steps of 33 (so that there were only 33 possible brightness levels in the experiment). The correct response was to match the distribution from which the brightness level was sampled from (labeled “source” in the dataset). To implement this task, you would need the 33 pixel arrays (I can help with that).
+
+* **Simple gambling task** ([Preuschoff, Bossaerts, & Quartz (2006)](https://www.sciencedirect.com/science/article/pii/S0896627306005046)): "On each trial, two cards were drawn (without replacement within each trial) from a deck of ten, numbered 1 through 10. Before seeing either card, subjects first placed a \$1 bet on one of two options, 'second card higher' or 'second card lower' (than first card shown). Subjects could earn \$1 if they guessed the right card and lost \$1 if they were wrong. Once the bet was placed, subjects saw card 1, followed ∼7 s later by card 2. At the end of each trial, subjects had to indicate whether they won or lost on this trial. A \$0.25 penalty was imposed for misreporting, independent of the outcome of the gamble. All times shown are with respect to the onset of the trial."
+
+* **Food choice task** ([Krajbich, Armel, & Rangel (2010)](https://www.nature.com/articles/nn.2635)): In this experiment, participants had to decide between 2 snacks that they previoulsy had to rate (the valuation part would be absolutely optional to implement). "In the choice phase, subjects made their choices by pressing the left or right arrow keys on the keyboard. The choice screen had a free response time. [...] After subjects indicated their choice, a yellow box was drawn around the chosen item (with the other item still on-screen) and displayed for 1 s, followed by a fixation screen before the beginning of the next trial."
+
+* **Emotional Stroop task** ([Ben-Haim et al. (2016)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4993290/)): "The experimental setup of the emotional Stroop task is well known. Words in color are presented singly for view and the participant's task is to name the ink color of each word as quickly and accurately as possible. The words come from two categories of different valence. The first category includes negative words (e.g., DEATH) or words related to a specific psychopathology (e.g., GERMS with obsessive-compulsive patients or BATTLE with post-traumatic stress disorder patients). The second category includes neutral words (e.g., CHAIR). [...] The stimuli can be presented in a single block with emotion and neutral words intermixed in a random fashion or in two separate blocks defined by word category."

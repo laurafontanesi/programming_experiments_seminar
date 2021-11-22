@@ -11,7 +11,7 @@ Syllabus and materials for the UniBas Autumn 2021 semester on programming experi
 Your homework for each class period is to actively read the material for that week (if listed below). All of the work you turn in will be done **in class** as WPAs (Weekly Programming Assignments). New WPAs and readings will be uploaded weekly, so check back regularly.
 
 | Week | Date | Topic | Assignment | Answers |
-| ---- | ----- | -------------- | -------- | ------ |
+| ---- | ----- | -------------- | ------ | ------ |
 | 1  | 20 September | Introduction to Inquisit | [WPA 1](https://laurafontanesi.github.io/programming_experiments_seminar/wpa1.html) | [Answers](https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa1.txt) |
 | 2  | 27 September | Experimental Designs | [WA 2](https://laurafontanesi.github.io/programming_experiments_seminar/wpa2.html) | - |
 | 3  | 4 October | Inquisit elements | [WPA 3](https://laurafontanesi.github.io/programming_experiments_seminar/wpa3.html) | [Answers](https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa3.iqx) |
@@ -20,9 +20,9 @@ Your homework for each class period is to actively read the material for that we
 | 6  | 25 October | No class | - | - |
 | 7  | 1 November | Within-subjects manipulation | [WPA 6](https://laurafontanesi.github.io/programming_experiments_seminar/wpa6.html) | [Answers](https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa6.iqx) |
 | 8  | 8 November | Within-subjects conditional branching | [WPA 7](https://laurafontanesi.github.io/programming_experiments_seminar/wpa7.html) | - |
-| 9  | 15 November |  Within-subjects conditional branching | Continue to work on WPA 7 | - |
+| 9  | 15 November |  Within-subjects conditional branching | Continue WPA 7 | - |
 | 10  | 22 November | Across-subject manipulation | [WPA 8](https://laurafontanesi.github.io/programming_experiments_seminar/wpa8.html) | - |
-| 11  | 29 November | Work on final project | - | - |
+| 11  | 29 November | Work on final project | [WPA9](https://laurafontanesi.github.io/programming_experiments_seminar/wpa9.html) | - |
 | 12  | 6 December | Work on final project | - | - |
 | 13  | 13 December | Final project presentations | - | - |
 | 14  | 20 December | No class | - | - |
@@ -53,3 +53,7 @@ This is a pass / fail course. To pass the course, you should turn in your WPAs, 
 
 ### Additional credits
 In this course, it is possible to gain 2 extra credits, by completing a graded assignment. This assignment will consist in programming an experiment from scratch on your own. You should accompany the experiment code (either Inquisit or Psychopy) with a 1 page explanation of the task and how you addressed the assignment requirements. The requirements are to choose an experiment from a peer-reviewed article in a psychology journal, which includes both within- and across-subjects manipulations and repeated measures. Before starting programming such experiment, you should send me a proposal in which you explain to me which experiment you chose and providing a short explanation of the experiment. The deadline for the proposal is the **25 of October**. The deadline for the first version of the thesis (written part + code) is the **20 of December**. I will then review it and give you the chance to improve it. The final deadline is the **10 of January**.
+
+### Course evaluation
+
+Link for the course evaluation: https://k11331.evasys.de/evasys/online.php?pswd=Z1F43
