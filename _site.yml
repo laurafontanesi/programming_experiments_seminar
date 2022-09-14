@@ -9,24 +9,28 @@ navbar:
     - text: "WPAs"
       icon: fa-desktop
       menu:
-      - text: "WPA 1"
+      - text: "1 - experimental designs"
         href: wpa1.html
-      - text: "WA 2"
+      - text: "2 - intro to Inquisit"
         href: wpa2.html
-      - text: "WPA 3"
+      - text: "3 - Inquisit basics"
         href: wpa3.html
-      - text: "WPA 4"
+      - text: "4 - feedback"
         href: wpa4.html
-      - text: "WPA 5"
+      - text: "5 - conditional updating and branching"
         href: wpa5.html
-      - text: "WPA 6"
+      - text: "6 - within-subjects manipulation"
         href: wpa6.html
-      - text: "WPA 7"
+      - text: "7 - within-subjects conditional branching"
         href: wpa7.html
-      - text: "WPA 8"
+      - text: "8 - across-subject manipulation"
         href: wpa8.html
-      - text: "WPA 9 (final project)"
+      - text: "9 - final assignment"
         href: wpa9.html
+    - text: "Solutions"
+      icon: fa-display-arrow-down
+      menu:
+      - text: "1 - experimental designs"
 output:
   html_document:
     theme: yeti

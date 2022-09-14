@@ -256,32 +256,44 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="wpa1.html">WPA 1</a>
+      <a href="wpa1.html">1 - experimental designs</a>
     </li>
     <li>
-      <a href="wpa2.html">WA 2</a>
+      <a href="wpa2.html">2 - intro to Inquisit</a>
     </li>
     <li>
-      <a href="wpa3.html">WPA 3</a>
+      <a href="wpa3.html">3 - Inquisit basics</a>
     </li>
     <li>
-      <a href="wpa4.html">WPA 4</a>
+      <a href="wpa4.html">4 - feedback</a>
     </li>
     <li>
-      <a href="wpa5.html">WPA 5</a>
+      <a href="wpa5.html">5 - conditional updating and branching</a>
     </li>
     <li>
-      <a href="wpa6.html">WPA 6</a>
+      <a href="wpa6.html">6 - within-subjects manipulation</a>
     </li>
     <li>
-      <a href="wpa7.html">WPA 7</a>
+      <a href="wpa7.html">7 - within-subjects conditional branching</a>
     </li>
     <li>
-      <a href="wpa8.html">WPA 8</a>
+      <a href="wpa8.html">8 - across-subject manipulation</a>
     </li>
     <li>
-      <a href="wpa9.html">WPA 9 (final project)</a>
+      <a href="wpa9.html">9 - final assignment</a>
     </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-display-arrow-down"></span>
+     
+    Solutions
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">1 - experimental designs</li>
   </ul>
 </li>
       </ul>
@@ -302,33 +314,63 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#a-new-script">A new script</a></li>
-<li><a href="#re-define-the-stimuli-and-trials">1. Re-define the stimuli and trials</a></li>
-<li><a href="#define-the-blocks">2. Define the Blocks</a></li>
-<li><a href="#define-the-experiment">3. Define the Experiment</a>
+<li><a href="#a-new-script" id="toc-a-new-script">A new script</a></li>
+<li><a href="#re-define-the-stimuli-and-trials"
+id="toc-re-define-the-stimuli-and-trials">1. Re-define the stimuli and
+trials</a></li>
+<li><a href="#define-the-blocks" id="toc-define-the-blocks">2. Define
+the Blocks</a></li>
+<li><a href="#define-the-experiment" id="toc-define-the-experiment">3.
+Define the Experiment</a>
 <ul>
-<li><a href="#testing-the-code">Testing the code</a></li>
+<li><a href="#testing-the-code" id="toc-testing-the-code">Testing the
+code</a></li>
 </ul></li>
-<li><a href="#send-me-your-assignments">Send me your assignments</a></li>
+<li><a href="#send-me-your-assignments"
+id="toc-send-me-your-assignments">Send me your assignments</a></li>
 </ul>
 </div>
 
-<p>For today’s assignment, we will go back to our categorization experiment of <a href="https://laurafontanesi.github.io/programming_experiments_seminar/wpa4.html">WPA 4</a>.</p>
-<p>In WPA 4 we presented the stimuli of the 2 categories randomly in 1 unique block of 30 trials.</p>
-<p>However, not all stimuli had the same <strong>difficulty</strong>. Looking back at the figure showing the stimuli in the attribute space (below), we can see that the stimuli vary in their distance from the boundary separation between the 2 categories. The stimuli that are the furthest away from this line are the most “representative” with the category they belong to, while the ones close to the line are more similar to the stimuli of the other category. Therefore, the distance from the line determines how easy it is to categorise each item.</p>
+<p>For today’s assignment, we will go back to our categorization
+experiment of <a
+href="https://laurafontanesi.github.io/programming_experiments_seminar/wpa4.html">WPA
+4</a>.</p>
+<p>In WPA 4 we presented the stimuli of the 2 categories randomly in 1
+unique block of 30 trials.</p>
+<p>However, not all stimuli had the same <strong>difficulty</strong>.
+Looking back at the figure showing the stimuli in the attribute space
+(below), we can see that the stimuli vary in their distance from the
+boundary separation between the 2 categories. The stimuli that are the
+furthest away from this line are the most “representative” with the
+category they belong to, while the ones close to the line are more
+similar to the stimuli of the other category. Therefore, the distance
+from the line determines how easy it is to categorise each item.</p>
 <p><img src="wpa4_categories.png" width="50%" style="display: block; margin: auto;" /></p>
-<p>We will now modify our original code so that we can add the <strong>difficulty</strong> manipulation in blocks, similarly to the original experiment.</p>
+<p>We will now modify our original code so that we can add the
+<strong>difficulty</strong> manipulation in blocks, similarly to the
+original experiment.</p>
 <div id="a-new-script" class="section level3">
 <h3>A new script</h3>
-<p>Create a new Inquisit script file and name it <code>wpa_6_FirstLast.iqx</code> (with your First and Last name). This is the file you will email to me at the end of the class.</p>
-<p>You can copy-paste your previous code (<code>wpa_4_FirstLast.iqx</code>) or the <a href="https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa4.iqx">answers</a>.</p>
+<p>Create a new Inquisit script file and name it
+<code>wpa_6_FirstLast.iqx</code> (with your First and Last name). This
+is the file you will email to me at the end of the class.</p>
+<p>You can copy-paste your previous code
+(<code>wpa_4_FirstLast.iqx</code>) or the <a
+href="https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa4.iqx">answers</a>.</p>
 </div>
 <div id="re-define-the-stimuli-and-trials" class="section level2">
 <h2>1. Re-define the stimuli and trials</h2>
-<p>In WPA 4, we only had 2 stimuli lists, 1 for category A and 1 for category B. Now, we want to split each one of them in 3, for a total of 6 categories, reflecting their difficulty: easy_A (pictures 1-5), medium_A (pictures 5-10), hard_A (pictures 11-15), hard_B (pictures 16-20), medium_B (pictures 21-25), easy_B (pictures 26-30).</p>
-<p><strong>Exercise 1a:</strong> Modify the <code>item</code> elements accordigly.</p>
-<p><strong>Exercise 1b:</strong> Modify the <code>picture</code> elements accordigly.</p>
-<p><strong>Exercise 1c:</strong> Modify the <code>trial</code> elements accordigly.</p>
+<p>In WPA 4, we only had 2 stimuli lists, 1 for category A and 1 for
+category B. Now, we want to split each one of them in 3, for a total of
+6 categories, reflecting their difficulty: easy_A (pictures 1-5),
+medium_A (pictures 5-10), hard_A (pictures 11-15), hard_B (pictures
+16-20), medium_B (pictures 21-25), easy_B (pictures 26-30).</p>
+<p><strong>Exercise 1a:</strong> Modify the <code>item</code> elements
+accordigly.</p>
+<p><strong>Exercise 1b:</strong> Modify the <code>picture</code>
+elements accordigly.</p>
+<p><strong>Exercise 1c:</strong> Modify the <code>trial</code> elements
+accordigly.</p>
 </div>
 <div id="define-the-blocks" class="section level2">
 <h2>2. Define the Blocks</h2>
@@ -337,29 +379,74 @@ $(document).ready(function () {
  /trials = [1-30=noreplace(trialA, trialB)]
  /postinstructions = (page.final_message)
 &lt;/block&gt;</code></pre>
-<p>This week, we will create a block called <code>training_block</code> for the <strong>training block</strong> that progresses from easy to hard stimuli, and <code>transfer_block</code> for the <strong>block that tests learning without feedback</strong>.</p>
-<p>The easier way to create the training block, is to pass multiple relations to the <code>trials</code> attribute of the block. You can specify as many groups of trials as you wish in the <code>trials</code> attribute by making sure they are sequential and separated by a <strong>;</strong> (e.g. <code>/trials = [x-y=Trial1; (y+1)-z=Trial2]</code>).</p>
-<p><strong>Exercise 2a:</strong> Modify the <code>trials</code> attribute of the <code>training_block</code> element, so that the first 10 trials are either A or B easy trials, the following 10 trials are either A or B medium trials and the final 10 trials are either A or B hard trials.</p>
-<p><strong>Exercise 2b:</strong> Now, create the <code>transfer_block</code>. This is actually easier than creating the training block, because we don’t care what order the stimuli are in. The transfer block should show all 30 trials in random order (but remember that now we have 6 trial elements instead of 2).</p>
-<p>We still have the problem, however, that the feedback is shown in the transfer block, because it was defined at the trial level. Luckily, we do not have to create another set of trial elements for this purpose. Inquisit can in fact define the same attribute at multiple levels. In this case, we can also define these messages at the block level.</p>
-<p>Importantly, lower level setting (at the trial level) override higher level settings (at the block level). Therefore, even if we explicitly set the errormessage and correctmessage in the transfer block to false (i.e., don’t display anything), this will be overridden by the settings of the trials we are calling. So, instead, we need to remove the correct and error message attributes from the trial elements, and instead place them in the two training block elements.</p>
-<p><strong>Exercise 2c:</strong> Move the correct and error messages to the block level.</p>
-<p>Finally, last time we calculated accuracy at the end of each trial. You should change that as weell, to take into account that there are 6 types of trials and not 2 (therefore you should calculate the average of the 6). In order to not repeat the code so many times, we can similarly to what we did for the error messages, move that to the block level, and delete that from the trial level. Moreover, it makes sense to show participants their accuracy only for the transfer block, and not for the training block.</p>
-<p><strong>Exercise 2d:</strong> Move the <code>ontrialend</code> argument also at the block level, but only in the transfer block.</p>
+<p>This week, we will create a block called <code>training_block</code>
+for the <strong>training block</strong> that progresses from easy to
+hard stimuli, and <code>transfer_block</code> for the <strong>block that
+tests learning without feedback</strong>.</p>
+<p>The easier way to create the training block, is to pass multiple
+relations to the <code>trials</code> attribute of the block. You can
+specify as many groups of trials as you wish in the <code>trials</code>
+attribute by making sure they are sequential and separated by a
+<strong>;</strong>
+(e.g. <code>/trials = [x-y=Trial1; (y+1)-z=Trial2]</code>).</p>
+<p><strong>Exercise 2a:</strong> Modify the <code>trials</code>
+attribute of the <code>training_block</code> element, so that the first
+10 trials are either A or B easy trials, the following 10 trials are
+either A or B medium trials and the final 10 trials are either A or B
+hard trials.</p>
+<p><strong>Exercise 2b:</strong> Now, create the
+<code>transfer_block</code>. This is actually easier than creating the
+training block, because we don’t care what order the stimuli are in. The
+transfer block should show all 30 trials in random order (but remember
+that now we have 6 trial elements instead of 2).</p>
+<p>We still have the problem, however, that the feedback is shown in the
+transfer block, because it was defined at the trial level. Luckily, we
+do not have to create another set of trial elements for this purpose.
+Inquisit can in fact define the same attribute at multiple levels. In
+this case, we can also define these messages at the block level.</p>
+<p>Importantly, lower level setting (at the trial level) override higher
+level settings (at the block level). Therefore, even if we explicitly
+set the errormessage and correctmessage in the transfer block to false
+(i.e., don’t display anything), this will be overridden by the settings
+of the trials we are calling. So, instead, we need to remove the correct
+and error message attributes from the trial elements, and instead place
+them in the two training block elements.</p>
+<p><strong>Exercise 2c:</strong> Move the correct and error messages to
+the block level.</p>
+<p>Finally, last time we calculated accuracy at the end of each trial.
+You should change that as weell, to take into account that there are 6
+types of trials and not 2 (therefore you should calculate the average of
+the 6). In order to not repeat the code so many times, we can similarly
+to what we did for the error messages, move that to the block level, and
+delete that from the trial level. Moreover, it makes sense to show
+participants their accuracy only for the transfer block, and not for the
+training block.</p>
+<p><strong>Exercise 2d:</strong> Move the <code>ontrialend</code>
+argument also at the block level, but only in the transfer block.</p>
 </div>
 <div id="define-the-experiment" class="section level2">
 <h2>3. Define the Experiment</h2>
-<p><strong>Exercise 3a:</strong> Modify the <code>blocks</code> argument of the <code>expt</code> element so that the training block is always shown before the tranfer block.</p>
-<p><strong>Exercise 3b:</strong> Add 2 <code>page</code> elements, one to show before training and one before transfer phases, that explain what to expect (what phase it is, what the task is about, which keys to press, and whether to expect a feedback or not).</p>
+<p><strong>Exercise 3a:</strong> Modify the <code>blocks</code> argument
+of the <code>expt</code> element so that the training block is always
+shown before the tranfer block.</p>
+<p><strong>Exercise 3b:</strong> Add 2 <code>page</code> elements, one
+to show before training and one before transfer phases, that explain
+what to expect (what phase it is, what the task is about, which keys to
+press, and whether to expect a feedback or not).</p>
 <div id="testing-the-code" class="section level3">
 <h3>Testing the code</h3>
-<p>Congratulations, you should now have a working Experiment. Try it out before sending me your code.</p>
+<p>Congratulations, you should now have a working Experiment. Try it out
+before sending me your code.</p>
 </div>
 </div>
 <div id="send-me-your-assignments" class="section level2">
 <h2>Send me your assignments</h2>
-<p>You can send your assignment to my email address: <a href="mailto:laura.fontanesi@unibas.ch" class="email">laura.fontanesi@unibas.ch</a>.</p>
-<p>For this assignment, please send me the Inquisit script. If you want to add comments, you can do that by adding the hashtag <code>#</code> at the beginning of the line.</p>
+<p>You can send your assignment to my email address: <a
+href="mailto:laura.fontanesi@unibas.ch"
+class="email">laura.fontanesi@unibas.ch</a>.</p>
+<p>For this assignment, please send me the Inquisit script. If you want
+to add comments, you can do that by adding the hashtag <code>#</code> at
+the beginning of the line.</p>
 </div>
 
 

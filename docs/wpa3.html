@@ -256,32 +256,44 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="wpa1.html">WPA 1</a>
+      <a href="wpa1.html">1 - experimental designs</a>
     </li>
     <li>
-      <a href="wpa2.html">WA 2</a>
+      <a href="wpa2.html">2 - intro to Inquisit</a>
     </li>
     <li>
-      <a href="wpa3.html">WPA 3</a>
+      <a href="wpa3.html">3 - Inquisit basics</a>
     </li>
     <li>
-      <a href="wpa4.html">WPA 4</a>
+      <a href="wpa4.html">4 - feedback</a>
     </li>
     <li>
-      <a href="wpa5.html">WPA 5</a>
+      <a href="wpa5.html">5 - conditional updating and branching</a>
     </li>
     <li>
-      <a href="wpa6.html">WPA 6</a>
+      <a href="wpa6.html">6 - within-subjects manipulation</a>
     </li>
     <li>
-      <a href="wpa7.html">WPA 7</a>
+      <a href="wpa7.html">7 - within-subjects conditional branching</a>
     </li>
     <li>
-      <a href="wpa8.html">WPA 8</a>
+      <a href="wpa8.html">8 - across-subject manipulation</a>
     </li>
     <li>
-      <a href="wpa9.html">WPA 9 (final project)</a>
+      <a href="wpa9.html">9 - final assignment</a>
     </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-display-arrow-down"></span>
+     
+    Solutions
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">1 - experimental designs</li>
   </ul>
 </li>
       </ul>
@@ -302,117 +314,327 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#intro-elements-and-attributes">Intro: Elements and attributes</a></li>
-<li><a href="#part-1-stimulus-level">Part 1: Stimulus level</a></li>
-<li><a href="#part-2-trial-level">Part 2: Trial level</a></li>
-<li><a href="#part-3-block-level">Part 3: Block level</a></li>
-<li><a href="#part-4-experiment-level">Part 4: Experiment level</a></li>
-<li><a href="#final-steps">Final steps</a></li>
-<li><a href="#send-me-your-assignments">Send me your assignments</a></li>
+<li><a href="#intro-elements-and-attributes"
+id="toc-intro-elements-and-attributes">Intro: Elements and
+attributes</a></li>
+<li><a href="#part-1-stimulus-level" id="toc-part-1-stimulus-level">Part
+1: Stimulus level</a></li>
+<li><a href="#part-2-trial-level" id="toc-part-2-trial-level">Part 2:
+Trial level</a></li>
+<li><a href="#part-3-block-level" id="toc-part-3-block-level">Part 3:
+Block level</a></li>
+<li><a href="#part-4-experiment-level"
+id="toc-part-4-experiment-level">Part 4: Experiment level</a></li>
+<li><a href="#final-steps" id="toc-final-steps">Final steps</a></li>
+<li><a href="#send-me-your-assignments"
+id="toc-send-me-your-assignments">Send me your assignments</a></li>
 </ul>
 </div>
 
 <div id="intro-elements-and-attributes" class="section level2">
 <h2>Intro: Elements and attributes</h2>
-<p>Today we are going to focus on 4 different levels of the experiment and how to specify them in an Inquisit script: stimulus, trial, block, and experiment level.</p>
-<p>All the information that Inquisit needs to run your experiment needs to be passed to it by defining special objects called <strong>elements</strong>. Inquisit has hundreds of different elements that it uses, each of which has a specific role. Today we are going to use six different elements; <code>items</code>, <code>text</code>, <code>trial</code>, <code>block</code>, <code>expt</code> and <code>defaults</code>.</p>
-<p>Each element in Inquisit has a list of properties or <strong>attributes</strong> that you can set, which define how this specific version of that element will behave. Different elements have different attributes that apply to them, depending upon the role of that particular element. For instance <code>text</code> element defines how text is presented on the screen. Therefore most of its attributes define aspects of the appearance of the text such as the font (<code>fontstyle</code>), justification (<code>hjustify</code>), text size (<code>size</code>), location on the screen (<code>position</code>) etc. In a single script you may use the same type of element multiple times (e.g. multiple <code>text</code> elements) with different settings for its attributes each time to produce different effects at different points in the Experiment.</p>
-<p>The best way to learn about an element and its attributes is to look at the <code>Help</code> page for the element. The easiest way to get the help file is to type the name of the element into the search bar under the <code>Help</code> menu at the top of the screen. Try this for the <code>text</code> element. The help file should contain a list of attributes that can be passed to <code>text</code>, each with a link to the help file for that attribute, as well as other useful information, like examples of usage, and an explanation of what the element does (under <strong>Remarks</strong>). You can also search directly for a attribute help file. The Help file for an attribute contains similar information. One useful piece is the list of elements that the attribute can be applies to, given under <strong>Applies to</strong>.</p>
-<p>Creating an element is very straightforward. The first step is to type the <strong>tags</strong> for the element in your script and a <strong>label</strong> that allows you to refer to that element elsewhere in the script. Here is an example for a text element:</p>
+<p>Today we are going to focus on 4 different levels of the experiment
+and how to specify them in an Inquisit script: stimulus, trial, block,
+and experiment level.</p>
+<p>All the information that Inquisit needs to run your experiment needs
+to be passed to it by defining special objects called
+<strong>elements</strong>. Inquisit has hundreds of different elements
+that it uses, each of which has a specific role. Today we are going to
+use six different elements; <code>items</code>, <code>text</code>,
+<code>trial</code>, <code>block</code>, <code>expt</code> and
+<code>defaults</code>.</p>
+<p>Each element in Inquisit has a list of properties or
+<strong>attributes</strong> that you can set, which define how this
+specific version of that element will behave. Different elements have
+different attributes that apply to them, depending upon the role of that
+particular element. For instance <code>text</code> element defines how
+text is presented on the screen. Therefore most of its attributes define
+aspects of the appearance of the text such as the font
+(<code>fontstyle</code>), justification (<code>hjustify</code>), text
+size (<code>size</code>), location on the screen (<code>position</code>)
+etc. In a single script you may use the same type of element multiple
+times (e.g. multiple <code>text</code> elements) with different settings
+for its attributes each time to produce different effects at different
+points in the Experiment.</p>
+<p>The best way to learn about an element and its attributes is to look
+at the <code>Help</code> page for the element. The easiest way to get
+the help file is to type the name of the element into the search bar
+under the <code>Help</code> menu at the top of the screen. Try this for
+the <code>text</code> element. The help file should contain a list of
+attributes that can be passed to <code>text</code>, each with a link to
+the help file for that attribute, as well as other useful information,
+like examples of usage, and an explanation of what the element does
+(under <strong>Remarks</strong>). You can also search directly for a
+attribute help file. The Help file for an attribute contains similar
+information. One useful piece is the list of elements that the attribute
+can be applies to, given under <strong>Applies to</strong>.</p>
+<p>Creating an element is very straightforward. The first step is to
+type the <strong>tags</strong> for the element in your script and a
+<strong>label</strong> that allows you to refer to that element
+elsewhere in the script. Here is an example for a text element:</p>
 <pre><code>&lt;text firsttext&gt; 
 &lt;/text&gt;</code></pre>
-<p>For all elements the format of these tags is the same. For the <strong>open-tag</strong> (i.e. the first line of the script), you first type an <code>&lt;</code> then the name of the type of element you want to create (in this case <code>text</code>). Then you give a name to this element that you will use later if you refer to it in the code for another element. here I have chosen the name <em>firsttext</em>. You then close the tag <code>&gt;</code>.</p>
-<p>An <strong>open-tag</strong> lets Inquisit know that you are now going to define attributes for this specific element. The <strong>close-tage</strong> (second line of script, which starts with <code>&lt;/</code> rather than <code>&lt;</code>), tells inquisit that you are finished with this element. Therefore any attributes that you want to define for this element need to be typed between the two tags. For instance we could set the justification of this text to <em>left</em> as follows:</p>
+<p>For all elements the format of these tags is the same. For the
+<strong>open-tag</strong> (i.e. the first line of the script), you first
+type an <code>&lt;</code> then the name of the type of element you want
+to create (in this case <code>text</code>). Then you give a name to this
+element that you will use later if you refer to it in the code for
+another element. here I have chosen the name <em>firsttext</em>. You
+then close the tag <code>&gt;</code>.</p>
+<p>An <strong>open-tag</strong> lets Inquisit know that you are now
+going to define attributes for this specific element. The
+<strong>close-tage</strong> (second line of script, which starts with
+<code>&lt;/</code> rather than <code>&lt;</code>), tells inquisit that
+you are finished with this element. Therefore any attributes that you
+want to define for this element need to be typed between the two tags.
+For instance we could set the justification of this text to
+<em>left</em> as follows:</p>
 <pre><code>&lt;text firsttext&gt;
 /hjustify=left
 &lt;/text firsttext&gt;</code></pre>
-<p>Each attribute you want to set should be on a separate line starting with <code>/</code> followed by the attribute name (in this case <code>hjustify</code>).</p>
-<p>All elements have attributes which define how this element links to the other elements in your script. Inquisit is set up in a very <strong>heirarchical structure</strong>, so an element will refer to other elements that are lower than it in the hierarchy (e.g. <code>block</code> elements refer to <code>trial</code> elements), and will themselves be referred to by elements higher in the heirarchy. The attributes in the higher element are then used to define how the lower element is used. For example, one of the elements that can be referred to in a <code>text</code> element is an <code>item</code> element, which is a list of items that the attributes of the text element should be applied to. For instance, if we had created an <code>item</code> called <em>stimlist</em> we could tell Inquisit that <em>firsttext</em> should use this particular <code>item</code> list with the following code:</p>
+<p>Each attribute you want to set should be on a separate line starting
+with <code>/</code> followed by the attribute name (in this case
+<code>hjustify</code>).</p>
+<p>All elements have attributes which define how this element links to
+the other elements in your script. Inquisit is set up in a very
+<strong>heirarchical structure</strong>, so an element will refer to
+other elements that are lower than it in the hierarchy
+(e.g. <code>block</code> elements refer to <code>trial</code> elements),
+and will themselves be referred to by elements higher in the heirarchy.
+The attributes in the higher element are then used to define how the
+lower element is used. For example, one of the elements that can be
+referred to in a <code>text</code> element is an <code>item</code>
+element, which is a list of items that the attributes of the text
+element should be applied to. For instance, if we had created an
+<code>item</code> called <em>stimlist</em> we could tell Inquisit that
+<em>firsttext</em> should use this particular <code>item</code> list
+with the following code:</p>
 <pre><code>&lt;text firsttext&gt; 
 /items=stimlist
 /hjustify=left
 &lt;/text&gt;</code></pre>
 <div id="a-new-script" class="section level4">
 <h4>A new script</h4>
-<p>After opening Inquisit the first step we will take is to create a new script file. You can do this either from the menu <code>file&gt;new</code> or by clicking on the blank page. Before we go further save the script in the following format <code>wpa_3_FirstLast.iqx</code>. This is the file you will email to me at the conclusion of class.</p>
-<p>Now that you have a script file, copy the following code into the top of your file:</p>
+<p>After opening Inquisit the first step we will take is to create a new
+script file. You can do this either from the menu
+<code>file&gt;new</code> or by clicking on the blank page. Before we go
+further save the script in the following format
+<code>wpa_3_FirstLast.iqx</code>. This is the file you will email to me
+at the conclusion of class.</p>
+<p>Now that you have a script file, copy the following code into the top
+of your file:</p>
 <pre><code>&lt;defaults&gt;
 /quitcommand = (Ctrl+&#39;e&#39;)
 /fontstyle=(&quot;Arial&quot;, 3%)
 &lt;/defaults&gt;</code></pre>
-<p>We will put this at the top of all scripts from now on. In it we have created an element of type <code>defaults</code> This is a bit different from the other elements we will define, as it doesn’t get a name because you won’t be creating multiple elements of this type. As its name suggests this element allows us to define some default behaviour in our script that will be employed unless an element directly contradicts it.</p>
-<p>The two attributes we have defined for <code>defaults</code> are <code>fontsyle</code> which sets the default font to be used as <code>Arial</code> unless a specific element says otherwise and <code>quitcommand</code>. The <code>quitcommand</code> attribute sets a key combination that can be used to exit the Experiment at any time. I strongly recommend you always include a <code>quitcommand</code> and always check if there is a <code>quitcommand</code> before using anyone elses code. The default is Ctrl+Q, so you will get an error message if you try to use that.</p>
+<p>We will put this at the top of all scripts from now on. In it we have
+created an element of type <code>defaults</code> This is a bit different
+from the other elements we will define, as it doesn’t get a name because
+you won’t be creating multiple elements of this type. As its name
+suggests this element allows us to define some default behaviour in our
+script that will be employed unless an element directly contradicts
+it.</p>
+<p>The two attributes we have defined for <code>defaults</code> are
+<code>fontsyle</code> which sets the default font to be used as
+<code>Arial</code> unless a specific element says otherwise and
+<code>quitcommand</code>. The <code>quitcommand</code> attribute sets a
+key combination that can be used to exit the Experiment at any time. I
+strongly recommend you always include a <code>quitcommand</code> and
+always check if there is a <code>quitcommand</code> before using anyone
+elses code. The default is Ctrl+Q, so you will get an error message if
+you try to use that.</p>
 <p>Use the <code>Help</code> function to learn more about these.</p>
 </div>
 </div>
 <div id="part-1-stimulus-level" class="section level2">
 <h2>Part 1: Stimulus level</h2>
-<p>This week our stimuli are just going to be a list of sentences: “(a) 50% chance of winning CHF 600 or (b) a sure gain of CHF XXX”, where XXX varies from 1 to 600 in steps of 30. If you look at the <code>Help</code> file for the item element you will see that one way you can use this element is to create a list of text element stimuli. Each attribute in the list is just the specification of a number stimuli. For example the following code created an item list (called <em>stimlist</em>) that is just a single item, displaying text called item 1:</p>
+<p>This week our stimuli are just going to be a list of sentences: “(a)
+50% chance of winning CHF 600 or (b) a sure gain of CHF XXX”, where XXX
+varies from 1 to 600 in steps of 30. If you look at the
+<code>Help</code> file for the item element you will see that one way
+you can use this element is to create a list of text element stimuli.
+Each attribute in the list is just the specification of a number
+stimuli. For example the following code created an item list (called
+<em>stimlist</em>) that is just a single item, displaying text called
+item 1:</p>
 <pre><code>&lt;item stimlist&gt;  
 /1=&quot;item 1&quot;
 &lt;/item&gt;  </code></pre>
-<p>NOTE: Items don’t have to be text strings. For example you could also specify images that we want to be used as the individual stimuli (this is what we did last week).</p>
-<p><strong>Exercise 1a</strong>: Alter this code, so that instead the first item of the list is the first choice that you want to be displayed to participants. Then alter the code further so that the list contains 21 items, rather than a single item.</p>
-<p>Now that we have defined our stimuli, we need to specify how they should look when displayed on the screen. Because our stimuli are text, we can do this by defining a <code>text</code> element where we call this stimuli list. We can call this element anything we wish. I suggest using the name <em>stimlist_text</em> for the <code>text</code> element, to make it easy for you to tell that these two elements are related. You can have multiple different elements with the same name, as long as the elements are not of the same type (i.e., you can’t have 2 <code>item</code> elements called stimlist). However, I do suggest to change the name slightly to avoid confusion.</p>
-<p><strong>Exercise 1b</strong>: Create the <code>text</code> element, and have it refer to your stimuli list.</p>
-<p><strong>Exercise 1c</strong>: Lets set our attributes so that our stimuli will be displayed in the center of the screen, with center justification, and in Arial font. To get our stimuli in the center of the screen you’ll need to use the <code>position</code> attribute. This attribute takes 2 coordinates that can be defined in different ways. I recommend defining the coordinates in terms of percentages of the screen where <strong>(0%, 0%)</strong> would be the top left of the screen and <strong>(100%, 100%)</strong> would be the top right.</p>
-<p><strong>Exercise 1d</strong>: The final step we need to take is to define in what order our stimuli will be displayed. This is also done at the level of <code>text</code> element. If you look at the help file you will see an attribute called <code>text</code>. This determines how <code>text stimlist</code> selects a stimuli from <code>item stimlist</code> to display each time it is called. For now set this attribute to sequential (i.e. <code>/select=sequence</code>). This means it should display all 21 items in order (we will check this later).</p>
+<p>NOTE: Items don’t have to be text strings. For example you could also
+specify images that we want to be used as the individual stimuli (this
+is what we did last week).</p>
+<p><strong>Exercise 1a</strong>: Alter this code, so that instead the
+first item of the list is the first choice that you want to be displayed
+to participants. Then alter the code further so that the list contains
+21 items, rather than a single item.</p>
+<p>Now that we have defined our stimuli, we need to specify how they
+should look when displayed on the screen. Because our stimuli are text,
+we can do this by defining a <code>text</code> element where we call
+this stimuli list. We can call this element anything we wish. I suggest
+using the name <em>stimlist_text</em> for the <code>text</code> element,
+to make it easy for you to tell that these two elements are related. You
+can have multiple different elements with the same name, as long as the
+elements are not of the same type (i.e., you can’t have 2
+<code>item</code> elements called stimlist). However, I do suggest to
+change the name slightly to avoid confusion.</p>
+<p><strong>Exercise 1b</strong>: Create the <code>text</code> element,
+and have it refer to your stimuli list.</p>
+<p><strong>Exercise 1c</strong>: Lets set our attributes so that our
+stimuli will be displayed in the center of the screen, with center
+justification, and in Arial font. To get our stimuli in the center of
+the screen you’ll need to use the <code>position</code> attribute. This
+attribute takes 2 coordinates that can be defined in different ways. I
+recommend defining the coordinates in terms of percentages of the screen
+where <strong>(0%, 0%)</strong> would be the top left of the screen and
+<strong>(100%, 100%)</strong> would be the top right.</p>
+<p><strong>Exercise 1d</strong>: The final step we need to take is to
+define in what order our stimuli will be displayed. This is also done at
+the level of <code>text</code> element. If you look at the help file you
+will see an attribute called <code>text</code>. This determines how
+<code>text stimlist</code> selects a stimuli from
+<code>item stimlist</code> to display each time it is called. For now
+set this attribute to sequential (i.e. <code>/select=sequence</code>).
+This means it should display all 21 items in order (we will check this
+later).</p>
 </div>
 <div id="part-2-trial-level" class="section level2">
 <h2>Part 2: Trial level</h2>
-<p>So far you have defined what your stimuli are, and what they look like. Now we need to tell Inquisit what it should do with these stimuli on a trial. This means that we need to create a <code>trial</code> element. Lets call this trial element <code>choice</code> to remind us that this is what we are asking participants to do on the trial. Create the element:</p>
+<p>So far you have defined what your stimuli are, and what they look
+like. Now we need to tell Inquisit what it should do with these stimuli
+on a trial. This means that we need to create a <code>trial</code>
+element. Lets call this trial element <code>choice</code> to remind us
+that this is what we are asking participants to do on the trial. Create
+the element:</p>
 <pre><code>&lt;trial choice&gt;  
 &lt;/trial&gt;</code></pre>
-<p>For this week all we really want to happen on the trial is for the stimulus to be displayed at some point, and to stay up there until the participant responds. So first we will tell Inquisit how it should display stimuli.</p>
-<p>To display the stimuli we need to set the <code>stimulustimes</code> attribute of our <code>trial</code> element. <code>Stimulustimes</code> determines both when dring the trial stimuli should be displayed, and what stimuli should be displayed at each time.</p>
-<p><strong>Exercise 2a</strong>: Specify that the text stimulus is shown right at the start of the trial.</p>
-<p>Now we need to tell Inquisit how to collect responses on the trial. In this case we will pretend that we have asked participants to respond by using the keyboard. In particular we have told them to press the <strong>A</strong> key if they wish to choose the risky option, and the <strong>B</strong> key if they wish to choose the sure option.</p>
-<p>Given this, we need to tell Inquisit that it should be waiting for one of these two keys to be pressed. We can do this by setting the <code>validresponse</code> attribute.</p>
+<p>For this week all we really want to happen on the trial is for the
+stimulus to be displayed at some point, and to stay up there until the
+participant responds. So first we will tell Inquisit how it should
+display stimuli.</p>
+<p>To display the stimuli we need to set the <code>stimulustimes</code>
+attribute of our <code>trial</code> element. <code>Stimulustimes</code>
+determines both when dring the trial stimuli should be displayed, and
+what stimuli should be displayed at each time.</p>
+<p><strong>Exercise 2a</strong>: Specify that the text stimulus is shown
+right at the start of the trial.</p>
+<p>Now we need to tell Inquisit how to collect responses on the trial.
+In this case we will pretend that we have asked participants to respond
+by using the keyboard. In particular we have told them to press the
+<strong>A</strong> key if they wish to choose the risky option, and the
+<strong>B</strong> key if they wish to choose the sure option.</p>
+<p>Given this, we need to tell Inquisit that it should be waiting for
+one of these two keys to be pressed. We can do this by setting the
+<code>validresponse</code> attribute.</p>
 <p><strong>Exercise 2b</strong>: Specify A and B as valid responses.</p>
 </div>
 <div id="part-3-block-level" class="section level2">
 <h2>Part 3: Block level</h2>
-<p>The next step is to define what a block of our Experiment looks like, by creating a <code>block</code> element. We only have a single block of trials in our study. If you look at the <code>Help</code> file you will see that there are many behaviours we can define at the block level. As this Experiment is very simple, and we aren’t including instructions yet, we will only need to define the <code>trials</code> element.</p>
-<p>The <code>trials</code> attribute is somewhat (not really) similar to the <code>stimulustimes</code> attrbute and somewhat similar to the <code>select</code> attribute of the <code>text</code> element. The <code>trials</code> attribute lets us define how many trials there should be in the block, and what type of trial should be displayed on each of those trials. For now, we want to display the same trial type on every trial (<code>trial choice</code>) and we want to display all 21 version of this trial.</p>
-<p><strong>Exercise 3</strong>: Define a <code>block</code> element made of the above defined 21 trials, giving it the name <code>choiceblock</code>.</p>
+<p>The next step is to define what a block of our Experiment looks like,
+by creating a <code>block</code> element. We only have a single block of
+trials in our study. If you look at the <code>Help</code> file you will
+see that there are many behaviours we can define at the block level. As
+this Experiment is very simple, and we aren’t including instructions
+yet, we will only need to define the <code>trials</code> element.</p>
+<p>The <code>trials</code> attribute is somewhat (not really) similar to
+the <code>stimulustimes</code> attrbute and somewhat similar to the
+<code>select</code> attribute of the <code>text</code> element. The
+<code>trials</code> attribute lets us define how many trials there
+should be in the block, and what type of trial should be displayed on
+each of those trials. For now, we want to display the same trial type on
+every trial (<code>trial choice</code>) and we want to display all 21
+version of this trial.</p>
+<p><strong>Exercise 3</strong>: Define a <code>block</code> element made
+of the above defined 21 trials, giving it the name
+<code>choiceblock</code>.</p>
 </div>
 <div id="part-4-experiment-level" class="section level2">
 <h2>Part 4: Experiment level</h2>
-<p>The <code>exp</code> can be used for displaying instruction pages and for setting the order in which participants should view different parts of the Experiment. While the <code>block</code> element defines the order of <code>trials</code> in a <code>block</code>, the <code>expt</code> element defines the order of <code>blocks</code>. Here, we only have one block and want it to be displayed once.</p>
-<p><strong>Exercise 4</strong>: Create an <code>expt</code> element made of the above defined choice block.</p>
+<p>The <code>exp</code> can be used for displaying instruction pages and
+for setting the order in which participants should view different parts
+of the Experiment. While the <code>block</code> element defines the
+order of <code>trials</code> in a <code>block</code>, the
+<code>expt</code> element defines the order of <code>blocks</code>.
+Here, we only have one block and want it to be displayed once.</p>
+<p><strong>Exercise 4</strong>: Create an <code>expt</code> element made
+of the above defined choice block.</p>
 </div>
 <div id="final-steps" class="section level2">
 <h2>Final steps</h2>
-<p>Congratulations, you should now have a working Experiment. Try it out before you attempt the rest of the Exercises.</p>
+<p>Congratulations, you should now have a working Experiment. Try it out
+before you attempt the rest of the Exercises.</p>
 <div id="the-datafile" class="section level4">
 <h4>The datafile</h4>
-<p>By default, Inquisit generates a datafile when you run the Experiment. Open up the file and have a look. The default set-up for the datafile is that each row will be a separate trial, and each column a piece of information about that trial. For instance the <strong>blockcode</strong> column tells you which block the trial was part of while the <strong>trialcode</strong> column tells you which type of trial was displayed.</p>
-<p>For now, the most important columns are the <strong>response</strong> column, which indicates which key the participant pressed (as a keycode, A=30 and B=48), and the <strong>stimulusnumber1</strong> and <strong>stimulusitem1</strong> which tell us which stimulus was displayed on that trial. Check that the order the stimulus were displayed matches what you expected from how you defined item selection.</p>
-<p>Most of the columns other columns give you information that should match decisions you made about the set up of your experiment, such stimulus location and trial start times.</p>
-<p>if you ran an second participant on this Experiment, the data for the participant would be displayed in the same datafile directly underneath the current participant.</p>
+<p>By default, Inquisit generates a datafile when you run the
+Experiment. Open up the file and have a look. The default set-up for the
+datafile is that each row will be a separate trial, and each column a
+piece of information about that trial. For instance the
+<strong>blockcode</strong> column tells you which block the trial was
+part of while the <strong>trialcode</strong> column tells you which type
+of trial was displayed.</p>
+<p>For now, the most important columns are the <strong>response</strong>
+column, which indicates which key the participant pressed (as a keycode,
+A=30 and B=48), and the <strong>stimulusnumber1</strong> and
+<strong>stimulusitem1</strong> which tell us which stimulus was
+displayed on that trial. Check that the order the stimulus were
+displayed matches what you expected from how you defined item
+selection.</p>
+<p>Most of the columns other columns give you information that should
+match decisions you made about the set up of your experiment, such
+stimulus location and trial start times.</p>
+<p>if you ran an second participant on this Experiment, the data for the
+participant would be displayed in the same datafile directly underneath
+the current participant.</p>
 </div>
 <div id="trial-randomisation" class="section level4">
 <h4>Trial randomisation</h4>
-<p>Currently, our Experiment should display all 21 stimuli in sequential order. As we saw last week, however, this could cause specific order effects.</p>
-<p><strong>Exercise 5a</strong>: Change this so that instead they are in random order, with no stimuli displayed twice.</p>
+<p>Currently, our Experiment should display all 21 stimuli in sequential
+order. As we saw last week, however, this could cause specific order
+effects.</p>
+<p><strong>Exercise 5a</strong>: Change this so that instead they are in
+random order, with no stimuli displayed twice.</p>
 </div>
 <div id="message-before-a-trial" class="section level4">
 <h4>Message before a trial</h4>
-<p>Currently each trial begins immediately after the other. Let’s instead tell them they should get ready. This will require us to make 3 stages.</p>
-<p><strong>Exercise 5b</strong>: First, add a delay between each trial (of 500 ms).</p>
-<p><strong>Exercise 5c</strong>: Second, create a new <code>text</code> element (e.g., labelled <code>ready</code>) that determines where and how this instruction should be displayed. To do this normally we’d create an <code>item</code> element as well, but if you only want to use a small list of possible text strings (or in this case only one), you can define the items directly at the <code>items</code> attribute of the <code>text</code> element (e.g. <code>/items =("Get Ready")</code>). Display this in the center of the screen, like the other text, in a smaller font.</p>
-<p><strong>Exercise 5d</strong>: Add <code>ready</code> to the stimulustimes attribute of the trial element.</p>
+<p>Currently each trial begins immediately after the other. Let’s
+instead tell them they should get ready. This will require us to make 3
+stages.</p>
+<p><strong>Exercise 5b</strong>: First, add a delay between each trial
+(of 500 ms).</p>
+<p><strong>Exercise 5c</strong>: Second, create a new <code>text</code>
+element (e.g., labelled <code>ready</code>) that determines where and
+how this instruction should be displayed. To do this normally we’d
+create an <code>item</code> element as well, but if you only want to use
+a small list of possible text strings (or in this case only one), you
+can define the items directly at the <code>items</code> attribute of the
+<code>text</code> element (e.g. <code>/items =("Get Ready")</code>).
+Display this in the center of the screen, like the other text, in a
+smaller font.</p>
+<p><strong>Exercise 5d</strong>: Add <code>ready</code> to the
+stimulustimes attribute of the trial element.</p>
 </div>
 <div id="message-in-each-trial" class="section level4">
 <h4>Message in each trial</h4>
-<p>Sometimes it can be difficult for participants to remember what the response keys they need to use.</p>
-<p><strong>Exercise 5e</strong>: Create a reminder that will appear at the top of the screen on every trial of our block. This reminder should say “Press the A key if you prefer the risky option on the left, press the B key if you prefer the sure option on the right”. Because we want this to be displayed on every trial in the block the appropriate place to call this new text element is at the block level. At the block level you can set stimuli that you want to be displayed in the background of every trial by using the <code>bgstim</code> attribute. Give it a go.</p>
+<p>Sometimes it can be difficult for participants to remember what the
+response keys they need to use.</p>
+<p><strong>Exercise 5e</strong>: Create a reminder that will appear at
+the top of the screen on every trial of our block. This reminder should
+say “Press the A key if you prefer the risky option on the left, press
+the B key if you prefer the sure option on the right”. Because we want
+this to be displayed on every trial in the block the appropriate place
+to call this new text element is at the block level. At the block level
+you can set stimuli that you want to be displayed in the background of
+every trial by using the <code>bgstim</code> attribute. Give it a
+go.</p>
 </div>
 </div>
 <div id="send-me-your-assignments" class="section level2">
 <h2>Send me your assignments</h2>
-<p>You can send your assignment to my email address: <a href="mailto:laura.fontanesi@unibas.ch" class="email">laura.fontanesi@unibas.ch</a>.</p>
-<p>For this assignment, please send me the Inquisit script. If you want to add comments, you can do that by adding the hashtag <code>#</code> at the beginning of the line.</p>
+<p>You can send your assignment to my email address: <a
+href="mailto:laura.fontanesi@unibas.ch"
+class="email">laura.fontanesi@unibas.ch</a>.</p>
+<p>For this assignment, please send me the Inquisit script. If you want
+to add comments, you can do that by adding the hashtag <code>#</code> at
+the beginning of the line.</p>
 </div>
 
 

@@ -1,120 +1,108 @@
 ---
-title: "Weekly Programming Assignment 1: Introduction to Inquisit"
+title: "Experimental Design"
 ---
 
-Here is your first WPA! Today we are going to run a sample script from a risky choice experiment. To get the script and the stimuli list [download the experiment script and files](https://www.dropbox.com/sh/gu03ff98qtgm9az/AACtL5LivbYPF0SXD6zXRgGja?dl=0).
+## Part 1: The elements of an experiment
 
-### 1. Run the Experiment
+Experimental design allows us to **test hypotheses**, stated as relationships between two or more variables.
 
-The first thing we'll do is try participating in the experiment yourself, so you can see how it works. Once you have downloaded the folder, open the `LotteryRTE2V1.iqx` file in Inquisit. To run it, just press the green arrow at the top. You'll be prompted to enter a participant number before the experiment begins.
+### Variables
 
-If you need to exit the experiment press `ctrl + e`.
+A proper experimental design allows us to measure the change in a set of variables that we are interested in (**the dependent/effect/response/outcome variable(s), DV**) as a function of changes in a different set of variables that we manipulate (**the independent/causal/explanatory/predictor variable(s) IV**). 
 
-### 2. Changing the number of trials
+We may also identify a set of **control variables** to be held constant (typically, variables we are not interested in), in order to be sure that the observed changes in the DV are really due to our manipulations.
 
-The number of trials is defined at the block level. Let's change the number of test trials from 10 to 5. Find the element `<block testlt>` and change it as follows:
+A variable that cannot be/is not controlled for but is suspected to influence the IV is usually referred to as a **confounding variable**. 
 
-*Example Code*
+**Latent variables** are variables we are interested in but can not directly measure, and thus represent via a proxy (e.g., BOLD response vs. brain activity).
 
-`<block testlt>`
+*Example* HP: Humans are more accurate and faster in discriminating near-to vertical lines, compared to near-to horizontal lines. Design: Testing participants' ability in discriminating the orientation of two bars, one fixed bar A and one varying bar B (DV: accuracy and response times), manipulating the distance between the 2 bars within blocks and the orientation of the fixed bar between blocks (IV: orientation difference between stimulus A and B, orientation of stimulus A in degrees). The temperature in the room or other environmental distractions might also affect performance but we want to keep those as constant as possible within/across blocks or experimental sessions. If the experimenter would systematically tap on the floor as a function of the difficulty of a task, that would be a confound.
 
-`/trials = [1-10=noreplace(testlt)]`
+### Types of IV
 
-`/bgstim = (leftresp, rightresp)`
+When we manipulate the IV, we alter the values or levels that it takes (e.g., varying difficulty by setting the orientation difference to either 10, 20, oe 30 degrees). Where our experiment has a single IV, the different values or levels of this variable are the **conditions** of our experiment.
 
-`/preinstructions = (lotterytest)`
+In the simplest case, we have 2 conditions, where we manipulate the presence and absence of a certain IV (e.g., administering cheese before sleeping) and test the difference between the DV across these 2 conditions (e.g., measuring the quantity of nighmeares). Such conditions can be referred to as *experimental* and *control* condition.
 
-`</block>`
+One fundamental factor that we have to decide upon, even after we have determined the precise question we wish to examine, chosen our IV and DV, and set the levels on the IV, is *how we will distribute the participants* across the different conditions:
 
-We now have more stimuli than we do trials. What do you think will happen when we run the code again?
+* we could have different groups of people performing in the different conditions. The scores on our DV would therefore be from different samples and be unrelated to each other. Our IV would thus be an **unrelated samples IV** (**between subject design**)
+* we could have the same group of participants performing in the two conditions. The scores on our DV would therefore be from the same sample and would be related to each other. Our IV would thus be a **related samples IV** (**within subject design**).
 
-### 3. Changing the Stimuli
+In order to consider how you might choose between these types of IV, you should evaluate which type will ensure that there will be no confounds. One source of confounding can be our particular sample of participants. In the cheese example, by assignign one group to the cheese condition and one to the control condition, you want to make sure that one group also does not have better/worse sleep or other **individual differences** that might influence the DV. If you were to assign both condition to each participants, you want to be sure to not have any **order effect** (improvement or deterioration due to practice, but also anchoring, carry-over effects, interference, etc.). 
 
-Currently there are separate practice stimuli and test stimuli. Let's make some of the stimuli the same. The practice stimuli are defined by the `<item rpraclt>` element. Let's change the images used for these items to match the first 4 stimuli in the test items.
+Advantage of **related samples IV**: In eliminating individual differences from our experiment, related samples IVs reduce the amount of background or extraneous variation that we have to cope with variation other than that arising from our manipulation of the IV.
 
-*Example Code*
+Disadvantage of **related samples IV**: When we run an experiment using related samples, we will have to present our conditions one after the other. This produces problems that do not exist when we use unrelated samples.
 
-`<item rpraclt>`
+### Randomization
 
-`/1 = "prlt1.png"`
+We want to minimize the impact of the confounding variables that can naturally arise from the choice of the IV (e.g., order/individual differences effects) as much as possible. 
 
-`/2 = "prlt2.png"`
+In between-subject designs, you should try to rule out any systematic bias stemming from such differences between participants. One possibility would be to try to *match* your participants in each group. In order to do this you would need to assess the performances of your participants prior to running the experiment (i.e., run a pretest). Often, however, we have neither the resources nor the time to collect and act upon this information. Under these circumstances, you can *randomly assign participants* to each group, trusting the random sequence to spread individuals who differ in basic ability at the experimental task more or less equally among the conditions. The more participants we use, the more effective this procedure is likely to be.
 
-`/3 = "prlt4.png"`
+In within-subject designs, you should *counterbalance* each participant who does one particular sequence of conditions, with other participants who perform the conditions in all the other possible combinations of orders. If the levels of your IV are many, then counterbalancing becomes almost impossible. Then, you should rather randomize the sequence of IV levels across participants.
 
-`/4 = "prlt5.png"`
+### Exercise
 
-`/5 = "prlt7.png"`
+*Risky decision making*: White, C. M., Gummerum, M., & Hanoch, Y. (2018). Framing of online risk: Young adults’ and adolescents’ representations of risky gambles. Decision, 5(2), 119–128. https://doi.org/10.1037/dec0000066
 
-`/6 = "prlt8.png"`
+Read the paper above focusing on their experimental designs, and reply to the following questions:
 
-`</item>`
+1. What is/are the main hypothesis(es)?
+2. What are the IV, DV, and control variables?
+3. What kind of manipulations and randomization were done? 
+4. Can you recognize any latent variable or confound in this study?
 
-### 4. Changing the Responses
+*NOTE*: The exercises today should be preferably done in pairs, but you should write down your own answers.
 
-Currently participants use the `a` and `l` keys to respond to indicate their preferences. We can change these by changing the `/validresponse` attribute of the `<trial>` element.
+## Part 2: Evaluating an experiment
 
-For example, we could change them to `s` and `k` for the test trials by altering `<trial testlt>` as follows:
+### Validity
 
-*Example Code*
+Validity is the main extent to which a concept, conclusion or measurement is well-founded and likely corresponds accurately to the real world.
 
-`<trial testlt>`
+* **External validity (generalizability)**
 
- `/stimulustimes = [0=Ready; 600=testlt]`
- 
- `/iscorrectresponse = [trial.testlt.latency>300 &&trial.testlt.latency<20000 && (trial.testlt.response == 30 || trial.testlt.response == 38)]`
- 
- `/validresponse = ("s", "k")`
- 
- `/errormessage = true(speed, 2000)`
- 
- `/pretrialpause = values.tpause`
- 
- `/posttrialpause = values.ppause`
- 
- `</trial>`
+Generalizability is the extent to which the findings generated by your experiment can be extrapolated. For example, are they relevant to everybody, regardless of socio-economic class, ethnic group, gender, age, etc.? Or are they circumscribed in some way – for example, relevant only to middle-class, white, youngsters of above average intelligence?
 
-Unfortunately, this will only change the responses for the test trials. Do the same for the practise trials. Also see if you can work out how to make the instructions displayed at the bottom of the page during a trial match the new response keys.
+One threat to external validity comes from the conditions that you imposed on the time, setting and task for the purposes of control. Another potential limit to external validity stems from your participants. Are they representative of the group from which you took them (e.g., students)? Are they representative of a wider range of people? 
 
-### 5. Changing the Instruction Pages
+*NOTE*: the validity of this criticism depends on the variables in question. If the variables that differentiate such participants from the general public (e.g., age, intelligence, class) are thought to have some impact on the DV (e.g., reasoning, attitudes), then the criticism may be valid. However, other variables may not be so influenced (e.g., motor skills, visual perception). 
 
-There are a lot of Instructions on that first page. Let's try to change them. Instructions are defined in two ways in this script. The first Instruction page is called as a text element called `startpage`. If you find this page in your script then you can change the instructions in " " to whatever you want.
+* **Internal validity**
 
+Internal validity refers to the extent to which we can relate changes in the DV to the manipulation of the IV: A well-designed experiment with no confounding variables is an experiment very high in internal validity.
 
-*Example Code*
-`<text startpage>`
+To achieve high internal validity, we often need to hold many extraneous variables constant, thus compromising external validity. For example, in our cheese and nightmare experiment, the more we introduce controls for variables that might also produce nightmares, the more we run the risk that the generalizability of our findings will be limited by the values at which we hold those vari- ables constant. For example, if we require people to eat cheese 3 hours before they go to bed, the findings may not apply to cheese eaten 10 minutes before going to bed. Likewise, if we restrict ourselves to one type of cheese (say, Cheddar), the findings may be limited to that type of cheese, or only to hard cheeses, or only to cheeses made with milk from British cattle, and so on.
 
-`/items= ("That was a lot of instructions, this is better")`
+### Reliability
 
-`/ hjustify=left`
+Reliability is the overall consistency of a measure. A measure is said to have a high reliability if it produces similar results under consistent conditions. Reliability does not imply validity. That is, a reliable measure that is measuring something consistently is not necessarily measuring what you want to be measured. For example, while there are many reliable tests of risk preference, not all of them would be valid for predicting, say, the number of driving tickets or substance abuse.
 
-`/ valign=center`
+* **Inter-rater reliability** assesses the degree of agreement between two or more raters in their appraisals. For example, a person gets a stomach ache and different doctors all give the same diagnosis.
+* **Test-retest reliability** assesses the degree to which test scores are consistent from one test administration to the next. Measurements are gathered from a single rater who uses the same methods or instruments and the same testing conditions. This includes **intra-rater reliability**.
+* **Inter-method reliability** assesses the degree to which test scores are consistent when there is a variation in the methods or instruments used. This allows inter-rater reliability to be ruled out. When dealing with forms, it may be termed parallel-forms reliability.
+* **Internal consistency reliability** assesses the consistency of results across items within a test.
 
-`/ size =(90%,90%)`
+### Replicability
 
-`/ fontstyle=("Arial", 2.5%)`
+Reproducibility is a major principle underpinning the scientific method. For the findings of a study to be reproducible means that results obtained by an experiment or an observational study or in a statistical analysis of a data set should be achieved again with a high degree of reliability when the study is replicated. There are different kinds of replication but typically replication studies involve different researchers using the same methodology. [*Only after one or several such successful replications should a result be recognized as scientific knowledge*](https://en.wikipedia.org/wiki/Reproducibility).
 
-`</text>`
+### Exercise
 
+Get back to the paper you chose in Part 1. Now, focus on the validity (both external and internal). What do you think are the major pitfalls in this experiment (if there are any) and what could help improving them?
 
-The other Instruction pages are defined as specific page elements. They have the tag `<page XXXX.>` See if you can find them and alter these other instructions.
+## Additional resources
 
-### 6. Continue Exploring
+- [Peter Harris book](https://books.google.ch/books/about/Designing_and_Reporting_Experiments_in_P.html?id=n0vuAAAAMAAJ&source=kp_book_description&redir_esc=y)
+- Reproducibility [crisis](https://www.science.org/lookup/doi/10.1126/science.aac4716)
+- Generalizability: [crisis](https://doi.org/10.1017/S0140525X20001685) or [not](https://psyarxiv.com/tm8jy)
 
-Try playing around with other elements of the code. Or try out another experiment from the [Millisecond test Library](http://www.millisecond.com/download/library/). 
+Other important things to consider when planning an experiment are the expected effect size and power analyses, and Ethics conserns. You can have a look at the [Tutorial for the Project Seminar Students](https://tales.nmc.unibas.ch/de/conducting-psychological-research-6/) to have more insights about these topics.
 
-You can also have a look at the data files.
-
-### Send me your assignment!
-
-As explained in the syllabus, it is important that you send me your WPA for each class. As you are supposed to finish this in class, the deadline for sending the assignment is the **same day** of the class. You are not supposed to work on assignments all week long. 
-
-#### Assignment format
+## Send me your assignments
 
 You can send your assignment to my email address: laura.fontanesi@unibas.ch. 
 
-The format might change from week to week, so I will specify this every time.
-
-For this assignment, please send me a text file, where you list all questions and very briefly explain what you did, inserting the relevant parts of the code when possible. For each question, let me know if what you did worked. In general, you should test each of your answers yourself. By testing I mean run the experiment after each change and observe whether the change you wanted to make actually occured.
-
-The file name should be: `wpa_1_FirstLast`, where First is your first name and Last is your last name.
+For this assignment, please send me a text file (preferably .txt or .pdf). The file name should be: `1_FirstLast`, where First is your first name and Last is your last name.

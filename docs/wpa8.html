@@ -256,32 +256,44 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="wpa1.html">WPA 1</a>
+      <a href="wpa1.html">1 - experimental designs</a>
     </li>
     <li>
-      <a href="wpa2.html">WA 2</a>
+      <a href="wpa2.html">2 - intro to Inquisit</a>
     </li>
     <li>
-      <a href="wpa3.html">WPA 3</a>
+      <a href="wpa3.html">3 - Inquisit basics</a>
     </li>
     <li>
-      <a href="wpa4.html">WPA 4</a>
+      <a href="wpa4.html">4 - feedback</a>
     </li>
     <li>
-      <a href="wpa5.html">WPA 5</a>
+      <a href="wpa5.html">5 - conditional updating and branching</a>
     </li>
     <li>
-      <a href="wpa6.html">WPA 6</a>
+      <a href="wpa6.html">6 - within-subjects manipulation</a>
     </li>
     <li>
-      <a href="wpa7.html">WPA 7</a>
+      <a href="wpa7.html">7 - within-subjects conditional branching</a>
     </li>
     <li>
-      <a href="wpa8.html">WPA 8</a>
+      <a href="wpa8.html">8 - across-subject manipulation</a>
     </li>
     <li>
-      <a href="wpa9.html">WPA 9 (final project)</a>
+      <a href="wpa9.html">9 - final assignment</a>
     </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-display-arrow-down"></span>
+     
+    Solutions
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">1 - experimental designs</li>
   </ul>
 </li>
       </ul>
@@ -302,34 +314,69 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#implicit-association-task">Implicit Association Task</a>
+<li><a href="#implicit-association-task"
+id="toc-implicit-association-task">Implicit Association Task</a>
 <ul>
-<li><a href="#a-new-script">A new script</a></li>
+<li><a href="#a-new-script" id="toc-a-new-script">A new script</a></li>
 </ul></li>
-<li><a href="#define-the-stimuli">1. Define the Stimuli</a></li>
-<li><a href="#define-the-trials-blocks-and-experiment">2. Define the trials, blocks and experiment</a></li>
-<li><a href="#final-steps">Final steps</a>
+<li><a href="#define-the-stimuli" id="toc-define-the-stimuli">1. Define
+the Stimuli</a></li>
+<li><a href="#define-the-trials-blocks-and-experiment"
+id="toc-define-the-trials-blocks-and-experiment">2. Define the trials,
+blocks and experiment</a></li>
+<li><a href="#final-steps" id="toc-final-steps">Final steps</a>
 <ul>
-<li><a href="#counterbalancing">3. Counterbalancing</a></li>
-<li><a href="#ideographic-affect-words-optional">4. Ideographic Affect words (optional)</a></li>
+<li><a href="#counterbalancing" id="toc-counterbalancing">3.
+Counterbalancing</a></li>
+<li><a href="#ideographic-affect-words-optional"
+id="toc-ideographic-affect-words-optional">4. Ideographic Affect words
+(optional)</a></li>
 </ul></li>
-<li><a href="#send-me-your-assignments">Send me your assignments</a></li>
+<li><a href="#send-me-your-assignments"
+id="toc-send-me-your-assignments">Send me your assignments</a></li>
 </ul>
 </div>
 
 <div id="implicit-association-task" class="section level2">
 <h2>Implicit Association Task</h2>
-<p>Today we are going to program a simple Implicit Association Task based on Experiments 1 and 2 of <a href="https://psycnet.apa.org/buy/2000-16701-014">Greenwald &amp; Farnham (2000)</a>. We will use the 5 <em>me</em> and 5 <em>not-me</em> items from Experiment 2, and 5 <em>positive affect</em> and <em>5 negative affect</em> items from Experiment 1. The core of an IAT is quite similar to the tasks we have programmed previously, the basic procedure is that an item is presented on the screen (in this case a word), and the participant has to use the keyboard to indicate which category it belongs to (e.g., self vs. other; positive vs. negative). At some point in the Experiment, this categorisation then switches for one of the grouping (i.e., for the <em>me/not-me</em> or <em>affect</em> categorisation).</p>
+<p>Today we are going to program a simple Implicit Association Task
+based on Experiments 1 and 2 of <a
+href="https://psycnet.apa.org/buy/2000-16701-014">Greenwald &amp;
+Farnham (2000)</a>. We will use the 5 <em>me</em> and 5 <em>not-me</em>
+items from Experiment 2, and 5 <em>positive affect</em> and <em>5
+negative affect</em> items from Experiment 1. The core of an IAT is
+quite similar to the tasks we have programmed previously, the basic
+procedure is that an item is presented on the screen (in this case a
+word), and the participant has to use the keyboard to indicate which
+category it belongs to (e.g., self vs. other; positive vs. negative). At
+some point in the Experiment, this categorisation then switches for one
+of the grouping (i.e., for the <em>me/not-me</em> or <em>affect</em>
+categorisation).</p>
 <div id="a-new-script" class="section level3">
 <h3>A new script</h3>
-<p>Create a new Inquisit script file and name it <code>wpa_8_FirstLast.iqx</code> (with your First and Last name). This is the file you will email to me at the end of the class.</p>
+<p>Create a new Inquisit script file and name it
+<code>wpa_8_FirstLast.iqx</code> (with your First and Last name). This
+is the file you will email to me at the end of the class.</p>
 </div>
 </div>
 <div id="define-the-stimuli" class="section level2">
 <h2>1. Define the Stimuli</h2>
-<p>The stimuli we will use are taken from the appendix of Greenwald &amp; Farnham (2000), simply choose the 5 self and 5 other identifiers from Experiment 2, and the top 5 positive and negative affect words from Experiment 1.</p>
-<p>We want to define different correct and error responses for <em>self</em> and <em>other</em> words, and for <em>positive</em> and <em>negative</em> words. We also need to be able to create trials with only <em>affect</em> words or only <em>me/not-me</em> words. Usually, to do this we would create 4 separate item sets; self, other, positive affect and negative affect. However, this week we are going to learn a different way to specify correct responses. The advantage of this method is that it is much easier to then create the reversed association sections of the IAT.</p>
-<p>For this method, we will only need 2 item sets, one for the <em>me/not-me</em> items, and one for the <em>affect</em> items. first create these 2 lists.</p>
+<p>The stimuli we will use are taken from the appendix of Greenwald
+&amp; Farnham (2000), simply choose the 5 self and 5 other identifiers
+from Experiment 2, and the top 5 positive and negative affect words from
+Experiment 1.</p>
+<p>We want to define different correct and error responses for
+<em>self</em> and <em>other</em> words, and for <em>positive</em> and
+<em>negative</em> words. We also need to be able to create trials with
+only <em>affect</em> words or only <em>me/not-me</em> words. Usually, to
+do this we would create 4 separate item sets; self, other, positive
+affect and negative affect. However, this week we are going to learn a
+different way to specify correct responses. The advantage of this method
+is that it is much easier to then create the reversed association
+sections of the IAT.</p>
+<p>For this method, we will only need 2 item sets, one for the
+<em>me/not-me</em> items, and one for the <em>affect</em> items. first
+create these 2 lists.</p>
 <pre><code>&lt;item me&gt;
 /1=&quot;I&quot;
 /2=&quot;me&quot;
@@ -355,32 +402,108 @@ $(document).ready(function () {
 /4=&quot;brutal&quot;
 /5=&quot;corpse&quot;
 &lt;/item&gt;</code></pre>
-<p><strong>Exercise 1:</strong> Create corresponding text elements (text <code>me</code> and text <code>affect</code>) to present these two types of items. Present them in the center of the screen. The selection should be random without replacement.</p>
+<p><strong>Exercise 1:</strong> Create corresponding text elements (text
+<code>me</code> and text <code>affect</code>) to present these two types
+of items. Present them in the center of the screen. The selection should
+be random without replacement.</p>
 </div>
-<div id="define-the-trials-blocks-and-experiment" class="section level2">
+<div id="define-the-trials-blocks-and-experiment"
+class="section level2">
 <h2>2. Define the trials, blocks and experiment</h2>
-<p><strong>Exercise 2a:</strong> Create a normal trial type where a random <em>me/not-me</em> stimuli is presented on the screen, and participants can respond either with the <em>“A”</em> key or with the <em>“L”</em> key. For now, set the <em>“A”</em> key as the correct response for every trial. Include a break of 200ms between trials. Also, create a block element so that this trial is run 10 times. This will be useful for testing our code.</p>
-<p>If you run this trial now, by default it will end when you press either the “A” or the “L” key (like every other time we have used this set up). However, in the IAT we want to allow participants to press the incorrect key (here “L”), but not end the trial until they press the correct key (“A”). To do this we need to look at the <code>response</code> attribute of the <code>trial</code> element. The <code>response</code> attribute specifies how a response is obtained for this <code>trial</code>. This isn’t referring to what responses are considered valid, but instead to what is considered a response that can end the trial. There are several ways you can specify this <code>response</code>, we are going to specify a <code>responsemode</code>. There are 4 different <code>responsemodes</code>.</p>
-<p><strong>Exercise 2b:</strong> Based on what we want to achieve (i.e., the trial continues if the incorrect key is pressed, but stops if the correct key is pressed) which response mode should we specify? Try it.</p>
-<p>Currently, it doesn’t matter whether a <em>me</em> or <em>not-me</em> word is displayed, in both cases the correct response is to press “A”. What we can do, however, is instead set the correct response to be “A” if it is one of the first 5 items from our <em>me/not-me</em> set (i.e., self items), and “L” if it is one of the last 5 items (i.e., other items). If you look at the trial help-file again, you will see another means of specifying the correct response, called <code>iscorrectresponse</code>. This allows us to use a logical expression as correctresponse. If this expression is evaluated to be TRUE, then the response is cosidered correct. If it is FALSE, the response is incorrect. Therefore, we need to come up with a logical expression that is true if either (A is pressed and it is one of the first 5 items) OR (L is pressed and it is one of the second 5 items). To do this we need to be able to retrieve the current response for the trial (<code>trial.me.response</code>). We also need to know what item has been currently sampled by our call to text (<code>text.me.currentindex</code>).</p>
-<p><strong>Exercise 2c:</strong> Create a logical expression that evaluates to true if A is pressed and the current stimuli is one of the first 5 OR if L is pressed and it is one of the second 5 items. Replace this in the <code>iscorrectresponse</code> attribute in your trial element.</p>
-<p><strong>Exercise 2d:</strong> At the end of this block, display to participants their accuracy for the trial, as a percentage, and the mean time it took them to respond (you should first create custom variables called <code>accuracy</code> and <code>rt</code> to store these two values, and update them after participants’ responses, as we did in the previous weeks). You can create a trial to display the text or create a page, as you prefer.</p>
-<p>Now, we need to <strong>create the same set-up for the affect items</strong>. If you look at Figure 1 in the paper, you’ll see the basic set-up for an IAT. You can see that there is one section of the test (steps 1-3) where the positive words have a response that matches the self words, and a section (Steps 4-5) where this association is reversed, with instead negative words associated with self.</p>
+<p><strong>Exercise 2a:</strong> Create a normal trial type where a
+random <em>me/not-me</em> stimuli is presented on the screen, and
+participants can respond either with the <em>“A”</em> key or with the
+<em>“L”</em> key. For now, set the <em>“A”</em> key as the correct
+response for every trial. Include a break of 200ms between trials. Also,
+create a block element so that this trial is run 10 times. This will be
+useful for testing our code.</p>
+<p>If you run this trial now, by default it will end when you press
+either the “A” or the “L” key (like every other time we have used this
+set up). However, in the IAT we want to allow participants to press the
+incorrect key (here “L”), but not end the trial until they press the
+correct key (“A”). To do this we need to look at the
+<code>response</code> attribute of the <code>trial</code> element. The
+<code>response</code> attribute specifies how a response is obtained for
+this <code>trial</code>. This isn’t referring to what responses are
+considered valid, but instead to what is considered a response that can
+end the trial. There are several ways you can specify this
+<code>response</code>, we are going to specify a
+<code>responsemode</code>. There are 4 different
+<code>responsemodes</code>.</p>
+<p><strong>Exercise 2b:</strong> Based on what we want to achieve (i.e.,
+the trial continues if the incorrect key is pressed, but stops if the
+correct key is pressed) which response mode should we specify? Try
+it.</p>
+<p>Currently, it doesn’t matter whether a <em>me</em> or <em>not-me</em>
+word is displayed, in both cases the correct response is to press “A”.
+What we can do, however, is instead set the correct response to be “A”
+if it is one of the first 5 items from our <em>me/not-me</em> set (i.e.,
+self items), and “L” if it is one of the last 5 items (i.e., other
+items). If you look at the trial help-file again, you will see another
+means of specifying the correct response, called
+<code>iscorrectresponse</code>. This allows us to use a logical
+expression as correctresponse. If this expression is evaluated to be
+TRUE, then the response is cosidered correct. If it is FALSE, the
+response is incorrect. Therefore, we need to come up with a logical
+expression that is true if either (A is pressed and it is one of the
+first 5 items) OR (L is pressed and it is one of the second 5 items). To
+do this we need to be able to retrieve the current response for the
+trial (<code>trial.me.response</code>). We also need to know what item
+has been currently sampled by our call to text
+(<code>text.me.currentindex</code>).</p>
+<p><strong>Exercise 2c:</strong> Create a logical expression that
+evaluates to true if A is pressed and the current stimuli is one of the
+first 5 OR if L is pressed and it is one of the second 5 items. Replace
+this in the <code>iscorrectresponse</code> attribute in your trial
+element.</p>
+<p><strong>Exercise 2d:</strong> At the end of this block, display to
+participants their accuracy for the trial, as a percentage, and the mean
+time it took them to respond (you should first create custom variables
+called <code>accuracy</code> and <code>rt</code> to store these two
+values, and update them after participants’ responses, as we did in the
+previous weeks). You can create a trial to display the text or create a
+page, as you prefer.</p>
+<p>Now, we need to <strong>create the same set-up for the affect
+items</strong>. If you look at Figure 1 in the paper, you’ll see the
+basic set-up for an IAT. You can see that there is one section of the
+test (steps 1-3) where the positive words have a response that matches
+the self words, and a section (Steps 4-5) where this association is
+reversed, with instead negative words associated with self.</p>
 <p>We will implement all 5 steps. So far we have step 1.</p>
 <p>First, we will create steps 2 and 3.</p>
-<p><strong>Exercise 2e:</strong> Setup new trial (<code>affect_trial</code>) and block elements (<code>affect_block</code>) where a random <strong>affect</strong> stimulus is shown, and responding “A” for positive stimuli is correct and “L” for negative stimuli is correct. Add this block to our <code>expt</code> element, so that steps 1 and 2 are displayed.</p>
-<p>For step 3, we want to create a block where alternating affect and me trials are shown.</p>
-<p><strong>Exercise 2f:</strong> Create a new block (<code>mixed_block</code>), which alternates the 2 trial types (using the <code>sequence</code> function). Remember to add this to the experiment after step 2.</p>
-<p>Now we want to create steps 4 and 5, where the responses are reversed for the affect trials. We therefore need to create a new trial element, where the <code>iscorrectresponse</code> expression has the opposite association between response value and item number.</p>
-<p><strong>Exercise 2f:</strong> Create such a trial, calling it <code>reversed_affect_trial</code>. Create also a reversed version of the affect block and of the mixed block. Add them to the experiment.</p>
+<p><strong>Exercise 2e:</strong> Setup new trial
+(<code>affect_trial</code>) and block elements
+(<code>affect_block</code>) where a random <strong>affect</strong>
+stimulus is shown, and responding “A” for positive stimuli is correct
+and “L” for negative stimuli is correct. Add this block to our
+<code>expt</code> element, so that steps 1 and 2 are displayed.</p>
+<p>For step 3, we want to create a block where alternating affect and me
+trials are shown.</p>
+<p><strong>Exercise 2f:</strong> Create a new block
+(<code>mixed_block</code>), which alternates the 2 trial types (using
+the <code>sequence</code> function). Remember to add this to the
+experiment after step 2.</p>
+<p>Now we want to create steps 4 and 5, where the responses are reversed
+for the affect trials. We therefore need to create a new trial element,
+where the <code>iscorrectresponse</code> expression has the opposite
+association between response value and item number.</p>
+<p><strong>Exercise 2f:</strong> Create such a trial, calling it
+<code>reversed_affect_trial</code>. Create also a reversed version of
+the affect block and of the mixed block. Add them to the experiment.</p>
 </div>
 <div id="final-steps" class="section level2">
 <h2>Final steps</h2>
-<p>Congratulations, you should now have a working IAT. Try it out before you attempt the rest of the Exercises.</p>
+<p>Congratulations, you should now have a working IAT. Try it out before
+you attempt the rest of the Exercises.</p>
 <div id="counterbalancing" class="section level3">
 <h3>3. Counterbalancing</h3>
-<p>The experimenters wanted to counterbalance the order of steps 2-3 and 4-5 (i.e., whether the positive self or negative self associations were shown first). Do this accross participants.</p>
-<p>This is the first time that we have a proper across-subjects manipulation! We need to create two separate experiment elements. Each will have its own order of the blocks, and no element label, like so:</p>
+<p>The experimenters wanted to counterbalance the order of steps 2-3 and
+4-5 (i.e., whether the positive self or negative self associations were
+shown first). Do this accross participants.</p>
+<p>This is the first time that we have a proper across-subjects
+manipulation! We need to create two separate experiment elements. Each
+will have its own order of the blocks, and no element label, like
+so:</p>
 <pre><code>&lt;expt&gt;
  /blocks=[1=XX; 2=XX; 3=XX; 4=XX; 5=XX]
  /subjects = (1 of 2)
@@ -390,15 +513,34 @@ $(document).ready(function () {
  /blocks=[1=XX; 2=XX; 3=XX; 4=XX; 5=XX]
  /subjects = (2 of 2)
 &lt;/expt&gt;</code></pre>
-<p><strong>Exercise 3:</strong> Fill in the 2 block orders in the above code, and try to run the experiment, using different subject numbers. Check that indeed different versions are shown for odd and even participants’ numbers.</p>
+<p><strong>Exercise 3:</strong> Fill in the 2 block orders in the above
+code, and try to run the experiment, using different subject numbers.
+Check that indeed different versions are shown for odd and even
+participants’ numbers.</p>
 </div>
 <div id="ideographic-affect-words-optional" class="section level3">
 <h3>4. Ideographic Affect words (optional)</h3>
-<p>One aspect of the task we haven’t implemented is the fact that each participant could indicate a subset of the affect list to be used. This was a means of insuring that the words were actually negative or positive for the participants. we can also implement this kind of selection in Inquisit. We are going to implement a procedure where the participnt has to pick 5 words for a list to create the positive affect items, and 5 words form another list to create the negative affect items.</p>
-<p>To learn how to do this, Inquisit has a useful <a href="https://www.millisecond.com/support/docs/v5/html/howto/howtosubjectprovideditems.htm">help page</a>. The basic procedure is to first create an empty item element, that we will populate during the experiment with items. Then to present the participant with a surveypage with two questions presented. The first will ask them to select 5 words form a provided list that have a positive associated. The second will ask them to select 5 words from different list that have a negative association.</p>
+<p>One aspect of the task we haven’t implemented is the fact that each
+participant could indicate a subset of the affect list to be used. This
+was a means of insuring that the words were actually negative or
+positive for the participants. we can also implement this kind of
+selection in Inquisit. We are going to implement a procedure where the
+participnt has to pick 5 words for a list to create the positive affect
+items, and 5 words form another list to create the negative affect
+items.</p>
+<p>To learn how to do this, Inquisit has a useful <a
+href="https://www.millisecond.com/support/docs/v5/html/howto/howtosubjectprovideditems.htm">help
+page</a>. The basic procedure is to first create an empty item element,
+that we will populate during the experiment with items. Then to present
+the participant with a surveypage with two questions presented. The
+first will ask them to select 5 words form a provided list that have a
+positive associated. The second will ask them to select 5 words from
+different list that have a negative association.</p>
 <pre><code>&lt;item ideoaffect&gt;
 &lt;/item&gt;</code></pre>
-<p>To present lists where participants select one or more items, you instead use a <code>checkbox</code> element. Make sure that participants can indicate only 5 items for each checkbox.</p>
+<p>To present lists where participants select one or more items, you
+instead use a <code>checkbox</code> element. Make sure that participants
+can indicate only 5 items for each checkbox.</p>
 <pre><code>&lt;checkboxes positive&gt;
  /caption = &quot;Select five words that are positive:&quot;
  /options = (&quot;caress&quot;, &quot;cuddle&quot;, &quot;diamond&quot;, &quot;glory&quot;, &quot;gold&quot;, &quot;health&quot;)
@@ -410,7 +552,10 @@ $(document).ready(function () {
  /options = (&quot;abuse&quot;, &quot;agony&quot;, &quot;assault&quot;, &quot;brutal&quot;, &quot;corpse&quot;, &quot;death&quot;)
  /range = (5, 5)
 &lt;/checkboxes&gt;</code></pre>
-<p>Now these questions need to be presented on a surveypage. Then the answers need to be converted into items in the list (Hint it uses ontrialend in a similar way to how we have assigned variables before).</p>
+<p>Now these questions need to be presented on a surveypage. Then the
+answers need to be converted into items in the list (Hint it uses
+ontrialend in a similar way to how we have assigned variables
+before).</p>
 <pre><code>&lt;surveypage page1&gt;
  /questions = [1=positive; 2=negative]
  /ontrialend = [ if (checkboxes.positive.checked.1 == true) item.ideoaffect.item = checkboxes.positive.option.1 ] 
@@ -426,13 +571,18 @@ $(document).ready(function () {
  /ontrialend = [ if (checkboxes.negative.checked.5 == true) item.ideoaffect.item = checkboxes.negative.option.5 ] 
  /ontrialend = [ if (checkboxes.negative.checked.6 == true) item.ideoaffect.item = checkboxes.negative.option.6 ] 
 &lt;/surveypage&gt;</code></pre>
-<p>Finally the item list can be used like any other item list in text, trial block etc. elements.</p>
+<p>Finally the item list can be used like any other item list in text,
+trial block etc. elements.</p>
 </div>
 </div>
 <div id="send-me-your-assignments" class="section level2">
 <h2>Send me your assignments</h2>
-<p>You can send your assignment to my email address: <a href="mailto:laura.fontanesi@unibas.ch" class="email">laura.fontanesi@unibas.ch</a>.</p>
-<p>For this assignment, please send me the Inquisit script. If you want to add comments, you can do that by adding the hashtag <code>#</code> at the beginning of the line.</p>
+<p>You can send your assignment to my email address: <a
+href="mailto:laura.fontanesi@unibas.ch"
+class="email">laura.fontanesi@unibas.ch</a>.</p>
+<p>For this assignment, please send me the Inquisit script. If you want
+to add comments, you can do that by adding the hashtag <code>#</code> at
+the beginning of the line.</p>
 </div>
 
 
