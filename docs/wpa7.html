@@ -284,18 +284,6 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-display-arrow-down"></span>
-     
-    Solutions
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">1 - experimental designs</li>
-  </ul>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -373,16 +361,16 @@ of 20 times. These are the feedback values associated with the four
 options A, B, C, and D:</p>
 <p>A:</p>
 <pre class="r"><code>round(rnorm(20, mean=36, sd=5))</code></pre>
-<pre><code>##  [1] 33 38 34 42 40 34 35 43 44 34 37 44 44 43 31 33 36 39 29 35</code></pre>
+<pre><code>##  [1] 31 32 42 25 38 45 41 43 35 42 26 37 41 41 30 40 32 29 45 31</code></pre>
 <p>B:</p>
 <pre class="r"><code>round(rnorm(20, mean=40, sd=5))</code></pre>
-<pre><code>##  [1] 42 44 42 40 39 45 39 36 46 41 29 42 48 43 29 50 43 57 51 44</code></pre>
+<pre><code>##  [1] 37 37 39 35 49 44 41 40 35 42 38 33 40 52 39 36 39 44 48 46</code></pre>
 <p>C:</p>
 <pre class="r"><code>round(rnorm(20, mean=50, sd=5))</code></pre>
-<pre><code>##  [1] 55 55 48 50 49 54 45 56 49 52 47 55 53 54 55 55 52 48 55 56</code></pre>
+<pre><code>##  [1] 48 48 60 46 53 52 49 46 47 49 42 48 51 44 47 50 50 52 49 50</code></pre>
 <p>D:</p>
 <pre class="r"><code>round(rnorm(20, mean=54, sd=5))</code></pre>
-<pre><code>##  [1] 56 50 56 55 53 60 61 51 60 56 57 46 55 48 55 46 59 56 49 57</code></pre>
+<pre><code>##  [1] 57 54 55 54 50 51 49 54 50 57 49 50 56 52 54 54 54 61 47 58</code></pre>
 <p>The mean rewards of the options in each block were 36, 40, 50, and 54
 for options A, B, C, and D, respectively. And the order of the feedback
 was randomised for each option.</p>
@@ -524,10 +512,10 @@ class="section level3">
 <p>We also want to show to the participants their final reward.</p>
 <pre class="r"><code># only inaccurate responses
 sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))</code></pre>
-<pre><code>## [1] 1683</code></pre>
+<pre><code>## [1] 1675</code></pre>
 <pre class="r"><code># only accurate responses
 sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=50, sd=5))) + sum(round(rnorm(20, mean=54, sd=5)))</code></pre>
-<pre><code>## [1] 1914</code></pre>
+<pre><code>## [1] 2020</code></pre>
 <p>Here I simulated the reward amount of 2 subjects, one that would only
 choose the lowest paying option, and one that would only choose the
 highest paying one.</p>
@@ -538,9 +526,9 @@ to something we could give them in CHF. For example, we could divide by
 <pre class="r"><code>final_reward = sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))
 
 final_reward</code></pre>
-<pre><code>## [1] 1669</code></pre>
+<pre><code>## [1] 1631</code></pre>
 <pre class="r"><code>round(final_reward/100)/10</code></pre>
-<pre><code>## [1] 1.7</code></pre>
+<pre><code>## [1] 1.6</code></pre>
 <p>In order to do that, we can use the expression element. This can go
 together witht the values and parameters elements at the beginning of
 the script, but can be used to specify an operation that we want to be
