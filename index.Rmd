@@ -12,7 +12,7 @@ In each class we will work on **WPAs** (Weekly Programming Assignments):
 
 | Week | Date | Topic |
 | ---- | ----- | -------------- |
-| 1  | 19 September | Experimental Designs |
+| 1  | 19 September | Experimental Design |
 | 2  | 26 September | Introduction to Inquisit |
 | 3  | 3 October | Inquisit basics |
 | 4  | 10 October | Events in a trial (feedback) |

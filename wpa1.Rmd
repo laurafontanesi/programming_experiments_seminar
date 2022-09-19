@@ -2,11 +2,11 @@
 title: "Experimental Design"
 ---
 
-## Part 1: The elements of an experiment
+# Part 1: The elements of an experiment
 
 Experimental design allows us to **test hypotheses**, stated as relationships between two or more variables.
 
-### Variables
+## Variables
 
 A proper experimental design allows us to measure the change in a set of variables that we are interested in (**the dependent/effect/response/outcome variable(s), DV**) as a function of changes in a different set of variables that we manipulate (**the independent/causal/explanatory/predictor variable(s) IV**). 
 
@@ -18,7 +18,7 @@ A variable that cannot be/is not controlled for but is suspected to influence th
 
 *Example* HP: Humans are more accurate and faster in discriminating near-to vertical lines, compared to near-to horizontal lines. Design: Testing participants' ability in discriminating the orientation of two bars, one fixed bar A and one varying bar B (DV: accuracy and response times), manipulating the distance between the 2 bars within blocks and the orientation of the fixed bar between blocks (IV: orientation difference between stimulus A and B, orientation of stimulus A in degrees). The temperature in the room or other environmental distractions might also affect performance but we want to keep those as constant as possible within/across blocks or experimental sessions. If the experimenter would systematically tap on the floor as a function of the difficulty of a task, that would be a confound.
 
-### Types of IV
+## Types of IV
 
 When we manipulate the IV, we alter the values or levels that it takes (e.g., varying difficulty by setting the orientation difference to either 10, 20, oe 30 degrees). Where our experiment has a single IV, the different values or levels of this variable are the **conditions** of our experiment.
 
@@ -35,7 +35,7 @@ Advantage of **related samples IV**: In eliminating individual differences from 
 
 Disadvantage of **related samples IV**: When we run an experiment using related samples, we will have to present our conditions one after the other. This produces problems that do not exist when we use unrelated samples.
 
-### Randomization
+## Randomization
 
 We want to minimize the impact of the confounding variables that can naturally arise from the choice of the IV (e.g., order/individual differences effects) as much as possible. 
 
@@ -43,7 +43,7 @@ In between-subject designs, you should try to rule out any systematic bias stemm
 
 In within-subject designs, you should *counterbalance* each participant who does one particular sequence of conditions, with other participants who perform the conditions in all the other possible combinations of orders. If the levels of your IV are many, then counterbalancing becomes almost impossible. Then, you should rather randomize the sequence of IV levels across participants.
 
-### Exercise
+## Exercise
 
 *Risky decision making*: White, C. M., Gummerum, M., & Hanoch, Y. (2018). Framing of online risk: Young adults’ and adolescents’ representations of risky gambles. Decision, 5(2), 119–128. https://doi.org/10.1037/dec0000066
 
@@ -56,9 +56,9 @@ Read the paper above focusing on their experimental designs, and reply to the fo
 
 *NOTE*: The exercises today should be preferably done in pairs, but you should write down your own answers.
 
-## Part 2: Evaluating an experiment
+# Part 2: Evaluating an experiment
 
-### Validity
+## Validity
 
 Validity is the main extent to which a concept, conclusion or measurement is well-founded and likely corresponds accurately to the real world.
 
@@ -76,7 +76,7 @@ Internal validity refers to the extent to which we can relate changes in the DV 
 
 To achieve high internal validity, we often need to hold many extraneous variables constant, thus compromising external validity. For example, in our cheese and nightmare experiment, the more we introduce controls for variables that might also produce nightmares, the more we run the risk that the generalizability of our findings will be limited by the values at which we hold those vari- ables constant. For example, if we require people to eat cheese 3 hours before they go to bed, the findings may not apply to cheese eaten 10 minutes before going to bed. Likewise, if we restrict ourselves to one type of cheese (say, Cheddar), the findings may be limited to that type of cheese, or only to hard cheeses, or only to cheeses made with milk from British cattle, and so on.
 
-### Reliability
+## Reliability
 
 Reliability is the overall consistency of a measure. A measure is said to have a high reliability if it produces similar results under consistent conditions. Reliability does not imply validity. That is, a reliable measure that is measuring something consistently is not necessarily measuring what you want to be measured. For example, while there are many reliable tests of risk preference, not all of them would be valid for predicting, say, the number of driving tickets or substance abuse.
 
@@ -85,24 +85,18 @@ Reliability is the overall consistency of a measure. A measure is said to have a
 * **Inter-method reliability** assesses the degree to which test scores are consistent when there is a variation in the methods or instruments used. This allows inter-rater reliability to be ruled out. When dealing with forms, it may be termed parallel-forms reliability.
 * **Internal consistency reliability** assesses the consistency of results across items within a test.
 
-### Replicability
+## Replicability
 
 Reproducibility is a major principle underpinning the scientific method. For the findings of a study to be reproducible means that results obtained by an experiment or an observational study or in a statistical analysis of a data set should be achieved again with a high degree of reliability when the study is replicated. There are different kinds of replication but typically replication studies involve different researchers using the same methodology. [*Only after one or several such successful replications should a result be recognized as scientific knowledge*](https://en.wikipedia.org/wiki/Reproducibility).
 
-### Exercise
+## Exercise
 
 Get back to the paper you chose in Part 1. Now, focus on the validity (both external and internal). What do you think are the major pitfalls in this experiment (if there are any) and what could help improving them?
 
-## Additional resources
+# Additional resources
 
 - [Peter Harris book](https://books.google.ch/books/about/Designing_and_Reporting_Experiments_in_P.html?id=n0vuAAAAMAAJ&source=kp_book_description&redir_esc=y)
 - Reproducibility [crisis](https://www.science.org/lookup/doi/10.1126/science.aac4716)
 - Generalizability: [crisis](https://doi.org/10.1017/S0140525X20001685) or [not](https://psyarxiv.com/tm8jy)
 
 Other important things to consider when planning an experiment are the expected effect size and power analyses, and Ethics conserns. You can have a look at the [Tutorial for the Project Seminar Students](https://tales.nmc.unibas.ch/de/conducting-psychological-research-6/) to have more insights about these topics.
-
-## Send me your assignments
-
-You can send your assignment to my email address: laura.fontanesi@unibas.ch. 
-
-For this assignment, please send me a text file (preferably .txt or .pdf). The file name should be: `1_FirstLast`, where First is your first name and Last is your last name.
