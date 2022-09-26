@@ -2,119 +2,75 @@
 title: "Introduction to Inquisit"
 ---
 
-Here is your first WPA! Today we are going to run a sample script from a risky choice experiment. To get the script and the stimuli list [download the experiment script and files](https://www.dropbox.com/sh/gu03ff98qtgm9az/AACtL5LivbYPF0SXD6zXRgGja?dl=0).
+Here is your first WPA! Today we are going to run a sample script from a choice experiment. To get the script, click on [Download Test for Inquisit 5 ](https://www.millisecond.com/download/library/framing) in the Millisecond Test Library website.
 
-### 1. Run the Experiment
+# 1. Run the experiment
 
-The first thing we'll do is try participating in the experiment yourself, so you can see how it works. Once you have downloaded the folder, open the `LotteryRTE2V1.iqx` file in Inquisit. To run it, just press the green arrow at the top. You'll be prompted to enter a participant number before the experiment begins.
+The first thing we'll do is participating in the experiment yourself, so you can see how it works. Once you have downloaded the `.iqx` file (the extension for Inquisit's scripts), open it in Inquisit. To run it, just press the green arrow at the top. You'll be prompted to enter a participant number before the experiment begins (any number is fine).
 
-If you need to exit the experiment press `ctrl + e`.
+NOTE: If you need to **quit the experiment** press `ctrl + q`.
 
-### 2. Changing the number of trials
+# 2. Read the user manual
 
-The number of trials is defined at the block level. Let's change the number of test trials from 10 to 5. Find the element `<block testlt>` and change it as follows:
+All experiments in the Millisecond Test Library website are provided with a user manual, that usually describes the experiment, tells us from which study it has been taken from, and gives us information on the experimental design and structure of the task.
 
-*Example Code*
+Find the `<usermanual>` element and read it to familiarize yourself with the framing task.
 
-`<block testlt>`
+# 3. Changing the number of trials
 
-`/trials = [1-10=noreplace(testlt)]`
+The number of trials is defined at the block level. In this case, there is only one block, called `framing`, made of 25 trials.
 
-`/bgstim = (leftresp, rightresp)`
+Find the `<block framing>` element.
 
-`/preinstructions = (lotterytest)`
+`/ trials = [1-25 = choice]` means that the trials from 1 to 25 will be trials of the type `choice`.
 
-`</block>`
+What do you think you have to change in order to have 5 trials instead? Try that out and run the experiment again to verify that it worked.
 
-We now have more stimuli than we do trials. What do you think will happen when we run the code again?
+# 4. Changing the stimuli
 
-### 3. Changing the Stimuli
+The stimuli (in this case the different payoffs and odds of the gambles) are defined in the `<list>` elements. There are four lists: one for the odds of gamble A, one for the payoffs of gamble A, one for the odds of gamble B, and one for the payoffs of gamble B. First of all, find these lists in the script.
 
-Currently there are separate practice stimuli and test stimuli. Let's make some of the stimuli the same. The practice stimuli are defined by the `<item rpraclt>` element. Let's change the images used for these items to match the first 4 stimuli in the test items.
+As you can see, the order of the numbers within the lists matters: When `oddsa` is 30, for example, then `payoffa` is 70, `oddsb` is 70, and `payoffb` is 30.
 
-*Example Code*
+Modify these lists, either by slightly changing the numbers (for example, to 5-15-25-35-65-75-85-95) or by removing some numbers (for example, to 10-30-70-90). Careful to change the numbers in all 4 lists accordingly : The expected value of A and B should be the same in every trial and one should have high-payoff/low-odd while the other has low-payoff/high-odd).
 
-`<item rpraclt>`
+Run again the experiment to verify that it worked.
 
-`/1 = "prlt1.png"`
+# 5. Changing the instructions
 
-`/2 = "prlt2.png"`
+The experiment does not have instructions yet.
 
-`/3 = "prlt4.png"`
+We can create a `<page>` by adding this in the script:
 
-`/4 = "prlt5.png"`
+```
+<page start_practice>
+In this task, you will be asked to repeatedly choose between two otpions...
 
-`/5 = "prlt7.png"`
+^^ jhdfljhdslg
 
-`/6 = "prlt8.png"`
+^^ haklshdg
 
-`</item>`
+</page>
+```
 
-### 4. Changing the Responses
+We also have to tell Inquisit to show this page at the beginning of the framing block. Go back to the the `<block framing>` element, and add a line *within* the element itself:
 
-Currently participants use the `a` and `l` keys to respond to indicate their preferences. We can change these by changing the `/validresponse` attribute of the `<trial>` element.
+`/preinstructions = (page.start_practice)`
 
-For example, we could change them to `s` and `k` for the test trials by altering `<trial testlt>` as follows:
+Now run the experiment to see whether it worked. 
 
-*Example Code*
+Then, fill in some text in order to briefly explain to the participants what kind of task they are going to do.
 
-`<trial testlt>`
-
- `/stimulustimes = [0=Ready; 600=testlt]`
- 
- `/iscorrectresponse = [trial.testlt.latency>300 &&trial.testlt.latency<20000 && (trial.testlt.response == 30 || trial.testlt.response == 38)]`
- 
- `/validresponse = ("s", "k")`
- 
- `/errormessage = true(speed, 2000)`
- 
- `/pretrialpause = values.tpause`
- 
- `/posttrialpause = values.ppause`
- 
- `</trial>`
-
-Unfortunately, this will only change the responses for the test trials. Do the same for the practise trials. Also see if you can work out how to make the instructions displayed at the bottom of the page during a trial match the new response keys.
-
-### 5. Changing the Instruction Pages
-
-There are a lot of Instructions on that first page. Let's try to change them. Instructions are defined in two ways in this script. The first Instruction page is called as a text element called `startpage`. If you find this page in your script then you can change the instructions in " " to whatever you want.
-
-
-*Example Code*
-`<text startpage>`
-
-`/items= ("That was a lot of instructions, this is better")`
-
-`/ hjustify=left`
-
-`/ valign=center`
-
-`/ size =(90%,90%)`
-
-`/ fontstyle=("Arial", 2.5%)`
-
-`</text>`
-
-
-The other Instruction pages are defined as specific page elements. They have the tag `<page XXXX.>` See if you can find them and alter these other instructions.
-
-### 6. Continue Exploring
+# 6. Continue Exploring
 
 Try playing around with other elements of the code. Or try out another experiment from the [Millisecond test Library](http://www.millisecond.com/download/library/). 
 
-You can also have a look at the data files.
+You can also have a look at the data files. How does the output look? 
 
-### Send me your assignment!
+# Send me your assignment!
 
-As explained in the syllabus, it is important that you send me your WPA for each class. As you are supposed to finish this in class, the deadline for sending the assignment is the **same day** of the class. You are not supposed to work on assignments all week long. 
+As explained in the syllabus, it is important that you send me your WPA (to my email address: laura.fontanesi@unibas.ch) for each class. As you are supposed to finish this in class, the deadline for sending the assignment is the **same day** of the class.
 
-#### Assignment format
+For this assignment, please send me the Inquisit script. If you want to add comments, you can do that by adding the hashtag `#` at the beginning of the line.
 
-You can send your assignment to my email address: laura.fontanesi@unibas.ch. 
-
-The format might change from week to week, so I will specify this every time.
-
-For this assignment, please send me a text file, where you list all questions and very briefly explain what you did, inserting the relevant parts of the code when possible. For each question, let me know if what you did worked. In general, you should test each of your answers yourself. By testing I mean run the experiment after each change and observe whether the change you wanted to make actually occured.
-
-The file name should be: `2_FirstLast`, where First is your first name and Last is your last name.
+The file name should be: `2_FirstLast.iqx`, where First is your first name and Last is your last name.
