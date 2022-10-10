@@ -10,7 +10,7 @@ In particular, we will focus on the **feedback** today and on **conditional bran
 
 ## Feedback
 
-Feedbacks are quite common both in perceptual and in value-based decision tasks. The can have a specific function (e.g., to drive learning) or used simpy to notify that a response was recorded and the trial is over (people like to have just any kind of feedback, and can be thus used as motivator).
+Feedback is quite common both in perceptual and in value-based decision tasks. It can have a specific function (e.g., to drive learning) or is used simply to notify that a response was recorded and the trial is over (people like to receive feedback, and can be thus used as motivator).
 
 Today, we are going to use the stimuli for a categorization task, taken from [Spiering & Ashby (2008)](https://doi.org/10.1111/j.1467-9280.2008.02219.x). You can download them using this [Dropbox link](https://www.dropbox.com/sh/6fa8w54tz9eib5z/AACxvu6hs6cLNL8fAgo91gZNa?dl=0).
 
@@ -22,9 +22,9 @@ In this task, participants learn to categorize these 30 patches (visual stimuli 
 
 ### A new script
 
-Create a new Inquisit script file and name it `wpa_4_FirstLast.iqx` (with your First and Last name). This is the file you will email to me at the end of the class.
+Create a new Inquisit script file and name it `wpa_4_FirstLast.iqx` (with your First and Last name). This is the file you will email me at the end of the class.
 
-Now that you have a script file, define a defaults element at the beginning of the file (as you did in [WPA 3](https://laurafontanesi.github.io/programming_experiments_seminar/wpa3.html)).
+Now that you have a script file, define a defaults element at the beginning of the file (as you did in WPA3).
 
 ### 1. Define the choice stimuli
 
@@ -37,7 +37,7 @@ Just like we used the `item` element to define our text strings last week, we ca
 </item>
 ```
 
-Otherwise, if they are in a subfolder named for example "stimuli_wpa4", you will write:
+Otherwise, if they are in a sub-folder named for example "stimuli_wpa4", you will write:
 
 ```
 <item example>  
@@ -46,15 +46,15 @@ Otherwise, if they are in a subfolder named for example "stimuli_wpa4", you will
 </item>
 ```
 
-Last week we also mentioned how to [load stimuli lists from file](https://www.millisecond.com/forums/Topic19045.aspx). I prepared a stimulus list text file in the folder, in case you'd like to try that out (otherwise, you can simply copy-paste the code in Inquisit...).
+An alternative to this method is to [load stimuli lists from a text file](https://www.millisecond.com/forums/Topic19045.aspx). I prepared a stimulus list text file in the folder, in case you'd like to try that out.
 
-Last week we had a single item element. Now we have two categories of stimuli, category A and category B. In our design we need to be able to provide feedback to participants on whether they were correct or not during the training phase of the Expeiment. This means that we need to be able to tell Iquisit which category each item is in, so that it can provide the appropriate feedback based on the participants response. This requires seperate stimuli lists for A and B items.
+Last week we had a single item element. Now we have two categories of stimuli, category A and category B. In our design, we need to be able to provide feedback to participants on whether they were correct or not during the training phase of the Experiment. This means that we need to be able to tell Inquisit which category each item is in, so that it can provide the appropriate feedback based on the participants response. This requires two separate stimuli lists, for A and B items.
 
 **Exercise 1a**: Create your stimuli lists. Give each list an informative name (e.g., `stimlistA` and `stimlistB`).
 
 Just like with the text elements, now that we have defined our stimuli, we need to specify how they should look when displayed on the screen. Because our stimuli are pictures, not text, we can do this by defining a `picture` element. This element has an `items` attribute and a `select` attribute, just like the `text` element, as well as attributes for defining location, size etc. 
 
-**Exercise 1b**: Based on your `text` code from last week, create the appropriate `picture` elements, so that the stimuli are displayed in the center of the screen (use the help function if you want a reminder on what the position, items, and select attributes do). You can also change other attributes of the images being displayed. I recommend changing the size of the image as well.
+**Exercise 1b**: Based on your `text` code from last week, create the appropriate `picture` elements, so that the stimuli are displayed in the center of the screen (use the help function if you want a reminder on what the position, items, and select attributes do). You can also change other attributes of the image being displayed. I recommend changing the size of the image as well.
 
 NOTE: We need as many picture elements as we have item elements, even though all pictures will be displayed in the same way.
 
@@ -62,7 +62,7 @@ NOTE: We need as many picture elements as we have item elements, even though all
 
 **Exercise 2a**: Create a trial element for each of our stimuli types, similar to the ones from last week. The valid responses for all elements should be `a` and `b`. 
 
-In the paper, there is a break of 1500ms between each trial. Build this into your trial elements. Last week we controlled how much time there was between each trial by using the `stimulustimes` attribute of the trial element. This is useful if we want to display something during that time (for exampe a warning to get ready, or a fixation cross). However, we can also explicitly tell Inquisit to pause between trials, using either the `pretrialpause` attribute or the `posttrialpause` attribute. The first of these prepares the trial, but then waits the designated time before beginning it. This can be advantageous if it takes Inquisit some time to prepare the next trial (e.g., it has to load large stimuli, or do calculations), because it insures that their is a consistent time gap between trials. 
+In the paper, there is a break of 1500ms between each trial. Build this into your trial elements. Last week we controlled how much time there was between each trial by using the `stimulustimes` attribute of the trial element. This is useful if we want to display something during that time (for example: a warning to get ready, or a fixation cross). However, we can also explicitly tell Inquisit to pause between trials, using either the `pretrialpause` attribute or the `posttrialpause` attribute. The first of these prepares the trial, but then waits the designated time before beginning it. This can be advantageous if it takes Inquisit some time to prepare the next trial (e.g., it has to load large stimuli, or do calculations), because it ensures that their is a consistent time gap between trials. 
 
 **Exercise 2b**: Try setting the pause between trials of 1500 ms using `pretrialpause`.
 
@@ -70,9 +70,9 @@ Now we have to tell Inquisit what counts as the correct response on each trial.
 
 **Exercise 2c**: Look at the help file for the trial element, and see if you can work out how to set the correct response for each trial type.
 
-Inquisit can display information that is dependent on participants' choices in several ways. The simplest is to display a message based on the response they gave. There are 3 main message attributes, `correctmessage`, `errormessage` and `responsemessage`. We will use the first 2. Each of these takes two pieces of information, the name of the stimulus that is displayed as the message, and the length of time for which it should be displayed.
+Inquisit can display information that is dependent on participants' choices in several ways. The simplest is to display a message based on the response they gave. There are 3 main message attributes, `correctmessage`, `errormessage` and `responsemessage`. We will use the first 2. Each of these, takes two pieces of information: the name of the stimulus that is displayed as the message, and the length of time for which it should be displayed.
 
-This means we need to create some stimuli for Inquisit to display. We'll just create text stimuli for both messages. When they get a category right, I want to display the word **Correct!** in large font coloured blue, when they get the category wrong, it should display **Incorrect!** in red instead.
+This means that we need to create some stimuli for Inquisit to display. We'll just create text stimuli for both messages. When they get a category right, I want to display the word **Correct!** in large font colored blue, when they get the category wrong, it should display **Incorrect!** in red instead.
 
 **Exercise 2d**: Create the `text` elements to do this. Then, use the `correctmessage` and `errormessage` attributes to tell each trial how to use these two `text` stimuli. You'll need to do this for each trial type.
 

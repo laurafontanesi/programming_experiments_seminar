@@ -361,16 +361,16 @@ of 20 times. These are the feedback values associated with the four
 options A, B, C, and D:</p>
 <p>A:</p>
 <pre class="r"><code>round(rnorm(20, mean=36, sd=5))</code></pre>
-<pre><code>##  [1] 38 40 37 44 35 37 42 38 34 34 43 37 43 33 36 32 25 38 37 34</code></pre>
+<pre><code>##  [1] 37 33 34 31 31 31 32 31 40 36 32 43 37 42 36 33 41 30 38 32</code></pre>
 <p>B:</p>
 <pre class="r"><code>round(rnorm(20, mean=40, sd=5))</code></pre>
-<pre><code>##  [1] 39 35 43 42 39 40 45 31 45 41 32 40 39 48 29 49 37 50 40 55</code></pre>
+<pre><code>##  [1] 49 41 33 40 46 35 43 47 49 37 45 43 43 34 29 40 43 34 37 45</code></pre>
 <p>C:</p>
 <pre class="r"><code>round(rnorm(20, mean=50, sd=5))</code></pre>
-<pre><code>##  [1] 53 51 59 45 57 48 43 56 44 50 47 55 49 40 38 47 48 60 48 56</code></pre>
+<pre><code>##  [1] 56 54 46 50 56 64 54 49 55 50 55 52 53 55 48 42 50 55 49 51</code></pre>
 <p>D:</p>
 <pre class="r"><code>round(rnorm(20, mean=54, sd=5))</code></pre>
-<pre><code>##  [1] 50 52 53 55 56 58 52 56 51 57 52 48 52 49 41 54 56 56 50 56</code></pre>
+<pre><code>##  [1] 64 62 51 56 54 52 51 61 57 51 41 51 52 58 56 52 64 50 55 60</code></pre>
 <p>The mean rewards of the options in each block were 36, 40, 50, and 54
 for options A, B, C, and D, respectively. And the order of the feedback
 was randomised for each option.</p>
@@ -512,10 +512,10 @@ class="section level3">
 <p>We also want to show to the participants their final reward.</p>
 <pre class="r"><code># only inaccurate responses
 sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))</code></pre>
-<pre><code>## [1] 1648</code></pre>
+<pre><code>## [1] 1730</code></pre>
 <pre class="r"><code># only accurate responses
 sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=50, sd=5))) + sum(round(rnorm(20, mean=54, sd=5)))</code></pre>
-<pre><code>## [1] 2010</code></pre>
+<pre><code>## [1] 1939</code></pre>
 <p>Here I simulated the reward amount of 2 subjects, one that would only
 choose the lowest paying option, and one that would only choose the
 highest paying one.</p>
@@ -526,9 +526,9 @@ to something we could give them in CHF. For example, we could divide by
 <pre class="r"><code>final_reward = sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))
 
 final_reward</code></pre>
-<pre><code>## [1] 1641</code></pre>
+<pre><code>## [1] 1666</code></pre>
 <pre class="r"><code>round(final_reward/100)/10</code></pre>
-<pre><code>## [1] 1.6</code></pre>
+<pre><code>## [1] 1.7</code></pre>
 <p>In order to do that, we can use the expression element. This can go
 together witht the values and parameters elements at the beginning of
 the script, but can be used to specify an operation that we want to be
