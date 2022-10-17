@@ -27,10 +27,11 @@ navbar:
         href: wpa8.html
       - text: "9 - final assignment"
         href: wpa9.html
-    #- text: "Solutions"
-      #icon: fa-display-arrow-down
-      #menu:
-      #- text: "2 - intro to Inquisit"
+    - text: "Solutions"
+      icon: fa-display-arrow-down
+      menu:
+      - text: "3 - Inquisit basics"
+        href: wpa3_answers.html
 output:
   html_document:
     theme: yeti

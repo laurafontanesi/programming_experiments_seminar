@@ -1,0 +1,89 @@
+---
+title: "Solutions to WPA3 (Inquistit Basics)"
+---
+
+Inquisit code:
+
+```
+<defaults> 
+/quitcommand=(Ctrl+'e')
+/fontstyle=("Arial", 3%)
+</defaults>
+
+<parameters>
+/picture_size = 30%
+</parameters>
+
+# Creating our stimuli
+
+<item stimlist>
+/1="(a) 50% chance of winning CHF 600 or (b) a sure gain of  CHF 1"
+/2="(a) 50% chance of winning  CHF 600 or (b) a sure gain of CHF 30"
+/3="(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 60"
+/4="(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 90"
+/5="(a) 50% chance of winning CHF 600 or (b) a sure gain of CHF 120"
+/6="(a) 50% chance of winning CHF 600 or (b) a sure gain of  CHF 150"
+/7="(a) 50% chance of winning  CHF 600 or (b) a sure gain of CHF 180"
+/8="(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 210"
+/9="(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 240"
+/10="(a) 50% chance of winning CHF 600 or (b) a sure gain of CHF 270"
+/11="(a) 50% chance of winning CHF 600 or (b) a sure gain of  CHF 300"
+/12="(a) 50% chance of winning  CHF 600 or (b) a sure gain of CHF 330"
+/13="(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 360"
+/14="(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 390"
+/15="(a) 50% chance of winning CHF 600 or (b) a sure gain of CHF 420"
+/16="(a) 50% chance of winning CHF 600 or (b) a sure gain of  CHF 450"
+/17="(a) 50% chance of winning  CHF 600 or (b) a sure gain of CHF 480"
+/18="(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 510"
+/19="(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 540"
+/20="(a) 50% chance of winning CHF 600 or (b) a sure gain of CHF 570"
+/21="(a) 50% chance of winning CHF 600 or (b) a sure gain of  CHF 600"
+</item>
+
+# Defining how items are displayed
+
+<text stimlist_text>
+/items=stimlist
+/position = (50%, 50%)
+/hjustify = center
+/fontstyle = ("Arial", 4%)
+/select = noreplace
+/monitor = 2
+</text>
+
+<text ready_text>
+/items = ("Get Ready")
+/position = (50%, 50%)
+
+
+/hjustify = center
+/fontstyle = ("Arial", 3%)
+/monitor = 2
+</text>
+
+<text reminder_text>
+/items=("Press the A key if you prefer the risky option on the left, press the B key if you prefer the sure option on the right")
+/position = (50%, 10%)
+/hjustify = center
+/fontstyle=("Arial", 3%)
+/ monitor = 2
+</text>
+
+# Creating our trial
+
+<trial choice>
+/stimulustimes = [0=ready_text; 500=stimlist_text]
+/validresponse = ("a", "b")
+</trial>
+
+# Blocks and experiments
+
+<block choiceblock>
+/trials = [1-21=choice]
+/bgstim = (reminder_text)
+</block>
+
+<expt>
+/blocks = [1=choiceblock]
+</expt>
+```
