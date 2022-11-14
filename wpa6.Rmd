@@ -18,7 +18,7 @@ We will now modify our original code so that we can add the **difficulty** manip
 
 Create a new Inquisit script file and name it `wpa_6_FirstLast.iqx` (with your First and Last name). This is the file you will email to me at the end of the class.
 
-You can copy-paste your previous code (`wpa_4_FirstLast.iqx`) or the [answers](https://laurafontanesi.github.io/programming_experiments_seminar/answers/answers_wpa4.iqx).
+You can copy-paste your previous code (`wpa_4_FirstLast.iqx`) or the [answers](https://laurafontanesi.github.io/programming_experiments_seminar/wpa4_answers.html).
 
 ## 1. Re-define the stimuli and trials
 
