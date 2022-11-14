@@ -11,7 +11,7 @@
 
 
 
-<title>Solutions to WPA3 (Inquistit Basics)</title>
+<title>Solutions to WPA4 (Events in a trial (feedback))</title>
 
 <script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -314,92 +314,133 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Solutions to WPA3 (Inquistit Basics)</h1>
+<h1 class="title toc-ignore">Solutions to WPA4 (Events in a trial
+(feedback))</h1>
 
 </div>
 
 
 <p>Inquisit code:</p>
-<pre><code>&lt;defaults&gt; 
-/quitcommand=(Ctrl+&#39;e&#39;)
-/fontstyle=(&quot;Arial&quot;, 3%)
+<pre><code>&lt;defaults&gt;  
+ /quitcommand = (Ctrl+&#39;e&#39;) 
+ /fontstyle=(&quot;Arial&quot;, 3%)
 &lt;/defaults&gt;
 
+&lt;values&gt;
+ /accuracy = 50
+&lt;/values&gt;
+
 &lt;parameters&gt;
-/picture_size = 30%
+ /pictures_size = 30%
+ /pictures_position = 50%
 &lt;/parameters&gt;
 
-# Creating our stimuli
-
-&lt;item stimlist&gt;
-/1=&quot;(a) 50% chance of winning CHF 600 or (b) a sure gain of  CHF 1&quot;
-/2=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of CHF 30&quot;
-/3=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 60&quot;
-/4=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 90&quot;
-/5=&quot;(a) 50% chance of winning CHF 600 or (b) a sure gain of CHF 120&quot;
-/6=&quot;(a) 50% chance of winning CHF 600 or (b) a sure gain of  CHF 150&quot;
-/7=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of CHF 180&quot;
-/8=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 210&quot;
-/9=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 240&quot;
-/10=&quot;(a) 50% chance of winning CHF 600 or (b) a sure gain of CHF 270&quot;
-/11=&quot;(a) 50% chance of winning CHF 600 or (b) a sure gain of  CHF 300&quot;
-/12=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of CHF 330&quot;
-/13=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 360&quot;
-/14=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 390&quot;
-/15=&quot;(a) 50% chance of winning CHF 600 or (b) a sure gain of CHF 420&quot;
-/16=&quot;(a) 50% chance of winning CHF 600 or (b) a sure gain of  CHF 450&quot;
-/17=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of CHF 480&quot;
-/18=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 510&quot;
-/19=&quot;(a) 50% chance of winning  CHF 600 or (b) a sure gain of  CHF 540&quot;
-/20=&quot;(a) 50% chance of winning CHF 600 or (b) a sure gain of CHF 570&quot;
-/21=&quot;(a) 50% chance of winning CHF 600 or (b) a sure gain of  CHF 600&quot;
+### Define the stimuli
+&lt;item stimlistA&gt;
+ /1 = &quot;wpa4_stimuli/patch1.png&quot;
+ /2 = &quot;wpa4_stimuli/patch2.png&quot;
+ /3 = &quot;wpa4_stimuli/patch3.png&quot;
+ /4 = &quot;wpa4_stimuli/patch4.png&quot;
+ /5 = &quot;wpa4_stimuli/patch5.png&quot;
+ /6 = &quot;wpa4_stimuli/patch6.png&quot;
+ /7 = &quot;wpa4_stimuli/patch7.png&quot;
+ /8 = &quot;wpa4_stimuli/patch8.png&quot;
+ /9 = &quot;wpa4_stimuli/patch9.png&quot;
+ /10 = &quot;wpa4_stimuli/patch10.png&quot;
+ /11 = &quot;wpa4_stimuli/patch11.png&quot;
+ /12 = &quot;wpa4_stimuli/patch12.png&quot;
+ /13 = &quot;wpa4_stimuli/patch13.png&quot;
+ /14 = &quot;wpa4_stimuli/patch14.png&quot;
+ /15 = &quot;wpa4_stimuli/patch15.png&quot;
 &lt;/item&gt;
 
-# Defining how items are displayed
+&lt;item stimlistB&gt;
+ /16 = &quot;wpa4_stimuli/patch16.png&quot;
+ /17 = &quot;wpa4_stimuli/patch17.png&quot;
+ /18 = &quot;wpa4_stimuli/patch18.png&quot;
+ /19 = &quot;wpa4_stimuli/patch19.png&quot;
+ /20 = &quot;wpa4_stimuli/patch20.png&quot;
+ /21 = &quot;wpa4_stimuli/patch21.png&quot;
+ /22 = &quot;wpa4_stimuli/patch22.png&quot;
+ /23 = &quot;wpa4_stimuli/patch23.png&quot;
+ /24 = &quot;wpa4_stimuli/patch24.png&quot;
+ /25 = &quot;wpa4_stimuli/patch25.png&quot;
+ /26 = &quot;wpa4_stimuli/patch26.png&quot;
+ /27 = &quot;wpa4_stimuli/patch27.png&quot;
+ /28 = &quot;wpa4_stimuli/patch28.png&quot;
+ /29 = &quot;wpa4_stimuli/patch29.png&quot;
+ /30 = &quot;wpa4_stimuli/patch30.png&quot;
+&lt;/item&gt;
 
-&lt;text stimlist_text&gt;
-/items=stimlist
-/position = (50%, 50%)
-/hjustify = center
-/fontstyle = (&quot;Arial&quot;, 4%)
-/select = noreplace
-/monitor = 2
-&lt;/text&gt;
+&lt;picture A&gt;
+ /items = stimlistA
+ /select = noreplace
+ /position = (parameters.pictures_position, parameters.pictures_position)
+ /size = (parameters.pictures_size, parameters.pictures_size)
+&lt;/picture&gt;
 
-&lt;text ready_text&gt;
-/items = (&quot;Get Ready&quot;)
-/position = (50%, 50%)
+&lt;picture B&gt;
+ /items = stimlistB
+ /select = noreplace
+ /position = (parameters.pictures_position, parameters.pictures_position)
+ /size = (parameters.pictures_size, parameters.pictures_size)
+&lt;/picture&gt;
 
-
-/hjustify = center
-/fontstyle = (&quot;Arial&quot;, 3%)
-/monitor = 2
-&lt;/text&gt;
-
-&lt;text reminder_text&gt;
-/items=(&quot;Press the A key if you prefer the risky option on the left, press the B key if you prefer the sure option on the right&quot;)
-/position = (50%, 10%)
-/hjustify = center
-/fontstyle=(&quot;Arial&quot;, 3%)
-/ monitor = 2
-&lt;/text&gt;
-
-# Creating our trial
-
-&lt;trial choice&gt;
-/stimulustimes = [0=ready_text; 500=stimlist_text]
-/validresponse = (&quot;a&quot;, &quot;b&quot;)
+### Define the trial elements
+&lt;trial trialA&gt;
+ /stimulustimes = [1=A]
+ /validresponse = (&quot;a&quot;, &quot;b&quot;)
+ /correctresponse = (&quot;a&quot;)
+ /pretrialpause=1500
+ /errormessage = true(wrong, 500)
+ /correctmessage = true(right, 500)
+ /ontrialend = [values.accuracy = (trial.trialA.percentcorrect + trial.trialB.percentcorrect)/2]
 &lt;/trial&gt;
 
-# Blocks and experiments
+&lt;trial trialB&gt;
+ /stimulustimes = [1=B]
+ /validresponse = (&quot;a&quot;, &quot;b&quot;)
+ /correctresponse = (&quot;b&quot;)
+ /pretrialpause=1500
+ /errormessage = true(wrong, 500)
+ /correctmessage = true(right, 500)
+ /ontrialend = [values.accuracy = (trial.trialA.percentcorrect + trial.trialB.percentcorrect)/2]
+&lt;/trial&gt;
 
-&lt;block choiceblock&gt;
-/trials = [1-21=choice]
-/bgstim = (reminder_text)
+&lt;text right&gt;
+ /items=(&quot;CORRECT!&quot;)
+ /position = (50%, 50%)
+ /hjustify = center
+ /fontstyle=(&quot;Arial&quot;, 10%)
+ /txcolor=(0,0, 255)
+&lt;/text&gt;
+
+&lt;text wrong&gt;
+ /items=(&quot;INCORRECT!&quot;)
+ /position = (50%, 50%)
+ /hjustify = center
+ /fontstyle=(&quot;Arial&quot;, 10%)
+ /txcolor=(255,0, 0)
+&lt;/text&gt;
+
+### Define pages
+&lt;page final_message&gt;
+Congratulations!
+
+^^ You finished the experiment.
+
+^^ You maintaned a performance of &lt;%values.accuracy%&gt; percent.
+&lt;/page&gt;
+
+
+### Define the block and exp elements
+&lt;block choice_block&gt;
+ /trials = [1-30=noreplace(trialA, trialB)]
+ /postinstructions = (page.final_message)
 &lt;/block&gt;
 
 &lt;expt&gt;
-/blocks = [1=choiceblock]
+ /blocks = [1=choice_block]
 &lt;/expt&gt;</code></pre>
 
 

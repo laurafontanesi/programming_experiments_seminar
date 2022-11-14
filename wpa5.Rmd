@@ -20,7 +20,7 @@ Today we will program an **indifference point elicitation task**, inspired by Ex
 
 Create a new Inquisit script file and name it `wpa_5_FirstLast.iqx` (with your First and Last name). This is the file you will email to me at the end of the class.
 
-Now that you have a script file, define a defaults element at the beginning of the file (as you did in WPA3).
+Now that you have a script file, define a defaults element at the beginning of the file (as you did in WPA4).
 
 ## 1. Define the Stimuli
 

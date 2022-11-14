@@ -16,11 +16,11 @@ In each class we will work on **WPAs** (Weekly Programming Assignments):
 | 2  | 26 September | Introduction to Inquisit |
 | 3  | 3 October | Inquisit basics |
 | 4  | 10 October | Events in a trial (feedback) |
-| 5  | 17 October | Events in a trial (conditional updating and branching) |
-| 6  | 24 October | Within-subjects manipulation |
-| 7  | 31 October | Within-subjects conditional branching |
-| 8  | 7 November | Across-subject manipulation |
-| 9  | 14 November | Work on final assignment |
+| 5  | 17 October | vents in a trial (feedback) |
+| 6  | 24 October | Events in a trial (conditional updating and branching) |
+| 7  | 31 October | Within-subjects manipulation |
+| 8  | 7 November | Within-subjects conditional branching |
+| 9  | 14 November | Across-subject manipulation |
 | 10  | 21 November | Work on final assignment |
 | 11  | 28 November | Work on final assignment |
 | 12  | 5 December | No class |

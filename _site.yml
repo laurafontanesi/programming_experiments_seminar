@@ -32,6 +32,8 @@ navbar:
       menu:
       - text: "3 - Inquisit basics"
         href: wpa3_answers.html
+      - text: "4 - feedback"
+        href: wpa4_answers.html
 output:
   html_document:
     theme: yeti

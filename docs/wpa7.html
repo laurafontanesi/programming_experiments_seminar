@@ -297,6 +297,9 @@ $(document).ready(function () {
     <li>
       <a href="wpa3_answers.html">3 - Inquisit basics</a>
     </li>
+    <li>
+      <a href="wpa4_answers.html">4 - feedback</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -376,16 +379,16 @@ of 20 times. These are the feedback values associated with the four
 options A, B, C, and D:</p>
 <p>A:</p>
 <pre class="r"><code>round(rnorm(20, mean=36, sd=5))</code></pre>
-<pre><code>##  [1] 35 30 33 39 35 39 37 39 38 29 34 33 36 46 41 37 37 29 36 32</code></pre>
+<pre><code>##  [1] 37 30 32 34 37 32 40 37 31 34 43 36 41 44 33 32 26 49 37 28</code></pre>
 <p>B:</p>
 <pre class="r"><code>round(rnorm(20, mean=40, sd=5))</code></pre>
-<pre><code>##  [1] 36 39 29 40 51 37 43 43 42 43 37 43 42 43 37 41 48 37 36 33</code></pre>
+<pre><code>##  [1] 41 42 45 41 29 44 45 31 28 45 38 48 37 42 44 39 43 40 36 41</code></pre>
 <p>C:</p>
 <pre class="r"><code>round(rnorm(20, mean=50, sd=5))</code></pre>
-<pre><code>##  [1] 51 50 40 51 62 50 45 55 51 48 51 48 56 47 48 43 52 56 44 44</code></pre>
+<pre><code>##  [1] 53 46 59 55 65 50 49 54 49 47 46 52 54 56 64 53 51 43 48 48</code></pre>
 <p>D:</p>
 <pre class="r"><code>round(rnorm(20, mean=54, sd=5))</code></pre>
-<pre><code>##  [1] 52 56 58 51 48 50 57 45 47 48 43 55 54 60 55 55 60 50 62 52</code></pre>
+<pre><code>##  [1] 59 58 53 53 48 51 48 48 55 57 52 62 52 53 45 55 53 49 49 54</code></pre>
 <p>The mean rewards of the options in each block were 36, 40, 50, and 54
 for options A, B, C, and D, respectively. And the order of the feedback
 was randomised for each option.</p>
@@ -527,10 +530,10 @@ class="section level3">
 <p>We also want to show to the participants their final reward.</p>
 <pre class="r"><code># only inaccurate responses
 sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))</code></pre>
-<pre><code>## [1] 1679</code></pre>
+<pre><code>## [1] 1645</code></pre>
 <pre class="r"><code># only accurate responses
 sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=50, sd=5))) + sum(round(rnorm(20, mean=54, sd=5)))</code></pre>
-<pre><code>## [1] 2020</code></pre>
+<pre><code>## [1] 1978</code></pre>
 <p>Here I simulated the reward amount of 2 subjects, one that would only
 choose the lowest paying option, and one that would only choose the
 highest paying one.</p>
@@ -541,9 +544,9 @@ to something we could give them in CHF. For example, we could divide by
 <pre class="r"><code>final_reward = sum(round(rnorm(20, mean=36, sd=5))) + sum(round(rnorm(10, mean=40, sd=5))) + sum(round(rnorm(10, mean=54, sd=5)))
 
 final_reward</code></pre>
-<pre><code>## [1] 1675</code></pre>
+<pre><code>## [1] 1648</code></pre>
 <pre class="r"><code>round(final_reward/100)/10</code></pre>
-<pre><code>## [1] 1.7</code></pre>
+<pre><code>## [1] 1.6</code></pre>
 <p>In order to do that, we can use the expression element. This can go
 together witht the values and parameters elements at the beginning of
 the script, but can be used to specify an operation that we want to be
