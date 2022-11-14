@@ -22,7 +22,7 @@ You can copy-paste your previous code (`wpa_4_FirstLast.iqx`) or the [answers](h
 
 ## 1. Re-define the stimuli and trials
 
-In WPA 4, we only had 2 stimuli lists, 1 for category A and 1 for category B. Now, we want to split each one of them in 3, for a total of 6 categories, reflecting their difficulty: easy_A (pictures 1-5), medium_A (pictures 5-10), hard_A (pictures 11-15), hard_B (pictures 16-20), medium_B (pictures 21-25), easy_B (pictures 26-30).
+In WPA 4, we only had 2 stimuli lists, 1 for category A and 1 for category B. Now, we want to split each one of them in 3, for a total of 6 categories, reflecting their difficulty: easy_A (pictures 1-5), medium_A (pictures 6-10), hard_A (pictures 11-15), hard_B (pictures 16-20), medium_B (pictures 21-25), easy_B (pictures 26-30).
 
 **Exercise 1a:** Modify the `item` elements accordigly.
 
