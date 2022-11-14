@@ -9,7 +9,7 @@ As a home assignment for next week, you should decide what task you would like t
 * participants have to give responses in several trials (e.g., decide between options)
 * there should be some counterbalancing procedure across trials/within block (e.g., options are presented left vs. right)
 * there are at least 2 blocks of trials in which some within-subject variable is manipulated (e.g., easy vs. hard block)
-* there are at least 2 between-subjects conditions (e.g., one group of subjects sees one set of stimuli and the other group sees another one)
+* *Optional*: there are 2 between-subjects conditions (e.g., one group of subjects sees one set of stimuli and the other group sees another one)
 
 Please remember to indicate also: the response modality, temporal structure of a trial, number of trials per blocks, number of blocks, differences across-subjects, and to provide a list of the items you want to present in Inquisit. Iideally, you already prepare a folder with the picture stimuli that you would load in Inquisit, or write them down on a text file if they are text stimuli.
 

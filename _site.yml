@@ -34,6 +34,8 @@ navbar:
         href: wpa3_answers.html
       - text: "4 - feedback"
         href: wpa4_answers.html
+      - text: "5 - conditional updating and branching"
+        href: wpa5_answers.html
 output:
   html_document:
     theme: yeti
